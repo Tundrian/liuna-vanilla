@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.ejs')
 })
 
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`)
 })
