@@ -4073,4 +4073,49 @@ img {
   font-size: 3rem;
 }
 
+.home-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  border-bottom: black solid thin;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+form * {
+  width: 95%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-inline: 5px;
+}
+form input {
+  background-color: gray;
+  color: white;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-inline: 15px;
+}
+form h2 {
+  font-size: 1.8rem;
+}
+
+a {
+  background-color: orange;
+  padding-inline: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  margin: 10px;
+}
+a:hover {
+  cursor: pointer;
+  color: #ffb733;
+}
+
 /*# sourceMappingURL=main.css.map */
