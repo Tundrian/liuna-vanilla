@@ -1,0 +1,13 @@
+// Delivery a complimentary color that is lighter that the original color.
+@function light-comp($color){
+    $complement: complement($color);
+    $light-complement: lighten($complement, 30%);
+    @return $light-complement;
+}
+
+// Delivery a complimentary color that is darker that the original color.
+@function dark-comp($color){
+    $complement: complement($color);
+    $dark-complement: darken($complement, 30%);
+    @return $dark-complement;
+}

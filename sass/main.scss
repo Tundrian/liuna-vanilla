@@ -1,33 +1,19 @@
+/*  Base stylings  */
 @import 'reset';
+@import 'variables';
+@import 'functions';
 
-// Home page
+/*  Base & Layout  */
+@import 'base';
+@import 'breakpoints';
+@import 'grid';
 
-.text-2xl{
-    font-size: 5rem;
-}
+/*  Colors  */
+@import 'colors';
+/*  Components  */
+@import 'components/card';
+@import 'components/button';
+@import 'components/navbar';
 
-// Font sizes
-// Padding
-// Margin
-// Text colors
-// Gird layout styles / flexbox
-
-.flex {
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
-}
-
-.flex-justify{
-    justify-content: center;
-}
-
-.align-center{
-    align-items: center;
-}
-
-input{
-    background-color: gray;
-    font-size: 2rem;
-    padding: 5px;
-}
+// Utilities
+@import 'utilities';
