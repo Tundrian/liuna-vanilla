@@ -5,22 +5,10 @@ const colors = require('colors')
 const cors = require('cors')
 // Modules
 const connectDB = require('./config')
+const { response } = require('express')
 
 // Variables
 const PORT = process.env.PORT
-
-// Models
-const Member = require('./models/Member')
-const member1 = new Member ({
-    name: 'John',
-    role: 'new member'
-})
-
-member1.save(function (error, document) {
-    if(error) console.error(error + ''.red)
-    console.log(document + ''.yellow)
-    
-})
 
 // Middleware
 const app = express()
@@ -37,10 +25,10 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 })
 
-app.post('/users', (req, res) => {
-    console.log(req.body)
-    res.redirect('/')
+app.get('/admin', (req, res) => {
+    res.render('admin/dashboard.ejs')
 })
+
 
 app.listen(PORT, () => {
     console.log(`Server running at `.blue + `http://localhost:${PORT}`.underline.cyan)

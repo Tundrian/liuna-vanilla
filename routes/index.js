@@ -1,4 +1,3 @@
-const Member = require('../models/Member')
 const router = express.Router()
 const express = require('express')
 
