@@ -4074,7 +4074,8 @@ img {
 }
 
 .home-title {
-  font-size: 2rem;
+  padding-top: 10px;
+  font-size: 4rem;
   text-align: center;
 }
 
@@ -4086,6 +4087,7 @@ form {
   border-bottom: black solid thin;
   padding-bottom: 10px;
   padding-top: 10px;
+  padding-inline: 10px;
 }
 form * {
   width: 95%;
@@ -4112,6 +4114,7 @@ a {
   padding-bottom: 5px;
   text-align: center;
   margin: 10px;
+  color: white;
 }
 a:hover {
   cursor: pointer;
