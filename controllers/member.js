@@ -22,9 +22,13 @@ const setMember = asyncHandler(async (req, res) => {
     }
 })
 
-const setMember = asyncHandler(async (req, res) => {
+const getMember = asyncHandler(async (req, res) => {
     try{
-
+        const member = await Member.findOne(
+            {
+                _id: req.body.member.id
+            }
+        )
     }catch(error){
         throw new Error(error)
     }
