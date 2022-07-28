@@ -1,0 +1,11 @@
+const mongoose = require('mongoose')
+
+const User_CertificationSchema = mongoose.Schema({
+    user_id: String,
+    member_id: String,
+    certification_id: String,
+    received_date: Date,
+    expire_date: Date
+})
+
+module.exports = mongoose.model('User_Certification', User_CertificationSchema)

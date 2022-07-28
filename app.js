@@ -3,9 +3,10 @@ const express = require('express')
 require('dotenv').config()
 const colors = require('colors')
 const cors = require('cors')
+
 // Modules
 const connectDB = require('./config')
-const { response } = require('express')
+// const { response } = require('express')
 
 // Variables
 const PORT = process.env.PORT
@@ -21,7 +22,12 @@ app.use(express.json())
 connectDB()
 
 // Routes
+const apiRoutes = require('./routes/apiRoutes')
+
 /* General Routes */
+
+app.use('/api', apiRoutes)
+
 app.get('/', (req, res) => {
     res.render('index.ejs')
 })
@@ -69,6 +75,10 @@ app.get('/member/trainingSessions', (req, res) => {
 app.get('/member/upcomingTraining', (req, res) => {
     res.render('member/upcomingTraining/index.ejs')
 })
+
+/* CRUD Routes */
+// Members
+app.get('/api/members')
 
 
 app.listen(PORT, () => {
