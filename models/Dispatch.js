@@ -1,15 +1,10 @@
 const mongoose = require('mongoose')
 
 const DispatchSchema = mongoose.Schema({
-    name: {
-        type: String,
-        unique: true
-    },
+    contractor_id: String,
     description: String,
-    category: String,
-    type: String,
-    acquire_date: Date,
-    reminder_date: Date
+    name: String,
+    
 })
 
 module.exports = mongoose.model('Dispatch', DispatchSchema)
