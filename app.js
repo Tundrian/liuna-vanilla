@@ -29,6 +29,9 @@ app.get('/admin', (req, res) => {
     res.render('admin/dashboard.ejs')
 })
 
+app.get('/member', (req, res)) => {
+    res.render('member/dashboard.ejs')
+}
 
 app.listen(PORT, () => {
     console.log(`Server running at `.blue + `http://localhost:${PORT}`.underline.cyan)
