@@ -1,0 +1,82 @@
+.admin-page{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    h1{
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 3rem;
+    }
+    
+
+    .data-buttons{
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        align-items: center;
+        margin-inline: 5%;
+        margin-bottom: 50px;
+
+        li{
+            width: 25%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            button{
+                padding-inline: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: green;
+                border-radius: 10px;
+                text-transform:uppercase;
+                text-align: center;
+                width: 95%;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: lighten(green, 10%);
+                }
+            }
+        }
+    }
+
+    .fetch-view-results{
+        border: thin purple solid;
+        width: 80%;
+        height: 1000px;
+        margin-inline: auto;
+        &>li{
+            ul{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-inline: 10px;
+                border-bottom: thin solid purple;
+                li{
+                    
+                    width: 100%;
+                    margin-inline: 5px;
+                    text-align: center;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    line-height: 1.5rem;
+
+                   
+                }
+                button{
+                    padding:10px;
+                    background-color: purple;
+                    margin-inline: 5px;
+
+                    &:hover{
+                        cursor: pointer;
+                    background-color: lighten(purple, 10%);
+                    }
+                }
+               
+            }
+        }
+    }
+}

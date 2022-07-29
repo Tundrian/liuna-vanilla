@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="../css/main.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Member Management</h1>
-    <ul>
-        <li><button class="testButton">View</button></li>
-        <ul class="data-view">
-            
-        </ul>
+    <%- include("../../partials/header.ejs") %>
+<body class="admin-page">
+    <h1 class=>Member Management</h1>
+    <ul class="data-buttons">
+        <li><button class="fetch-view-btn">View</button></li>
+        <li><button class="fetch-add-btn">Add</button></li>
+        <li><button class="fetch-edit-btn">Edit</button></li>
+        <li><button class="fetch-delete-btn">Delete</button></li>
+    </ul>
 
-        <li><button>Add</button></li>
-        <li><button>Edt</button></li>
-        <li><button>Delete</button></li>
+    <ul class="fetch-view-results">
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Member #</li>
+                    <li>Role</li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
     </ul>
     <a href="/">Home</a>
     <a href="/member">Member Dashboard</a>
