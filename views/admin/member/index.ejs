@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../../partials/header.ejs") %>
+<body class="admin-page">
+    <h1 class=>Member Management</h1>
+    <ul class="data-buttons">
+        <li><button class="fetch-view-btn">Refresh</button></li>
+        <li><button class="fetch-add-btn">Add</button></li>
+    </ul>
+
+    <section>
+        <h2>Add new member</h2>
+        <form action="">
+            <label >Name</label>
+            <input id="full-name" type="text" placehold="full name">
+            <label>First Name</label>
+            <input id="first-name" type="text" placeholder="First Name">
+            <label>Last Name</label>
+            <input id="last-name" type="text" placeholder="Last Name">
+            <label>Role</label>
+            <input id="role" type="text" placeholder="Role">
+            <label>Member Number</label>
+            <input id="member-number" type="text" placeholder="#" disabled>
+            <label>Status</label>
+            <input id="status" type="text" placeholder="status" >
+            <button class="form-submit" type="submit">Submit New Member</button>
+        </form>
+    </section>
+
+    <ul class="fetch-view-results">
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Member #</li>
+                    <li>Role</li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+    </ul>
+    <a href="/">Home</a>
+    <a href="/member">Member Dashboard</a>
+
+    <script type="text/javascript" src="../js/member.js"></script>
+</body>
+</html>
