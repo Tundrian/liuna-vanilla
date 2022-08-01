@@ -112,11 +112,11 @@ const getMembers = async() => {
 const addMember = async(e) => {
     e.preventDefault()
     const newMember = {
-        name: document.querySelector('#full-name').value,
-        role: document.querySelector('#role').value,
-        first_name: document.querySelector('#first-name').value,
-        last_name: document.querySelector('#last-name').value,
-        status: document.querySelector('#status').value
+        name: document.querySelector('#add-full-name').value,
+        role: document.querySelector('#add-role').value,
+        first_name: document.querySelector('#add-first-name').value,
+        last_name: document.querySelector('#add-last-name').value,
+        status: document.querySelector('#add-status').value
     }
     const response = await fetch('../api/member', {
         method: 'POST',
