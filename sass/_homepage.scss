@@ -13,6 +13,11 @@ form{
     padding-bottom: 10px;
     padding-top: 10px;
     padding-inline: 10px;
+
+    label{
+        color: $primary;
+        font-weight: 600;
+    }
     *{
         width: 95%;
         margin-top: 5px;
@@ -20,15 +25,32 @@ form{
         margin-inline: 5px;
     }
     input{
-        background-color: gray;
-        color: white;
+        background-color: rgba(207, 173, 23, 0.582);
+        color: rgb(59, 59, 59);
         border-radius: 20px;
+        // border: thin solid rgb(94, 94, 94);
         padding-top: 5px;
         padding-bottom: 5px;
         padding-inline:15px;
     }
     h2{
         font-size: 1.8rem;
+    }
+
+    button{
+        padding-inline: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: green;
+                border-radius: 10px;
+                text-transform:uppercase;
+                text-align: center;
+                width: 95%;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: lighten(green, 10%);
+                }
     }
 }
 a{

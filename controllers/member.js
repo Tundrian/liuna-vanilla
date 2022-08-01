@@ -23,14 +23,8 @@ const setMember = asyncHandler(async (req, res) => {
 })
 
 const getMember = asyncHandler(async (req, res) => {
-    console.log('get One')
     try{
-        const member = await Member.findOne(
-            {
-                _id: req.body.id
-            }
-            
-        )
+        const member = await Member.findOne({_id: req.params.id})
         res.status(200).json(member)
     }catch(error){
         throw new Error(error)

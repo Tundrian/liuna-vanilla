@@ -19,4 +19,8 @@
 @import 'utilities';
 
 @import 'homepage';
-@import 'adminViews'
+@import 'adminViews';
+
+.hide {
+    display: none;
+}

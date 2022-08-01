@@ -8,7 +8,7 @@ const {
     deleteMember
 } = require('../controllers/member')
 
-router.route('/member/one').get(getMember)
+router.route('/member/:id').get(getMember)
 router.route('/member').get(getMembers).post(setMember).delete(deleteMember).put(updateMember)
 router.route('/member/:member_id').get(getMember)
 
