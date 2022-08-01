@@ -7,6 +7,7 @@ const MemberSchema = mongoose.Schema({
     first_name: String,
     last_name: String,
     status: String,
+    member_number: String
 })
 
 module.exports = mongoose.model('Member', MemberSchema)

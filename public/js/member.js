@@ -1,19 +1,3 @@
-// class Member {
-//     constructor(id, name, firstName, lastName, role, memberNumber, status){
-//         this.id = id
-//         this.name = name
-//         this.firstName = firstName
-//         this.lastName = lastName
-//         this.role = role
-//         this.memberNumber = memberNumber
-//         this.status = status
-//     }
-
-//     updateMember () {
-
-//     }
-// }
-
 let memberSelected = {
     id: '',
     name: '',
@@ -21,7 +5,7 @@ let memberSelected = {
     lastName: '',
     role: '',
     memberNumber: '',
-    status: ''
+    status: '',
 }
 
 // Functions
@@ -40,7 +24,6 @@ const closeModal = () => {
     memberSelected.role = ''
     memberSelected.memberNumber = ''
     memberSelected.status = ''
-
 }
 
 const openModal = async (e) => {
@@ -49,6 +32,7 @@ const openModal = async (e) => {
     document.querySelector('#view-first-name').value = memberSelected.firstName
     document.querySelector('#view-last-name').value = memberSelected.lastName
     document.querySelector('#view-role').value = memberSelected.role
+    console.log(memberSelected.memberNumber)
     document.querySelector('#view-member-number').value = memberSelected.memberNumber
     document.querySelector('#view-status').value = memberSelected.status
     document.querySelector('.view-modal-container').classList.remove('hide');
@@ -63,13 +47,14 @@ const getMember = async (id) => {
     memberSelected.firstName = member.first_name || '',
     memberSelected.lastName = member.last_name || '',
     memberSelected.status = member.status || '',
-    memberSelected.role = member.role || ''
+    memberSelected.role = member.role || '',
+    console.log(member)
+    memberSelected.memberNumber = member.member_number || ''
     // return member
 }
 
 const getMembers = async() => {
     if(document.querySelector('.view-results-list')){
-        console.log('here')
         const element = document.querySelectorAll('.view-results-list')
         element.forEach(el => {
             el.innerHTML = ''
@@ -116,7 +101,8 @@ const addMember = async(e) => {
         role: document.querySelector('#add-role').value,
         first_name: document.querySelector('#add-first-name').value,
         last_name: document.querySelector('#add-last-name').value,
-        status: document.querySelector('#add-status').value
+        status: document.querySelector('#add-status').value,
+        member_number: document.querySelector('#add-member-number').value
     }
     const response = await fetch('../api/member', {
         method: 'POST',
@@ -125,7 +111,8 @@ const addMember = async(e) => {
         },
         body: JSON.stringify(newMember)
     })
-    
+    addClicked()
+    getMembers()
     return response.json()
 }
 
@@ -133,7 +120,7 @@ const deleteMember = async(e) => {
 
 }
 
-const addClicked = async(e) => {
+const addClicked = async() => {
     document.querySelector('#add-full-name').value = ''
     document.querySelector('#add-first-name').value = ''
     document.querySelector('#add-last-name').value = ''
@@ -142,12 +129,12 @@ const addClicked = async(e) => {
     document.querySelector('#add-status').value = ''
     // document.querySelector('.view-modal-container').classList.remove('hide');
     document.querySelector('.add-form').hidden = !document.querySelector('.add-form').hidden
-    e.target.innerHTML = e.target.innerHTML.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
+    document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 
 // Event Listeners
 document.querySelector('.fetch-view-btn').addEventListener('click', getMembers)
-document.querySelector('.fetch-add-btn').addEventListener('click', addClicked)
+document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('.form-submit').addEventListener('click', addMember)
 document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
 getMembers()
