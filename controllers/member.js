@@ -38,13 +38,13 @@ const getMember = asyncHandler(async (req, res) => {
 })
 
 const updateMember = asyncHandler(async (req, res) => {
-    const member = await Member.findOne({_id: req.body.id})
+    const member = await Member.findOne({_id: req.params.id})
     if(!member){
         res.status(400)
         throw new Error('Member not found')
     }
 
-    const updatedMember = await Member.findOneAndUpdate({ _id: req.body.id}, {
+    const updatedMember = await Member.findOneAndUpdate({ _id: req.params.id}, {
         name: req.body.name,
         role: req.body.role,
         user_id: req.body.user_id,
@@ -58,15 +58,15 @@ const updateMember = asyncHandler(async (req, res) => {
 })
 
 const deleteMember = asyncHandler(async (req, res) => {
-    const member = await Member.findOne({_id: req.body.id})
+    const member = await Member.findOne({_id: req.params.id})
     if(!member){
         res.status(400)
         throw new Error('Member not found')
     }
 
-    await Member.findOneAndDelete({ _id: req.body.id})
+    await Member.findOneAndDelete({ _id: req.params.id})
 
-    res.status(200).json({id: req.body.id})
+    res.status(200).json({id: req.params.id})
 })
 
 module.exports = {

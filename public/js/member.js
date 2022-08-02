@@ -32,7 +32,6 @@ const openModal = async (e) => {
     document.querySelector('#view-first-name').value = memberSelected.firstName
     document.querySelector('#view-last-name').value = memberSelected.lastName
     document.querySelector('#view-role').value = memberSelected.role
-    console.log(memberSelected.memberNumber)
     document.querySelector('#view-member-number').value = memberSelected.memberNumber
     document.querySelector('#view-status').value = memberSelected.status
     document.querySelector('.view-modal-container').classList.remove('hide');
@@ -48,9 +47,7 @@ const getMember = async (id) => {
     memberSelected.lastName = member.last_name || '',
     memberSelected.status = member.status || '',
     memberSelected.role = member.role || '',
-    console.log(member)
     memberSelected.memberNumber = member.member_number || ''
-    // return member
 }
 
 const getMembers = async() => {
@@ -117,7 +114,48 @@ const addMember = async(e) => {
 }
 
 const deleteMember = async(e) => {
+    e.preventDefault()
+    const response = await fetch(`../api/member/${memberSelected.id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    getMembers()
+    closeModal()
+    return
+}
 
+const editMember = async(e) => {
+    e.preventDefault()
+
+    memberSelected.name = document.querySelector('#view-full-name').value
+    memberSelected.firstName = document.querySelector('#view-first-name').value
+    memberSelected.lastName = document.querySelector('#view-last-name').value
+    memberSelected.role = document.querySelector('#view-role').value
+    memberSelected.memberNumber = document.querySelector('#view-member-number').value
+    memberSelected.status = document.querySelector('#view-status').value
+
+    const editedMember = {
+            name: memberSelected.name,
+            role: memberSelected.role,
+            user_id: memberSelected.id,
+            first_name: memberSelected.firstName,
+            last_name: memberSelected.lastName,
+            status: memberSelected.status,
+            member_number: memberSelected.memberNumber
+    }
+
+    const response = await fetch(`../api/member/${memberSelected.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedMember)
+    })
+    getMembers()
+    closeModal()
+    return response.json()
 }
 
 const addClicked = async() => {
@@ -137,4 +175,6 @@ document.querySelector('.fetch-view-btn').addEventListener('click', getMembers)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('.form-submit').addEventListener('click', addMember)
 document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
+document.querySelector('.view-delete-button').addEventListener('click', deleteMember)
+document.querySelector('.view-edit-button').addEventListener('click', editMember)
 getMembers()
