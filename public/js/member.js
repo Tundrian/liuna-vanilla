@@ -126,9 +126,24 @@ const deleteMember = async(e) => {
     return
 }
 
+const enableEdit = () => {
+    document.querySelector('#view-full-name').disabled = false
+    document.querySelector('#view-first-name').disabled = false
+    document.querySelector('#view-last-name').disabled = false
+    document.querySelector('#view-role').disabled = false
+    document.querySelector('#view-member-number').disabled = false
+    document.querySelector('#view-status').disabled = false
+
+    document.querySelector('.view-edit-button').classList.add('hide')
+    document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
+}
+
 const editMember = async(e) => {
     e.preventDefault()
 
+    if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
+        return
+    }
     memberSelected.name = document.querySelector('#view-full-name').value
     memberSelected.firstName = document.querySelector('#view-first-name').value
     memberSelected.lastName = document.querySelector('#view-last-name').value
@@ -155,6 +170,17 @@ const editMember = async(e) => {
     })
     getMembers()
     closeModal()
+
+    document.querySelector('#view-full-name').disabled = true
+    document.querySelector('#view-first-name').disabled = true
+    document.querySelector('#view-last-name').disabled = true
+    document.querySelector('#view-role').disabled = true
+    document.querySelector('#view-member-number').disabled = true
+    document.querySelector('#view-status').disabled = true
+
+    document.querySelector('.view-edit-button').classList.remove('hide')
+    document.querySelector('.view-edit-confirm-btn').classList.add('hide')
+    
     return response.json()
 }
 
@@ -176,5 +202,6 @@ document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('.form-submit').addEventListener('click', addMember)
 document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
 document.querySelector('.view-delete-button').addEventListener('click', deleteMember)
-document.querySelector('.view-edit-button').addEventListener('click', editMember)
+document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
+document.querySelector('.view-edit-confirm-btn').addEventListener('click', editMember)
 getMembers()
