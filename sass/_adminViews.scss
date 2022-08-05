@@ -1,7 +1,7 @@
 .admin-page{
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(128, 128, 128, 0.247);
+    // background-color: rgba(128, 128, 128, 0.247);
 }
 
 .form-container {
@@ -166,6 +166,7 @@
     color: rgb(240, 240, 240);
     transition: all 0.1s ease-in-out;
     font-size: 1rem;
+    text-transform: uppercase;
 
     &:hover{
         cursor: pointer;

@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <%- include("../partials/header.ejs") %>
 <body>
+    <%- include("../partials/nav.ejs") %>
     <h1>Admin Dashboard</h1>
-    <ul>
+    <ul class="dashboard-container">
         <li><a href="/admin/member">Member Management</a> </li>
         <li><a href="/admin/certificate">Certificate Management</a> </li>
         <li><a href="/admin/contractors">Contractor Management</a> </li>
@@ -16,10 +12,8 @@
         <li><a href="/admin/dispatch">Dispatch Management</a> </li>
         <li><a href="/admin/trainingSession">Training Session Management</a> </li>
         <li><a href="/admin/user">Member Management</a> </li>
-        <li>Payments</li>
-        <li>Reports</li>
+        <li><a href="/">Payments</a></li>
+        <li><a href="/">Reports</a></li>
     </ul>
-    <a href="/">Home</a>
-    <a href="/member">Member Dashboard</a>
 </body>
 </html>

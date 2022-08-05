@@ -2,8 +2,7 @@
 <html lang="en">
 <%- include("partials/header.ejs") %>
 <body>
-    <nav>
-    </nav>
+    <%- include("partials/nav.ejs") %>
 
     <h1 class="home-title">Home Page</h1>
     <form class="home-register" action="/users" METHOD="POST">
@@ -25,7 +24,5 @@
         <button type="submit">Register</button>
     </form>
 
-    <a href="/admin">Admin Dashboard</a>
-    <a href="/member">Member Dashboard</a>
 </body>
 </html>

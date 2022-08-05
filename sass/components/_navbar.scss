@@ -11,12 +11,29 @@
     padding: $base-padding $base-padding * 2;
     box-shadow: $base-box-shadow;
 
-    .site-title{
+    .site-title {
         font-size: $font-size-lg;
+
     }
 
     .container {
         @extend %flex-layout;
+    }
+
+    .nav-image {
+        width: 200px;
+        aspect-ratio: 1200/328;
+    }
+
+    .btn-nav {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 117, 138);
+        border: thin solid rgba(121, 121, 121, 0.541);
+
+        &:hover {
+            background-color: lighter(orange, 10%);
+            color: white;
+        }
     }
 }
 

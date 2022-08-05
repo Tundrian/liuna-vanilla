@@ -3678,6 +3678,20 @@ img {
 .navbar .site-title, .navbar-white .site-title, .navbar-black .site-title, .navbar-gray .site-title, .navbar-purple .site-title, .navbar-orange .site-title, .navbar-green .site-title, .navbar-yellow .site-title, .navbar-red .site-title, .navbar-blue .site-title, .navbar-info .site-title, .navbar-error .site-title, .navbar-secondary .site-title, .navbar-primary .site-title {
   font-size: 1.5rem;
 }
+.navbar .nav-image, .navbar-white .nav-image, .navbar-black .nav-image, .navbar-gray .nav-image, .navbar-purple .nav-image, .navbar-orange .nav-image, .navbar-green .nav-image, .navbar-yellow .nav-image, .navbar-red .nav-image, .navbar-blue .nav-image, .navbar-info .nav-image, .navbar-error .nav-image, .navbar-secondary .nav-image, .navbar-primary .nav-image {
+  width: 200px;
+  aspect-ratio: 1200/328;
+}
+.navbar .btn-nav, .navbar-white .btn-nav, .navbar-black .btn-nav, .navbar-gray .btn-nav, .navbar-purple .btn-nav, .navbar-orange .btn-nav, .navbar-green .btn-nav, .navbar-yellow .btn-nav, .navbar-red .btn-nav, .navbar-blue .btn-nav, .navbar-info .btn-nav, .navbar-error .btn-nav, .navbar-secondary .btn-nav, .navbar-primary .btn-nav {
+  background-color: white;
+  color: #00758a;
+  border: thin solid rgba(121, 121, 121, 0.541);
+}
+.navbar .btn-nav:hover, .navbar-white .btn-nav:hover, .navbar-black .btn-nav:hover, .navbar-gray .btn-nav:hover, .navbar-purple .btn-nav:hover, .navbar-orange .btn-nav:hover, .navbar-green .btn-nav:hover, .navbar-yellow .btn-nav:hover, .navbar-red .btn-nav:hover, .navbar-blue .btn-nav:hover, .navbar-info .btn-nav:hover, .navbar-error .btn-nav:hover, .navbar-secondary .btn-nav:hover, .navbar-primary .btn-nav:hover {
+  background-color: lighter(orange, 10%);
+  color: white;
+}
+
 .navbar-primary {
   background-color: #ee901c;
 }
@@ -4126,24 +4140,9 @@ form button:hover {
   background-color: #00b300;
 }
 
-a {
-  background-color: orange;
-  padding-inline: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-  margin: 10px;
-  color: white;
-}
-a:hover {
-  cursor: pointer;
-  color: #ffb733;
-}
-
 .admin-page {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: rgba(128, 128, 128, 0.247);
 }
 
 .form-container {
@@ -4286,10 +4285,46 @@ a:hover {
   color: #f0f0f0;
   transition: all 0.1s ease-in-out;
   font-size: 1rem;
+  text-transform: uppercase;
 }
 .btn:hover {
   cursor: pointer;
   background-color: #74acfb;
+}
+
+.dashboard-container {
+  margin: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+.dashboard-container > li {
+  width: 25%;
+  height: 100px;
+  border: medium solid orange;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.dashboard-container > li:hover {
+  background-color: orange;
+}
+.dashboard-container > li a {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  border-radius: 30px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 3vmin;
+  font-weight: 200;
+  background-color: white;
+}
+.dashboard-container > li a:hover {
+  background-color: orange;
 }
 
 .hide {
