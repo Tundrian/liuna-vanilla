@@ -16,11 +16,11 @@ const setMember = asyncHandler(async (req, res) => {
         const member = await Member.create({
             name: req.body.name,
             role: req.body.role,
-            user_id: req.body.user_id,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            userId: req.body.userId,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             status: req.body.status,
-            member_number: req.body.member_number
+            memberNumber: req.body.memberNumber
         })
         res.status(200).json(member)
     } catch(error){
@@ -47,11 +47,11 @@ const updateMember = asyncHandler(async (req, res) => {
     const updatedMember = await Member.findOneAndUpdate({ _id: req.params.id}, {
         name: req.body.name,
         role: req.body.role,
-        user_id: req.body.user_id,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        userId: req.body.userId,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         status: req.body.status,
-        member_number: req.body.member_number
+        memberNumber: req.body.memberNumber
     })
 
     res.status(200).json(updatedMember)

@@ -20,7 +20,7 @@ const closeModal = () => {
     memberSelected.id = ''
     memberSelected.name = ''
     memberSelected.firstName = ''
-    memberSelected.lastNamne = ''
+    memberSelected.lastName = ''
     memberSelected.role = ''
     memberSelected.memberNumber = ''
     memberSelected.status = ''
@@ -43,11 +43,11 @@ const getMember = async (id) => {
     const member = await response.json()
     memberSelected.id = member._id || '',
     memberSelected.name = member.name || '',
-    memberSelected.firstName = member.first_name || '',
-    memberSelected.lastName = member.last_name || '',
+    memberSelected.firstName = member.firstName || '',
+    memberSelected.lastName = member.lastName || '',
     memberSelected.status = member.status || '',
     memberSelected.role = member.role || '',
-    memberSelected.memberNumber = member.member_number || ''
+    memberSelected.memberNumber = member.memberNumber || ''
 }
 
 const getMembers = async() => {
@@ -71,14 +71,15 @@ const getMembers = async() => {
         const liView = document.createElement('li')
         const liViewBtn = document.createElement('button')
 
-        liId.innerText = member._id
+        liId.innerText = member.memberNumber
         liName.innerText = member.name
         liRole.innerText = member.role
         liViewBtn.innerText = 'VIEW'
-        liViewBtn.classList.add('view-btn')
+        liViewBtn.classList.add('view-btn', 'btn')
         liViewBtn.setAttribute('data-id', member._id)
         liContainer.classList.add('view-results-list')
         liView.appendChild(liViewBtn)
+        ul.classList.add('table-body')
         ul.appendChild(liName)
         ul.appendChild(liId)
         ul.appendChild(liRole)
@@ -96,10 +97,10 @@ const addMember = async(e) => {
     const newMember = {
         name: document.querySelector('#add-full-name').value,
         role: document.querySelector('#add-role').value,
-        first_name: document.querySelector('#add-first-name').value,
-        last_name: document.querySelector('#add-last-name').value,
+        firstName: document.querySelector('#add-first-name').value,
+        lastName: document.querySelector('#add-last-name').value,
         status: document.querySelector('#add-status').value,
-        member_number: document.querySelector('#add-member-number').value
+        memberNumber: document.querySelector('#add-member-number').value
     }
     const response = await fetch('../api/member', {
         method: 'POST',
@@ -126,16 +127,19 @@ const deleteMember = async(e) => {
     return
 }
 
-const enableEdit = () => {
+const enableEdit = (e) => {
+    e.preventDefault()
     document.querySelector('#view-full-name').disabled = false
     document.querySelector('#view-first-name').disabled = false
     document.querySelector('#view-last-name').disabled = false
     document.querySelector('#view-role').disabled = false
     document.querySelector('#view-member-number').disabled = false
     document.querySelector('#view-status').disabled = false
-
+    
     document.querySelector('.view-edit-button').classList.add('hide')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
+    document.querySelector('.view-edit-confirm-btn').disabled = false
+    document.querySelector('.view-edit-button').disabled = true
 }
 
 const editMember = async(e) => {
@@ -154,11 +158,11 @@ const editMember = async(e) => {
     const editedMember = {
             name: memberSelected.name,
             role: memberSelected.role,
-            user_id: memberSelected.id,
-            first_name: memberSelected.firstName,
-            last_name: memberSelected.lastName,
+            userId: memberSelected.id,
+            firstName: memberSelected.firstName,
+            lastName: memberSelected.lastName,
             status: memberSelected.status,
-            member_number: memberSelected.memberNumber
+            memberNumber: memberSelected.memberNumber
     }
 
     const response = await fetch(`../api/member/${memberSelected.id}`, {
@@ -180,7 +184,8 @@ const editMember = async(e) => {
 
     document.querySelector('.view-edit-button').classList.remove('hide')
     document.querySelector('.view-edit-confirm-btn').classList.add('hide')
-    
+    document.querySelector('.view-edit-confirm-btn').disabled = true
+    document.querySelector('.view-edit-button').disabled = false
     return response.json()
 }
 

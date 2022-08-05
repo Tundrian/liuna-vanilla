@@ -1,90 +1,7 @@
 .admin-page{
     padding-top: 10px;
     padding-bottom: 10px;
-
-    h1{
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 3rem;
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 2rem;
-    }
-    
-
-    .data-buttons{
-        display: flex;
-        justify-content: center;
-        flex-flow: row wrap;
-        align-items: center;
-        margin-inline: 5%;
-        margin-bottom: 50px;
-
-        li{
-            width: 25%;
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            align-items: center;
-            button{
-                padding-inline: 30px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                background-color: green;
-                border-radius: 10px;
-                text-transform:uppercase;
-                text-align: center;
-                width: 95%;
-
-                &:hover{
-                    cursor: pointer;
-                    background-color: lighten(green, 10%);
-                }
-            }
-        }
-    }
-
-    .fetch-view-results{
-        border: thin purple solid;
-        width: 80%;
-        height: 1000px;
-        margin-inline: auto;
-        &>li{
-            ul{
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: center;
-                margin-inline: 10px;
-                border-bottom: thin solid purple;
-                li{
-                    
-                    width: 100%;
-                    margin-inline: 5px;
-                    text-align: center;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                    line-height: 1.5rem;
-
-                   
-                }
-                button{
-                    padding:10px;
-                    background-color: purple;
-                    margin-inline: 5px;
-
-                    &:hover{
-                        cursor: pointer;
-                    background-color: lighten(purple, 10%);
-                    }
-                }
-               
-            }
-        }
-    }
+    background-color: rgba(128, 128, 128, 0.247);
 }
 
 .form-container {
@@ -160,5 +77,98 @@
     &:hover{
         cursor: pointer;
         background-color: lighten(rgb(230, 107, 107), 10%);
+    }
+}
+
+.table-container {
+    // border: thin solid purple;
+    margin: 5%;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    background-color: rgba(123, 128, 128, 0.582);
+    // background-color: rgb(255, 166, 0);
+
+    .table-header {
+        background-color: white;
+        border-radius: 10px;
+        &>ul {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            color: rgb(19, 119, 185);
+            
+            &>li {
+                width: 30%;
+                font-size: 1.6rem;
+                font-weight: 400;
+                margin: 10px;
+                padding: 5px;
+            }
+        }
+
+        .table-filter {
+
+            &>li{
+                border: thin solid rgba(0, 112, 146, 0.479);
+                border-radius: 50px;
+                padding: 5px;
+                font-size: 1rem;
+                text-indent: 10px;
+
+            }
+
+            
+        }
+    }
+
+    .table-body{
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        margin-top: 5px;
+        &>li {
+            text-indent: 10px;
+            width: 30%;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin:10px;
+            padding: 5px;
+        }
+    }
+
+    .table-options {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-flow: row wrap;
+        margin-bottom: 5px;
+        margin-top: 5px;
+
+        &>li{
+            margin-inline: 10px;
+        }
+    }
+}
+
+.btn {
+    background-color: #428ffa;
+    padding-inline: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    margin: 2px;
+    font-weight: 500;
+    color: rgb(240, 240, 240);
+    transition: all 0.1s ease-in-out;
+    font-size: 1rem;
+
+    &:hover{
+        cursor: pointer;
+        background-color: lighten(#428ffa, 10%);
     }
 }
