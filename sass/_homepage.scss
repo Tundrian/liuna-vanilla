@@ -1,7 +1,18 @@
-.home-title {
+.title-text {
     padding-top: 10px;
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
+    color: #202c2d;
+    text-shadow:
+        0 1px #808d93,
+        -1px 0 #cdd2d5,
+        -1px 2px #808d93,
+        -2px 1px #cdd2d5,
+        -2px 3px #808d93,
+        -3px 2px #cdd2d5,
+        -3px 4px #808d93,
+        -4px 3px #cdd2d5;
+    margin-bottom: 30px;
 }
 
 form{
@@ -9,13 +20,19 @@ form{
     justify-content: center;
     align-items: center;
     flex-flow: column wrap;
-    border-bottom: black solid thin;
+    background-color:rgba(255, 255, 255, 0.664);
     padding-bottom: 10px;
     padding-top: 10px;
     padding-inline: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    // border: thin solid black;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 50px;
 
     label{
-        color: $primary;
+        color: rgb(2, 80, 94);
         font-weight: 600;
     }
     *{
@@ -25,8 +42,8 @@ form{
         margin-inline: 5px;
     }
     input{
-        background-color: rgba(207, 173, 23, 0.582);
-        color: rgb(59, 59, 59);
+        background-color: rgba(107, 107, 107, 0.774);
+        color: white;
         border-radius: 20px;
         // border: thin solid rgb(94, 94, 94);
         padding-top: 5px;
@@ -35,34 +52,12 @@ form{
     }
     h2{
         font-size: 1.8rem;
+        text-align: center;
+        font-weight: 400;
     }
 
-    button{
-        padding-inline: 30px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                background-color: green;
-                border-radius: 10px;
-                text-transform:uppercase;
-                text-align: center;
-                width: 95%;
-
-                &:hover{
-                    cursor: pointer;
-                    background-color: lighten(green, 10%);
-                }
-    }
 }
-// a{
-//     background-color: orange;
-//     padding-inline: 10px;
-//     padding-top: 5px;
-//     padding-bottom: 5px;
-//     text-align: center;
-//     margin: 10px;
-//     color: white;
-//     &:hover{
-//         cursor: pointer;
-//         color: lighten(orange, 10%);
-//     }
-// }
+
+.home-page {
+    background-color:rgb(212, 212, 212);
+}

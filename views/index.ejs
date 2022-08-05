@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include("partials/header.ejs") %>
-<body>
+<body class="home-page">
     <%- include("partials/nav.ejs") %>
 
-    <h1 class="home-title">Home Page</h1>
+    <h1 class="title-text">Home Page</h1>
     <form class="home-register" action="/users" METHOD="POST">
         <h2>Register</h2>
         <label>Email</label>
@@ -13,7 +13,7 @@
         <input type="password" name="password" id="" />
         <label>Confirm Password</label>
         <input type="password" name="cpassword" id="" />
-        <button type="submit">Register</button>
+        <button type="submit" class="btn">Register</button>
     </form>
     <form action="/users" class="home-login" METHOD="POST">
         <h2>Login</h2>
@@ -21,7 +21,7 @@
         <input type="email" name="name"/>
         <label>Password</label>
         <input type="password" name="password" id="" />
-        <button type="submit">Register</button>
+        <button type="submit" class="btn">Register</button>
     </form>
 
 </body>

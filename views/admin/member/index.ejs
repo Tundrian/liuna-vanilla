@@ -4,7 +4,7 @@
 <body class="admin-page">
 
     <%- include("../../partials/nav.ejs") %>
-    <h1 class=>Member Management</h1>
+    <h1 class="title-text">Member Management</h1>
 
 
     <section class="form-container add-form" hidden>
@@ -22,7 +22,7 @@
             <input id="add-member-number" type="text" placeholder="#">
             <label>Status</label>
             <input id="add-status" type="text" placeholder="status" >
-            <button class="form-submit" type="submit">Submit New Member</button>
+            <button class="form-submit btn" type="submit">Submit New Member</button>
         </form>
     </section>
 
@@ -47,7 +47,7 @@
 
     <section class="view-modal-container hide"> 
         <div class="view-modal-inner">
-            <button class="view-modal-close-btn">X</button>
+            <button class="btn view-modal-close-btn">X</button>
             <div class="view-modal-header">
                 <h2>Modal Title</h2>
             </div>
@@ -65,9 +65,9 @@
                     <input id="view-member-number" type="text" placeholder="#" disabled>
                     <label>Status</label>
                     <input id="view-status" type="text" placeholder="status"  disabled>
-                    <button class="edit-btn view-edit-button">Edit</button>
-                    <button class="edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="delete-btn view-delete-button">Delete</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
                 </form>
             </div>
             <div class="view-modal-footer">

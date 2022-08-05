@@ -10,7 +10,7 @@
     @extend %flex-layout;
     padding: $base-padding $base-padding * 2;
     box-shadow: $base-box-shadow;
-
+    background-color: white;
     .site-title {
         font-size: $font-size-lg;
 
