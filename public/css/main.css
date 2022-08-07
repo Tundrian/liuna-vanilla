@@ -4252,10 +4252,10 @@ form h2 {
 .table-container .table-body > li {
   text-indent: 10px;
   width: 30%;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   margin: 10px;
-  padding: 5px;
+  padding: 2.5px;
 }
 .table-container .table-options {
   display: flex;
@@ -4297,8 +4297,8 @@ form h2 {
   align-content: center;
 }
 .dashboard-container > li {
-  width: 25%;
-  height: 200px;
+  width: 20%;
+  height: 100px;
   margin: 25px;
   border-radius: 30px;
   text-align: center;
@@ -4310,7 +4310,7 @@ form h2 {
   height: 100%;
   border-radius: 30px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 200;
   background-color: white;
   display: flex;

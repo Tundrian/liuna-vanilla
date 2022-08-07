@@ -18,8 +18,6 @@ const formFields = {
     status: document.querySelector('#view-status')
 }
 
-
-
 // Functions
 const closeModal = () => {
     formFields.container.classList.add('hide');
@@ -40,7 +38,10 @@ const closeModal = () => {
 }
 
 const openModal = async (e) => {
-    await getMember(e.target.getAttribute('data-id'))
+    if(e !== 'add'){
+        await getMember(e.target.getAttribute('data-id'))
+    }
+    
     formFields.fullName.value = memberSelected.name
     formFields.firstName.value = memberSelected.firstName
     formFields.lastName.value = memberSelected.lastName
@@ -107,13 +108,14 @@ const getMembers = async() => {
 
 const addMember = async(e) => {
     e.preventDefault()
+    
     const newMember = {
-        name: document.querySelector('#add-full-name').value,
-        role: document.querySelector('#add-role').value,
-        firstName: document.querySelector('#add-first-name').value,
-        lastName: document.querySelector('#add-last-name').value,
-        status: document.querySelector('#add-status').value,
-        memberNumber: document.querySelector('#add-member-number').value
+        name:  formFields.fullName.value,
+        role: formFields.role.value,
+        firstName: formFields.firstName.value,
+        lastName: formFields.lastName.value,
+        status: formFields.status.value,
+        memberNumber: formFields.memberNumber.value
     }
     const response = await fetch('../api/member', {
         method: 'POST',
@@ -128,7 +130,11 @@ const addMember = async(e) => {
 }
 
 const deleteMember = async(e) => {
+    
     e.preventDefault()
+
+    handleModal('delete')
+
     const response = await fetch(`../api/member/${memberSelected.id}`, {
         method: 'DELETE',
         headers: {
@@ -141,7 +147,11 @@ const deleteMember = async(e) => {
 }
 
 const enableEdit = (e) => {
+
     e.preventDefault()
+
+    handleModal('edit')
+
     formFields.fullName.disabled = false
     formFields.firstName.disabled = false
     formFields.lastName.disabled = false
@@ -202,16 +212,37 @@ const editMember = async(e) => {
     return response.json()
 }
 
-const addClicked = async() => {
-    document.querySelector('#add-full-name').value = ''
-    document.querySelector('#add-first-name').value = ''
-    document.querySelector('#add-last-name').value = ''
-    document.querySelector('#add-role').value = ''
-    document.querySelector('#add-member-number').value = ''
-    document.querySelector('#add-status').value = ''
-    // document.querySelector('.view-modal-container').classList.remove('hide');
-    document.querySelector('.add-form').hidden = !document.querySelector('.add-form').hidden
+const addClicked = async(e) => {
+    handleModal('add')
+    openModal('add')
+    formFields.fullName.disabled = false
+    formFields.firstName.disabled = false
+    formFields.lastName.disabled = false
+    formFields.role.disabled = false
+    formFields.memberNumber.disabled = false
+    formFields.status.disabled = false
+
+    formFields.fullName.value = ''
+    formFields.firstName.value = ''
+    formFields.lastName.value = ''
+    formFields.role.value = ''
+    formFields.memberNumber.value = ''
+    formFields.status.value = ''
     document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
+}
+
+const handleModal = (type) => {
+    if(type.toLowerCase() === 'add'){
+        document.querySelector('.form-submit').classList.remove('hide')
+        document.querySelector('.edit-btn').classList.add('hide')
+        document.querySelector('.edit-confirm-btn').classList.add('hide')
+        document.querySelector('.delete-btn').classList.add('hide')
+    }else {
+        document.querySelector('.form-submit').classList.add('hide')
+        document.querySelector('.edit-btn').classList.remove('hide')
+        document.querySelector('.edit-confirm-btn').classList.add('hide')
+        document.querySelector('.delete-btn').classList.remove('hide')
+    }
 }
 
 // Event Listeners

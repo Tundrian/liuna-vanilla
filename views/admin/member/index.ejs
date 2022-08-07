@@ -6,25 +6,6 @@
     <%- include("../../partials/nav.ejs") %>
     
     <h1 class="title-text">Member Management</h1>
-y
-    <section class="form-container add-form" hidden>
-        <h2>Add new member</h2>
-        <form action="">
-            <label >Name</label>
-            <input id="add-full-name" type="text" placeholder="full name">
-            <label>First Name</label>
-            <input id="add-first-name" type="text" placeholder="First Name">
-            <label>Last Name</label>
-            <input id="add-last-name" type="text" placeholder="Last Name">
-            <label>Role</label>
-            <input id="add-role" type="text" placeholder="Role">
-            <label>Member Number</label>
-            <input id="add-member-number" type="text" placeholder="#">
-            <label>Status</label>
-            <input id="add-status" type="text" placeholder="status" >
-            <button class="form-submit btn" type="submit">Submit New Member</button>
-        </form>
-    </section>
 
     <ul class="fetch-view-results  table-container">
         <ul class="data-buttons table-options">
@@ -44,7 +25,7 @@ y
                 </ul>
             </li>
     </ul>
-
+    
     <%- include("../../partials/modal.ejs", {title: 'Members'}, JSON.stringify(fields)) %>
 
     <script type="text/javascript" src="../js/member.js"></script>
