@@ -8,15 +8,28 @@ let memberSelected = {
     status: '',
 }
 
+const formFields = {
+    container: document.querySelector('.view-modal-container'),
+    fullName: document.querySelector('#view-full-name'),
+    firstName: document.querySelector('#view-first-name'),
+    lastName: document.querySelector('#view-last-name'),
+    role: document.querySelector('#view-role'),
+    memberNumber: document.querySelector('#view-member-number'),
+    status: document.querySelector('#view-status')
+}
+
+
+
 // Functions
 const closeModal = () => {
-    document.querySelector('.view-modal-container').classList.add('hide');
-    document.querySelector('#view-full-name').value = ''
-    document.querySelector('#view-first-name').value =''
-    document.querySelector('#view-last-name').value = ''
-    document.querySelector('#view-role').value = ''
-    document.querySelector('#view-member-number').value = ''
-    document.querySelector('#view-status').value = ''
+    formFields.container.classList.add('hide');
+    formFields.fullName.value = ''
+    formFields.firstName.value =''
+    formFields.lastName.value = ''
+    formFields.role.value = ''
+    formFields.memberNumber.value = ''
+    formFields.status.value = ''
+
     memberSelected.id = ''
     memberSelected.name = ''
     memberSelected.firstName = ''
@@ -28,13 +41,13 @@ const closeModal = () => {
 
 const openModal = async (e) => {
     await getMember(e.target.getAttribute('data-id'))
-    document.querySelector('#view-full-name').value = memberSelected.name
-    document.querySelector('#view-first-name').value = memberSelected.firstName
-    document.querySelector('#view-last-name').value = memberSelected.lastName
-    document.querySelector('#view-role').value = memberSelected.role
-    document.querySelector('#view-member-number').value = memberSelected.memberNumber
-    document.querySelector('#view-status').value = memberSelected.status
-    document.querySelector('.view-modal-container').classList.remove('hide');
+    formFields.fullName.value = memberSelected.name
+    formFields.firstName.value = memberSelected.firstName
+    formFields.lastName.value = memberSelected.lastName
+    formFields.role.value = memberSelected.role
+    formFields.memberNumber.value = memberSelected.memberNumber
+    formFields.status.value = memberSelected.status
+    formFields.container.classList.remove('hide');
 }
 
 const getMember = async (id) => {
@@ -129,12 +142,12 @@ const deleteMember = async(e) => {
 
 const enableEdit = (e) => {
     e.preventDefault()
-    document.querySelector('#view-full-name').disabled = false
-    document.querySelector('#view-first-name').disabled = false
-    document.querySelector('#view-last-name').disabled = false
-    document.querySelector('#view-role').disabled = false
-    document.querySelector('#view-member-number').disabled = false
-    document.querySelector('#view-status').disabled = false
+    formFields.fullName.disabled = false
+    formFields.firstName.disabled = false
+    formFields.lastName.disabled = false
+    formFields.role.disabled = false
+    formFields.memberNumber.disabled = false
+    formFields.status.disabled = false
     
     document.querySelector('.view-edit-button').classList.add('hide')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
@@ -148,12 +161,12 @@ const editMember = async(e) => {
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
         return
     }
-    memberSelected.name = document.querySelector('#view-full-name').value
-    memberSelected.firstName = document.querySelector('#view-first-name').value
-    memberSelected.lastName = document.querySelector('#view-last-name').value
-    memberSelected.role = document.querySelector('#view-role').value
-    memberSelected.memberNumber = document.querySelector('#view-member-number').value
-    memberSelected.status = document.querySelector('#view-status').value
+    memberSelected.name = formFields.fullName.value
+    memberSelected.firstName = formFields.firstName.value
+    memberSelected.lastName = formFields.lastName.value
+    memberSelected.role = formFields.role.value
+    memberSelected.memberNumber = formFields.memberNumber.value
+    memberSelected.status = formFields.status.value
 
     const editedMember = {
             name: memberSelected.name,
@@ -175,12 +188,12 @@ const editMember = async(e) => {
     getMembers()
     closeModal()
 
-    document.querySelector('#view-full-name').disabled = true
-    document.querySelector('#view-first-name').disabled = true
-    document.querySelector('#view-last-name').disabled = true
-    document.querySelector('#view-role').disabled = true
-    document.querySelector('#view-member-number').disabled = true
-    document.querySelector('#view-status').disabled = true
+    formFields.fullName.disabled = true
+    formFields.firstName.disabled = true
+    formFields.lastName.disabled = true
+    formFields.role.disabled = true
+    formFields.memberNumber.disabled = true
+    formFields.status.disabled = true
 
     document.querySelector('.view-edit-button').classList.remove('hide')
     document.querySelector('.view-edit-confirm-btn').classList.add('hide')

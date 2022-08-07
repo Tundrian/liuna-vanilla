@@ -1,0 +1,23 @@
+<section class="view-modal-container hide"> 
+    <div class="view-modal-inner">
+        <button class="btn view-modal-close-btn">X</button>
+        <div class="view-modal-header">
+            <h2><%= title %></h2>
+        </div>
+        <div class="view-modal-body">
+            <form action="">
+                <% fields.forEach(field => { %>
+                    <label ><%=field.label%></label>
+                    <input id="view-<%=field.id%>" type="<%=field.type%>" placeholder="<%field.placeholder%>" disabled>
+                <% }) %>
+                <button class="btn edit-btn view-edit-button">Edit</button>
+                <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                <button class="btn delete-btn view-delete-button">Delete</button>
+            </form>
+        </div>
+        <div class="view-modal-footer">
+
+        </div>
+
+    </div>
+</section>

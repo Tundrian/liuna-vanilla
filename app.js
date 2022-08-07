@@ -10,7 +10,44 @@ const connectDB = require('./config')
 
 // Variables
 const PORT = process.env.PORT
-
+const fields = [
+    {
+        label: 'Name',
+        id: 'full-name',
+        type: 'text',
+        placeholder: 'Full name' 
+    },
+    {
+        label: 'First Name',
+        id: 'first-name',
+        type: 'text',
+        placeholder: 'First name' 
+    },
+    {
+        label: 'Last Name',
+        id: 'last-name',
+        type: 'text',
+        placeholder: 'Last name' 
+    },
+    {
+        label: 'Role',
+        id: 'role',
+        type: 'text',
+        placeholder: 'Role' 
+    },
+    {
+        label: 'Member Number',
+        id: 'member-number',
+        type: 'text',
+        placeholder: 'Member #' 
+    },
+    {
+        label: 'Status',
+        id: 'status',
+        type: 'text',
+        placeholder: 'Status' 
+    },
+]
 // Middleware
 const app = express()
 app.use(cors())
@@ -41,7 +78,7 @@ app.get('/member', (req, res) => {
 
 /* Admin Routes */
 app.get('/admin/member', (req, res) => {
-    res.render('admin/member/index.ejs')
+    res.render('admin/member/index.ejs', {fields: fields})
 })
 app.get('/admin/certificate', (req, res) => {
     res.render('admin/certificate/index.ejs')
