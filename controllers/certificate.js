@@ -36,7 +36,7 @@ const getCertificate = asyncHandler(async (req, res) => {
 
 const updateCertificate = asyncHandler(async (req, res) => {
     const certificate = await Certificate.findOne({_id: req.params.id})
-    if(!member){
+    if(!certificate){
         res.status(400)
         throw new Error('Certificate not found')
     }

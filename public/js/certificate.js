@@ -70,12 +70,14 @@ const getCertificates = async() => {
         const liName = document.createElement('li')
         const liDescription = document.createElement('li')
         const liType = document.createElement('li')    
-        const liExpirationLength = document.createElement('li')
+        const liView = document.createElement('li')
+        // const liExpirationLength = document.createElement('li')
         const liViewBtn = document.createElement('button')
 
-        liDescription.innerText = certificate.certificateNumber
+        liDescription.innerText = certificate.description
         liName.innerText = certificate.name
-        liType.innerText = certificate.role
+        liType.innerText = certificate.type
+        // liExpirationLength = certificate.expiration_length
         liViewBtn.innerText = 'VIEW'
         liViewBtn.classList.add('view-btn', 'btn')
         liViewBtn.setAttribute('data-id', certificate._id)
@@ -102,8 +104,6 @@ const addCertificate = async(e) => {
         description: formFields.description.value,
         type: formFields.type.value,
         expiration_length: formFields.expiration_length.value,
-        status: formFields.status.value,
-        certificateNumber: formFields.certificateNumber.value
     }
 
     const response = await fetch('../api/certificate', {
@@ -159,18 +159,15 @@ const editCertificate = async(e) => {
         return
     }
     certificateSelected.name = formFields.name.value
-    certificateSelected.firstName = formFields.description.value
-    certificateSelected.lastName = formFields.type.value
-    certificateSelected.role = formFields.expiration_length.value
+    certificateSelected.description = formFields.description.value
+    certificateSelected.type = formFields.type.value
+    certificateSelected.expiration_length = formFields.expiration_length.value
 
     const editedCertificate = {
             name: certificateSelected.name,
-            role: certificateSelected.role,
-            userId: certificateSelected.id,
-            firstName: certificateSelected.firstName,
-            lastName: certificateSelected.lastName,
-            status: certificateSelected.status,
-            certificateNumber: certificateSelected.certificateNumber
+            description: certificateSelected.description,
+            type: certificateSelected.type,
+            expiration_length: certificateSelected.expiration_length
     }
 
     const response = await fetch(`../api/certificate/${certificateSelected.id}`, {
@@ -196,6 +193,7 @@ const editCertificate = async(e) => {
 }
 
 const addClicked = async(e) => {
+    console.log('clicked')
     handleModal('add')
     openModal('add')
     formFields.name.disabled = false
@@ -226,7 +224,7 @@ const handleModal = (type) => {
 
 // Event Listeners
 document.querySelector('.fetch-view-btn').addEventListener('click', getCertificates)
-// document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
+document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('.form-submit').addEventListener('click', addCertificate)
 document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
 document.querySelector('.view-delete-button').addEventListener('click', deleteCertificate)

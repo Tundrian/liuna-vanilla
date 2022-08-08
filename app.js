@@ -10,7 +10,7 @@ const connectDB = require('./config')
 
 // Variables
 const PORT = process.env.PORT
-const fields = [
+const memberFields = [
     {
         label: 'Name',
         id: 'full-name',
@@ -48,6 +48,33 @@ const fields = [
         placeholder: 'Status' 
     },
 ]
+
+const certificateFields = [
+    {
+        label: 'Name',
+        id: 'name',
+        type: 'text',
+        placeholder: 'Name' 
+    },
+    {
+        label: 'Description',
+        id: 'description',
+        type: 'text',
+        placeholder: 'Description' 
+    },
+    {
+        label: 'Type',
+        id: 'type',
+        type: 'text',
+        placeholder: 'Type' 
+    },
+    {
+        label: 'Expiration Length',
+        id: 'expiration-length',
+        type: 'number',
+        placeholder: 'Expiration Length' 
+    }
+]
 // Middleware
 const app = express()
 app.use(cors())
@@ -78,10 +105,10 @@ app.get('/member', (req, res) => {
 
 /* Admin Routes */
 app.get('/admin/member', (req, res) => {
-    res.render('admin/member/index.ejs', {fields: fields})
+    res.render('admin/member/index.ejs', {fields: memberFields})
 })
 app.get('/admin/certificate', (req, res) => {
-    res.render('admin/certificate/index.ejs')
+    res.render('admin/certificate/index.ejs', {fields: certificateFields})
 })
 app.get('/admin/course', (req, res) => {
     res.render('admin/course/index.ejs')
