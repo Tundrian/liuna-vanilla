@@ -65,6 +65,7 @@ const getMember = async (id) => {
 }
 
 const getMembers = async() => {
+    
     if(document.querySelector('.view-results-list')){
         const element = document.querySelectorAll('.view-results-list')
         element.forEach(el => {
@@ -75,7 +76,7 @@ const getMembers = async() => {
     const response = await fetch('../api/member')
     const membersList = await response.json()
     const list = document.querySelector('.fetch-view-results')
-
+    
     membersList.forEach(member => {
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')

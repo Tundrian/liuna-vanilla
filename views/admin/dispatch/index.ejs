@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="../css/main.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Dispatch Management</h1>
-    <ul>
-        <li><button>View</button></li>
-        <li><button>Add</button></li>
-        <li><button>Edt</button></li>
-        <li><button>Delete</button></li>
-    </ul>
-    <a href="/">Home</a>
-    <a href="/member">Member Dashboard</a>
+    <%- include("../../partials/header.ejs") %>
+<body class="admin-page">
+
+    <%- include("../../partials/nav.ejs") %>
+    
+    <h1 class="title-text">Dispatch Management</h1>
+
+    <%- include("../../partials/table.ejs") %>
+    
+    <%- include("../../partials/modal.ejs", {title: 'Dispatch'}, JSON.stringify(fields)) %>
+
+    <script type="text/javascript" src="../js/dispatch.js"></script>
 </body>
 </html>
