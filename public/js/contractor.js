@@ -13,7 +13,9 @@ const formFields = {
     description: document.querySelector('#view-description'),
     name: document.querySelector('#view-name'),
     type: document.querySelector('#view-type'),
-    expiration_length: document.querySelector('#view-expiration-length')
+    category: document.querySelector('#view-category'),
+    acquireDate: document.querySelector('#view-acquire-date'),
+    reminderDate: document.querySelector('#view-reminder-date')
 }
 
 // Functions
@@ -22,13 +24,17 @@ const closeModal = () => {
     formFields.name.value = ''
     formFields.description.value =''
     formFields.type.value = ''
-    formFields.expiration_length.value = ''
+    formFields.category.value = ''
+    formFields.acquireDate.value = ''
+    formFields.reminderDate.value = ''
 
     contractorSelected.id = ''
     contractorSelected.name = ''
     contractorSelected.description = ''
     contractorSelected.type = ''
-    contractorSelected.expiration_length = ''
+    contractorSelected.category = ''
+    contractorSelected.acquireDate = ''
+    contractorSelected.reminderDate = ''
 }
 
 const openModal = async (e) => {
@@ -39,7 +45,10 @@ const openModal = async (e) => {
     formFields.name.value = contractorSelected.name
     formFields.description.value = contractorSelected.description
     formFields.type.value = contractorSelected.type
-    formFields.expiration_length.value = contractorSelected.expiration_length
+    formFields.category.value = contractorSelected.category
+    formFields.acquireDate.value = contractorSelected.acquireDate
+    console.log(formFields.acquireDate.value, contractorSelected.acquireDate)
+    formFields.reminderDate.value = contractorSelected.reminderDate
     formFields.container.classList.remove('hide');
 }
 
@@ -47,11 +56,14 @@ const getContractor = async (id) => {
 
     const response = await fetch(`../api/contractor/${id}`)
     const contractor = await response.json()
+    console.log(contractor)
     contractorSelected.id = contractor._id || '',
     contractorSelected.name = contractor.name || '',
     contractorSelected.description = contractor.description || '',
     contractorSelected.type = contractor.type || '',
-    contractorSelected.expiration_length = contractor.expiration_length || ''
+    contractorSelected.acquireDate = contractor.acquireDate || ''
+    contractorSelected.reminderDate = contractor.reminderDate || ''
+    contractorSelected.category = contractor.category || ''
 }
 
 const getContractors = async() => {
@@ -105,7 +117,9 @@ const addContractor = async(e) => {
         name:  formFields.name.value,
         description: formFields.description.value,
         type: formFields.type.value,
-        expiration_length: formFields.expiration_length.value,
+        category: formFields.category.value,
+        acquireDate: formFields.acquireDate.value,
+        reminderDate: formFields.reminderDate.value,
     }
 
     const response = await fetch('../api/contractor', {
@@ -146,7 +160,9 @@ const enableEdit = (e) => {
     formFields.name.disabled = false
     formFields.description.disabled = false
     formFields.type.disabled = false
-    formFields.expiration_length.disabled = false
+    formFields.category.disabled = false
+    formFields.acquireDate.disabled = false
+    formFields.reminderDate.disabled = false
     
     document.querySelector('.view-edit-button').classList.add('hide')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
@@ -163,13 +179,17 @@ const editContractor = async(e) => {
     contractorSelected.name = formFields.name.value
     contractorSelected.description = formFields.description.value
     contractorSelected.type = formFields.type.value
-    contractorSelected.expiration_length = formFields.expiration_length.value
+    contractorSelected.category = formFields.category.value
+    contractorSelected.acquireDate = formFields.acquireDate.value
+    contractorSelected.reminderDate = formFields.reminderDate.value
 
     const editedContractor = {
             name: contractorSelected.name,
             description: contractorSelected.description,
             type: contractorSelected.type,
-            expiration_length: contractorSelected.expiration_length
+            category: contractorSelected.category,
+            acquireDate: contractorSelected.acquireDate,
+            reminderDate: contractorSelected.reminderDate
     }
 
     const response = await fetch(`../api/contractor/${contractorSelected.id}`, {
@@ -185,7 +205,9 @@ const editContractor = async(e) => {
     formFields.name.disabled = true
     formFields.description.disabled = true
     formFields.type.disabled = true
-    formFields.expiration_length.disabled = true
+    formFields.category.disabled = true
+    formFields.acquireDate.disabled = true
+    formFields.reminderDate.disabled = true
 
     document.querySelector('.view-edit-button').classList.remove('hide')
     document.querySelector('.view-edit-confirm-btn').classList.add('hide')
@@ -201,12 +223,16 @@ const addClicked = async(e) => {
     formFields.name.disabled = false
     formFields.description.disabled = false
     formFields.type.disabled = false
-    formFields.expiration_length.disabled = false
+    formFields.category.disabled = false
+    formFields.acquireDate.disabled = false
+    formFields.reminderDate.disabled = false
 
     formFields.name.value = ''
     formFields.description.value = ''
     formFields.type.value = ''
-    formFields.expiration_length.value = ''
+    formFields.category.value = ''
+    formFields.acquireDate.value = ''
+    formFields.reminderDate.value = ''
     document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 

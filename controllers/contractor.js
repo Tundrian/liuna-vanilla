@@ -18,8 +18,8 @@ const setContractor = asyncHandler(async (req, res) => {
             description: req.body.description,
             category: req.body.category,
             type: req.body.type,
-            acquire_date: req.body.acquire_date,
-            reminder_date: req.body.reminder_date
+            acquireDate: req.body.acquireDate,
+            reminderDate: req.body.reminderDate
         })
         res.status(200).json(contractor)
     } catch(error){
@@ -48,8 +48,8 @@ const updateContractor = asyncHandler(async (req, res) => {
         description: req.body.description,
         category: req.body.category,
         type: req.body.type,
-        acquire_date: req.body.acquire_date,
-        reminder_date: req.body.reminder_date
+        acquireDate: req.body.acquireDate,
+        reminderDate: req.body.reminderDate
     })
 
     res.status(200).json(updatedContractor)

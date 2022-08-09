@@ -8,8 +8,8 @@ const ContractorSchema = mongoose.Schema({
     description: String,
     category: String,
     type: String,
-    acquire_date: Date,
-    reminder_date: Date
+    acquireDate: Date,
+    reminderDate: Date
 })
 
 module.exports = mongoose.model('Contractor', ContractorSchema)

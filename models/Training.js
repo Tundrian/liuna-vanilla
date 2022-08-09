@@ -4,7 +4,7 @@ const TrainingSchema = mongoose.Schema({
     course_id: String,
     start_date: Date,
     end_date: Date,
-    scheduled_dates: Enumerator,
+    scheduled_dates: String,
     available_slots: Number,
     open_slots: Number,
     filled_slots: Number,
