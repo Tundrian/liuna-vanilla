@@ -292,8 +292,8 @@ app.get('/admin/trainingSession', (req, res) => {
 app.get('/admin/user', (req, res) => {
     res.render('admin/user/index.ejs')
 })
-app.get('/admin/contractors', (req, res) => {
-    res.render('admin/contractors/index.ejs', {fields: contractorFields})
+app.get('/admin/contractor', (req, res) => {
+    res.render('admin/contractor/index.ejs', {fields: contractorFields})
 })
 
 /* Member Routes */
