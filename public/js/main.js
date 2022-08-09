@@ -35,7 +35,6 @@ const getMembers = async() => {
     })
 }
 
-
 // Event Listeners
 document.querySelector('.fetch-view-btn').addEventListener('click', getMembers)
 // document.querySelector('.fetch-add-btn').addEventListener('click')

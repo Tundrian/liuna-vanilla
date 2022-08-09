@@ -4,8 +4,8 @@ let contractorSelected = {
     description: '',
     category: '',
     type: '',
-    acquireDate: '',
-    reminderDate: ''
+    acquireDate: Date.now(),
+    reminderDate:  Date.now()
 }
 
 const formFields = {
@@ -25,16 +25,16 @@ const closeModal = () => {
     formFields.description.value =''
     formFields.type.value = ''
     formFields.category.value = ''
-    formFields.acquireDate.value = ''
-    formFields.reminderDate.value = ''
+    formFields.acquireDate.value = null
+    formFields.reminderDate.value = null
 
     contractorSelected.id = ''
     contractorSelected.name = ''
     contractorSelected.description = ''
     contractorSelected.type = ''
     contractorSelected.category = ''
-    contractorSelected.acquireDate = ''
-    contractorSelected.reminderDate = ''
+    contractorSelected.acquireDate = null
+    contractorSelected.reminderDate = null
 }
 
 const openModal = async (e) => {
@@ -46,9 +46,8 @@ const openModal = async (e) => {
     formFields.description.value = contractorSelected.description
     formFields.type.value = contractorSelected.type
     formFields.category.value = contractorSelected.category
-    formFields.acquireDate.value = contractorSelected.acquireDate
-    console.log(formFields.acquireDate.value, contractorSelected.acquireDate)
-    formFields.reminderDate.value = contractorSelected.reminderDate
+    formFields.acquireDate.value = new Date(contractorSelected.acquireDate).toISOString().split('T')[0]
+    formFields.reminderDate.value = new Date(contractorSelected.reminderDate).toISOString().split('T')[0]
     formFields.container.classList.remove('hide');
 }
 
@@ -56,7 +55,6 @@ const getContractor = async (id) => {
 
     const response = await fetch(`../api/contractor/${id}`)
     const contractor = await response.json()
-    console.log(contractor)
     contractorSelected.id = contractor._id || '',
     contractorSelected.name = contractor.name || '',
     contractorSelected.description = contractor.description || '',
@@ -146,7 +144,7 @@ const deleteContractor = async(e) => {
             'Content-Type': 'application/json'
         }
     })
-    getcontractors()
+    getContractors()
     closeModal()
     return
 }
