@@ -1,66 +1,73 @@
-let dataSelected = {
+let memberSelected = {
     id: '',
     name: '',
     firstName: '',
     lastName: '',
     role: '',
     memberNumber: '',
-    status: ''
+    status: '',
 }
-
-const dataType = 'member'
 
 const formFields = {
     container: document.querySelector('.view-modal-container'),
-    name: document.querySelector('#view-name'),
-    firstName: document.querySelector('#view-firstName'),
-    lastName: document.querySelector('#view-lastName'),
+    fullName: document.querySelector('#view-full-name'),
+    firstName: document.querySelector('#view-first-name'),
+    lastName: document.querySelector('#view-last-name'),
     role: document.querySelector('#view-role'),
-    memberNumber: document.querySelector('#view-memberNumber'),
+    memberNumber: document.querySelector('#view-member-number'),
     status: document.querySelector('#view-status')
 }
 
 // Functions
 const closeModal = () => {
-    
-    formFields.container.classList.add('hide')
-
+    formFields.container.classList.add('hide');
     Object.keys(formFields).forEach(key => {
-        formFields[key].value = ''
-    })
-    
-    Object.keys(dataSelected).forEach(key => {
-        dataSelected[key] = null
-    })
+        formFields[key].value = '';
+      });
+    // formFields.fullName.value = ''
+    // formFields.firstName.value =''
+    // formFields.lastName.value = ''
+    // formFields.role.value = ''
+    // formFields.memberNumber.value = ''
+    // formFields.status.value = ''
+
+    Object.keys(memberSelected).forEach(key => {
+        memberSelected[key] = null;
+      });
+    // memberSelected.id = ''
+    // memberSelected.name = ''
+    // memberSelected.firstName = ''
+    // memberSelected.lastName = ''
+    // memberSelected.role = ''
+    // memberSelected.memberNumber = ''
+    // memberSelected.status = ''
 }
 
 const openModal = async (e) => {
-    console.log(dataSelected, formFields)
     if(e !== 'add'){
         await getMember(e.target.getAttribute('data-id'))
     }
-
-    Object.keys(formFields).forEach(key => {
-        if(key in dataSelected && dataSelected[key] != null){
-            formFields[key].value = dataSelected[key]
-        } else if(dataSelected[key] === null){
-            formFields[key].value = ''
-        } else {
-            formFields[key].value = formFields[key].value
-        }
-    })
     
+    formFields.fullName.value = memberSelected.name
+    formFields.firstName.value = memberSelected.firstName
+    formFields.lastName.value = memberSelected.lastName
+    formFields.role.value = memberSelected.role
+    formFields.memberNumber.value = memberSelected.memberNumber
+    formFields.status.value = memberSelected.status
     formFields.container.classList.remove('hide');
 }
 
 const getMember = async (id) => {
 
-    const response = await fetch(`../api/${dataType}/${id}`)
-    const data = await response.json()
-    Object.keys(dataSelected).forEach(key => {
-        dataSelected[key] = data[key] || ''
-    })
-    dataSelected.id = data._id || ''
+    const response = await fetch(`../api/member/${id}`)
+    const member = await response.json()
+    memberSelected.id = member._id || '',
+    memberSelected.name = member.name || '',
+    memberSelected.firstName = member.firstName || '',
+    memberSelected.lastName = member.lastName || '',
+    memberSelected.status = member.status || '',
+    memberSelected.role = member.role || '',
+    memberSelected.memberNumber = member.memberNumber || ''
 }
 
 const getMembers = async() => {
@@ -72,11 +79,11 @@ const getMembers = async() => {
             el.remove()
         })
     } 
-    const response = await fetch(`../api/${dataType}`)
-    const datasList = await response.json()
+    const response = await fetch('../api/member')
+    const membersList = await response.json()
     const list = document.querySelector('.fetch-view-results')
     
-    datasList.forEach(data => {
+    membersList.forEach(member => {
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
         const liName = document.createElement('li')
@@ -85,21 +92,15 @@ const getMembers = async() => {
         const liView = document.createElement('li')
         const liViewBtn = document.createElement('button')
 
-        liId.innerText = data.dataNumber
-        liName.innerText = data.name
-        liRole.innerText = data.role
-        
+        liId.innerText = member.memberNumber
+        liName.innerText = member.name
+        liRole.innerText = member.role
         liViewBtn.innerText = 'VIEW'
-        
         liViewBtn.classList.add('view-btn', 'btn')
+        liViewBtn.setAttribute('data-id', member._id)
         liContainer.classList.add('view-results-list')
-
-        liViewBtn.setAttribute('data-id', data._id)
-        
         liView.appendChild(liViewBtn)
-
         ul.classList.add('table-body')
-
         ul.appendChild(liName)
         ul.appendChild(liId)
         ul.appendChild(liRole)
@@ -113,25 +114,25 @@ const getMembers = async() => {
 }
 
 const addMember = async(e) => {
-
     e.preventDefault()
     
-    Object.keys(dataSelected).forEach(key => {
-        dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
-      })
-
-    const response = await fetch(`../api/${dataType}`, {
+    const newMember = {
+        name:  formFields.fullName.value,
+        role: formFields.role.value,
+        firstName: formFields.firstName.value,
+        lastName: formFields.lastName.value,
+        status: formFields.status.value,
+        memberNumber: formFields.memberNumber.value
+    }
+    const response = await fetch('../api/member', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dataSelected)
+        body: JSON.stringify(newMember)
     })
-
     addClicked()
-    
     getMembers()
-    
     return response.json()
 }
 
@@ -141,17 +142,14 @@ const deleteMember = async(e) => {
 
     handleModal('delete')
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`../api/member/${memberSelected.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         }
     })
-
     getMembers()
-    
     closeModal()
-    
     return
 }
 
@@ -160,10 +158,13 @@ const enableEdit = (e) => {
     e.preventDefault()
 
     handleModal('edit')
-    
-    Object.keys(formFields).forEach(key => {
-        formFields[key].disabled = false
-    })
+
+    formFields.fullName.disabled = false
+    formFields.firstName.disabled = false
+    formFields.lastName.disabled = false
+    formFields.role.disabled = false
+    formFields.memberNumber.disabled = false
+    formFields.status.disabled = false
     
     document.querySelector('.view-edit-button').classList.add('hide')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
@@ -177,26 +178,39 @@ const editMember = async(e) => {
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
         return
     }
+    memberSelected.name = formFields.fullName.value
+    memberSelected.firstName = formFields.firstName.value
+    memberSelected.lastName = formFields.lastName.value
+    memberSelected.role = formFields.role.value
+    memberSelected.memberNumber = formFields.memberNumber.value
+    memberSelected.status = formFields.status.value
 
-    Object.keys(dataSelected).forEach(key => {
-        dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
-      })
+    const editedMember = {
+            name: memberSelected.name,
+            role: memberSelected.role,
+            userId: memberSelected.id,
+            firstName: memberSelected.firstName,
+            lastName: memberSelected.lastName,
+            status: memberSelected.status,
+            memberNumber: memberSelected.memberNumber
+    }
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`../api/member/${memberSelected.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dataSelected)
+        body: JSON.stringify(editedMember)
     })
-    
     getMembers()
-    
     closeModal()
 
-    Object.keys(formFields).forEach(key => {
-        formFields[key].disabled = true
-      })
+    formFields.fullName.disabled = true
+    formFields.firstName.disabled = true
+    formFields.lastName.disabled = true
+    formFields.role.disabled = true
+    formFields.memberNumber.disabled = true
+    formFields.status.disabled = true
 
     document.querySelector('.view-edit-button').classList.remove('hide')
     document.querySelector('.view-edit-confirm-btn').classList.add('hide')
@@ -208,12 +222,19 @@ const editMember = async(e) => {
 const addClicked = async(e) => {
     handleModal('add')
     openModal('add')
-    
-    Object.keys(formFields).forEach(key => {
-        formFields[key].disabled = false
-        formFields[key].value = ''
-    })
+    formFields.fullName.disabled = false
+    formFields.firstName.disabled = false
+    formFields.lastName.disabled = false
+    formFields.role.disabled = false
+    formFields.memberNumber.disabled = false
+    formFields.status.disabled = false
 
+    formFields.fullName.value = ''
+    formFields.firstName.value = ''
+    formFields.lastName.value = ''
+    formFields.role.value = ''
+    formFields.memberNumber.value = ''
+    formFields.status.value = ''
     document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 

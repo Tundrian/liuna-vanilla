@@ -4,19 +4,19 @@ const router = express.Router()
 const memberFields = [
     {
         label: 'Name',
-        id: 'full-name',
+        id: 'name',
         type: 'text',
-        placeholder: 'Full name' 
+        placeholder: 'Full Name' 
     },
     {
         label: 'First Name',
-        id: 'first-name',
+        id: 'firstName',
         type: 'text',
         placeholder: 'First name' 
     },
     {
         label: 'Last Name',
-        id: 'last-name',
+        id: 'lastName',
         type: 'text',
         placeholder: 'Last name' 
     },
@@ -28,7 +28,7 @@ const memberFields = [
     },
     {
         label: 'Member Number',
-        id: 'member-number',
+        id: 'memberNumber',
         type: 'text',
         placeholder: 'Member #' 
     },
