@@ -8,8 +8,8 @@ let dataSelected = {
     status: ''
 }
 
-const dataType = 'member'
-
+// const dataType = 'member'
+console.log(dataType)
 const formFields = {
     container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
