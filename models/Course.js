@@ -7,7 +7,7 @@ const CourseSchema = mongoose.Schema({
     },
     description: String,
     category: String,
-    renewal_length: Number,
+    renewalLength: Number,
     length: Number
 })
 

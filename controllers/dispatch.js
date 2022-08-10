@@ -16,11 +16,11 @@ const setDispatch = asyncHandler(async (req, res) => {
         const dispatch = await Dispatch.create({
             name: req.body.name,
             description: req.body.description,
-            contractor_id: req.body.contractor_id,
+            contractorId: req.body.contractorId,
             type: req.body.type,
             length: req.body.length,
-            start_date: req.body.start_date,
-            end_date: req.body.end_date
+            startDate: req.body.startDate,
+            endDate: req.body.endDate
         })
         res.status(200).json(dispatch)
     } catch(error){
@@ -47,11 +47,11 @@ const updateDispatch = asyncHandler(async (req, res) => {
     const updatedDispatch = await Dispatch.findOneAndUpdate({ _id: req.params.id}, {
         name: req.body.name,
         description: req.body.description,
-        contractor_id: req.body.contractor_id,
+        contractorId: req.body.contractorId,
         type: req.body.type,
         length: req.body.length,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date
+        startDate: req.body.startDate,
+        endDate: req.body.endDate
     })
 
     res.status(200).json(updatedDispatch)

@@ -14,15 +14,15 @@ const getTrainings = asyncHandler(async (req, res) => {
 const setTraining = asyncHandler(async (req, res) => {
     try{
         const training = await Training.create({
-            course_id: req.body.course_id,
-            start_date: req.body.start_date,
-            end_date: req.body.end_date,
-            scheduled_dates: req.body.scheduled_dates,
-            available_slots: req.body.available_slots,
-            open_slots: req.body.open_slots,
-            filled_slots: req.body.filled_slots,
+            courseId: req.body.courseId,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            scheduledDates: req.body.scheduledDates,
+            availableSlots: req.body.availableSlots,
+            openSlots: req.body.openSlots,
+            filledSlots: req.body.filledSlots,
             type: req.body.type,
-            certification_name: req.body.certification_name
+            certificationName: req.body.certificationName
         })
         res.status(200).json(training)
     } catch(error){
@@ -47,15 +47,15 @@ const updateTraining = asyncHandler(async (req, res) => {
     }
 
     const updatedTraining = await Training.findOneAndUpdate({ _id: req.params.id}, {
-        course_id: req.body.course_id,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date,
-        scheduled_dates: req.body.scheduled_dates,
-        available_slots: req.body.available_slots,
-        open_slots: req.body.open_slots,
-        filled_slots: req.body.filled_slots,
+        courseId: req.body.courseId,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        scheduledDates: req.body.scheduledDates,
+        availableSlots: req.body.availableSlots,
+        openSlots: req.body.openSlots,
+        filledSlots: req.body.filledSlots,
         type: req.body.type,
-        certification_name: req.body.certification_name
+        certificationName: req.body.certificationName
     })
 
     res.status(200).json(updatedTraining)

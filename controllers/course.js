@@ -17,7 +17,7 @@ const setCourse = asyncHandler(async (req, res) => {
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
-            renewal_length: req.body.renewal_length,
+            renewalLength: req.body.renewalLength,
             length: req.body.length
         })
         res.status(200).json(course)
@@ -46,7 +46,7 @@ const updateCourse = asyncHandler(async (req, res) => {
         name: req.body.name,
         description: req.body.description,
         category: req.body.category,
-        renewal_length: req.body.renewal_length,
+        renewalLength: req.body.renewalLength,
         length: req.body.length
     })
 

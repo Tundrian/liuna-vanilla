@@ -134,7 +134,7 @@ const trainingFields = [
     {
         label: 'Scheduled Dates',
         id: 'scheduled-dates',
-        type: 'date',
+        type: 'text',
         placeholder: 'Scheduled Dates' 
     },
     {
@@ -163,7 +163,7 @@ const trainingFields = [
     },
     {
         label: 'Certification Name',
-        id: 'certificate-name',
+        id: 'certification-name',
         type: 'text',
         placeholder: 'Certification Name' 
     }
@@ -196,7 +196,7 @@ const dispatchFields = [
     {
         label: 'Length',
         id: 'length',
-        type: 'text',
+        type: 'number',
         placeholder: 'Length' 
     },
     {

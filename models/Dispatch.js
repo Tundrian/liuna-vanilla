@@ -6,8 +6,8 @@ const DispatchSchema = mongoose.Schema({
     name: String,
     type: String,
     length: Number,
-    start_date: Date,
-    end_date: Date
+    startDate: Date,
+    endDate: Date
 })
 
 module.exports = mongoose.model('Dispatch', DispatchSchema)
