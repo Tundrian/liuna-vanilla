@@ -8,8 +8,6 @@ let dataSelected = {
     status: ''
 }
 
-// const dataType = 'member'
-console.log(dataType)
 const formFields = {
     container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
@@ -73,10 +71,14 @@ const getMembers = async() => {
         })
     } 
     const response = await fetch(`../api/${dataType}`)
-    const datasList = await response.json()
+    const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
     
-    datasList.forEach(data => {
+    dataList.forEach(data => {
+        // console.log(data)
+        // const lis = Object.keys(data).forEach(key => {
+        //     return document.createElement('li')
+        // })
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
         const liName = document.createElement('li')

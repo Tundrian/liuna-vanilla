@@ -5,14 +5,14 @@
     </ul>
         <li class="table-header">
             <ul>
-                <li>Name</li>
-                <li>Member #</li>
-                <li>Role</li>
+                <% fields.forEach(x => { %>
+                    <li><%= x.label %></li>
+                <% }) %>
             </ul>
             <ul class="table-filter">
-                <li><input type="text" placeholder="filter name"></li>
-                <li><input type="text" placeholder="filter #"></li>
-                <li><input type="text" placeholder="filter role"></li>
+                <% fields.forEach(x => { %>
+                    <li><input type="text" placeholder="<%= x.placeholder %>"></li>
+                <% }) %>
             </ul>
         </li>
 </ul>
