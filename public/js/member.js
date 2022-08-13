@@ -1,21 +1,18 @@
+// Declaration of formFields and edited form field values
 let dataSelected = {
-    id: '',
-    name: '',
-    firstName: '',
-    lastName: '',
-    role: '',
-    memberNumber: '',
-    status: ''
+    id: ''
+}
+let formFields = {
+    container: document.querySelector('.view-modal-container'),
 }
 
-const formFields = {
-    container: document.querySelector('.view-modal-container'),
-    name: document.querySelector('#view-name'),
-    firstName: document.querySelector('#view-firstName'),
-    lastName: document.querySelector('#view-lastName'),
-    role: document.querySelector('#view-role'),
-    memberNumber: document.querySelector('#view-memberNumber'),
-    status: document.querySelector('#view-status')
+// Populate formFields dynamically
+for(key in fields){
+    dataSelected[fields[key].id] = ''
+}
+
+for(key in fields){
+    formFields[fields[key].id] = document.querySelector(`#view-${fields[key].id}`)
 }
 
 // Functions
@@ -35,7 +32,7 @@ const closeModal = () => {
 const openModal = async (e) => {
     console.log(dataSelected, formFields)
     if(e !== 'add'){
-        await getMember(e.target.getAttribute('data-id'))
+        await getData(e.target.getAttribute('data-id'))
     }
 
     Object.keys(formFields).forEach(key => {
@@ -51,7 +48,7 @@ const openModal = async (e) => {
     formFields.container.classList.remove('hide');
 }
 
-const getMember = async (id) => {
+const getData = async (id) => {
 
     const response = await fetch(`../api/${dataType}/${id}`)
     const data = await response.json()
@@ -61,7 +58,7 @@ const getMember = async (id) => {
     dataSelected.id = data._id || ''
 }
 
-const getMembers = async() => {
+const getDatas = async() => {
     
     if(document.querySelector('.view-results-list')){
         const element = document.querySelectorAll('.view-results-list')
@@ -75,18 +72,16 @@ const getMembers = async() => {
     const list = document.querySelector('.fetch-view-results')
     
     dataList.forEach(data => {
-        // console.log(data)
-        // const lis = Object.keys(data).forEach(key => {
-        //     return document.createElement('li')
-        // })
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
+        const liViewBtn = document.createElement('button')
+
+        // Replace with Loop
         const liName = document.createElement('li')
         const liId = document.createElement('li')
         const liRole = document.createElement('li')    
         const liView = document.createElement('li')
-        const liViewBtn = document.createElement('button')
-
+        
         liId.innerText = data.dataNumber
         liName.innerText = data.name
         liRole.innerText = data.role
@@ -114,7 +109,7 @@ const getMembers = async() => {
     document.querySelectorAll('.view-btn').forEach(btn => btn.addEventListener('click', openModal))
 }
 
-const addMember = async(e) => {
+const addData = async(e) => {
 
     e.preventDefault()
     
@@ -132,12 +127,12 @@ const addMember = async(e) => {
 
     addClicked()
     
-    getMembers()
+    getDatas()
     
     return response.json()
 }
 
-const deleteMember = async(e) => {
+const deleteData = async(e) => {
     
     e.preventDefault()
 
@@ -150,7 +145,7 @@ const deleteMember = async(e) => {
         }
     })
 
-    getMembers()
+    getDatas()
     
     closeModal()
     
@@ -173,7 +168,7 @@ const enableEdit = (e) => {
     document.querySelector('.view-edit-button').disabled = true
 }
 
-const editMember = async(e) => {
+const editData = async(e) => {
     e.preventDefault()
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
@@ -192,7 +187,7 @@ const editMember = async(e) => {
         body: JSON.stringify(dataSelected)
     })
     
-    getMembers()
+    getDatas()
     
     closeModal()
 
@@ -234,11 +229,11 @@ const handleModal = (type) => {
 }
 
 // Event Listeners
-document.querySelector('.fetch-view-btn').addEventListener('click', getMembers)
+document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
-document.querySelector('.form-submit').addEventListener('click', addMember)
+document.querySelector('.form-submit').addEventListener('click', addData)
 document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
-document.querySelector('.view-delete-button').addEventListener('click', deleteMember)
+document.querySelector('.view-delete-button').addEventListener('click', deleteData)
 document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
-document.querySelector('.view-edit-confirm-btn').addEventListener('click', editMember)
-getMembers()
+document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
+getDatas()

@@ -11,6 +11,7 @@
     
     <%- include("../../partials/modal.ejs", {title: 'Members'}, JSON.stringify(fields)) %>
         <script>
+            const fields = <%-JSON.stringify(fields)%>
             const dataType = <%-JSON.stringify(dataType)%>
         </script>
     <script type="text/javascript" src="../js/member.js"></script>
