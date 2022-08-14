@@ -1,14 +1,7 @@
 .admin-page{
     padding-top: 10px;
     padding-bottom: 10px;
-    // background-color: rgba(128, 128, 128, 0.247);
 }
-
-// .form-container {
-//     background-color: rgba(128, 128, 128, 0.288);
-//     padding: 10px;
-//     margin-bottom: 20px;
-// }
 
 .view-modal-container{
     height: 100vh;
@@ -79,39 +72,48 @@
 }
 
 .table-container {
-    margin: 5%;
+    margin: 5% auto;
     border-radius: 10px;
     padding: 5px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    background-color: rgba(123, 128, 128, 0.582);
+    background-color: rgba(123, 128, 128, 0.338);
+    overflow:auto;
+    max-width: fit-content;
+    width: 100%;
 
     .table-header {
         background-color: white;
         border-radius: 10px;
+        width: fit-content;
+
         &>ul {
             display: flex;
             justify-content: flex-start;
-            width: 100%;
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            width: fit-content;
+            box-shadow: rgba(9, 30, 66, 0.053) 0px 1px 1px, rgba(9, 30, 66, 0.071) 0px 0px 1px 1px;
             color: rgb(19, 119, 185);
+            border-radius: 10px;
             
             &>li {
-                width: 30%;
-                font-size: 1.6rem;
+                width: 150px;
+                font-size: 1.2rem;
                 font-weight: 400;
-                margin: 10px;
+                margin: 5px;
                 padding: 5px;
             }
         }
 
         .table-filter {
-
+            width: fit-content;
+            border: none;
+            box-shadow: none;
             &>li{
                 border: thin solid rgba(0, 112, 146, 0.479);
                 border-radius: 50px;
                 padding: 5px;
                 font-size: 1rem;
                 text-indent: 10px;
+                width: 150px;
             }
 
         }
@@ -122,23 +124,28 @@
         border-radius: 10px;
         display: flex;
         justify-content: flex-start;
-        width: 100%;
+        // width: fit-content;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         margin-top: 5px;
-        
+        width: fit-content;
+
+
         &>li {
-            text-indent: 10px;
-            width: 30%;
+            // text-indent: 10px;
+            width: 150px;
             font-size: 1rem;
             font-weight: 400;
-            margin:10px;
-            padding: 2.5px;
+            margin:5px;
+            text-indent: 5px;
+            line-height:25px;
+            // padding: 5px;
+            height: 35px;
         }
     }
 
     .table-options {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
         flex-flow: row wrap;
         margin-bottom: 5px;
