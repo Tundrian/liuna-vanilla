@@ -7,10 +7,14 @@
     
     <h1 class="title-text">Certificate Management</h1>
 
-    <%- include("../../partials/table.ejs") %>
+    <%- include("../../partials/table.ejs", JSON.stringify(fields)) %>
     
-    <%- include("../../partials/modal.ejs", {title: 'Certificate'}, JSON.stringify(fields)) %>
-
-    <script type="text/javascript" src="../js/certificate.js"></script>
+    <%- include("../../partials/modal.ejs", {title: 'Members'}, JSON.stringify(fields)) %>
+        <script>
+            const fields = <%-JSON.stringify(fields)%>
+            const dataType = <%-JSON.stringify(dataType)%>
+        </script>
+    <script type="text/javascript" src="../js/member.js"></script>
+    
 </body>
 </html>

@@ -75,31 +75,27 @@ const getDatas = async() => {
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
         const liViewBtn = document.createElement('button')
-
-        // Replace with Loop
-        const liName = document.createElement('li')
-        const liId = document.createElement('li')
-        const liRole = document.createElement('li')    
         const liView = document.createElement('li')
-        
-        liId.innerText = data.dataNumber
-        liName.innerText = data.name
-        liRole.innerText = data.role
+        let lis = []
+        Object.keys(formFields).forEach((key, i) => {
+            // return document.createElement('li')
+            lis.push(document.createElement('li'))
+            console.log(key, data[key])
+            lis[i].innerText = data[key]
+        }) 
+        lis.shift()
         
         liViewBtn.innerText = 'VIEW'
-        
         liViewBtn.classList.add('view-btn', 'btn')
         liContainer.classList.add('view-results-list')
-
         liViewBtn.setAttribute('data-id', data._id)
         
         liView.appendChild(liViewBtn)
 
         ul.classList.add('table-body')
 
-        ul.appendChild(liName)
-        ul.appendChild(liId)
-        ul.appendChild(liRole)
+        lis.forEach(li => ul.appendChild(li))
+
         ul.appendChild(liViewBtn)
         liContainer.appendChild(ul)
         list.appendChild(liContainer)
@@ -128,6 +124,8 @@ const addData = async(e) => {
     addClicked()
     
     getDatas()
+
+    closeModal()
     
     return response.json()
 }

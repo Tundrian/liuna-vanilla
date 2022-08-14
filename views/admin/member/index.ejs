@@ -5,16 +5,16 @@
 
     <%- include("../../partials/nav.ejs") %>
     
-    <h1 class="title-text">Member Management</h1>
+    <h1 class="title-text"><%=dataType%> Management</h1>
 
     <%- include("../../partials/table.ejs", JSON.stringify(fields)) %>
     
-    <%- include("../../partials/modal.ejs", {title: 'Members'}, JSON.stringify(fields)) %>
+    <%- include("../../partials/modal.ejs", {title: dataType}, JSON.stringify(fields)) %>
         <script>
             const fields = <%-JSON.stringify(fields)%>
             const dataType = <%-JSON.stringify(dataType)%>
         </script>
-    <script type="text/javascript" src="../js/member.js"></script>
+    <script type="text/javascript" src="../js/admin.js"></script>
     
 </body>
 </html>
