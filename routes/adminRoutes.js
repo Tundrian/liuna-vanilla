@@ -242,25 +242,25 @@ router.route('/').get((req,res) => {
 
 /* Admin Routes */
 router.route('/member').get((req, res) => {
-    res.render('admin/member/index.ejs', {dataType: 'member', fields: memberFields})
+    res.render('admin/admin/index.ejs', {dataType: 'member', fields: memberFields})
 })
 router.route('/certificate').get((req, res) => {
-    res.render('admin/certificate/index.ejs', {dataType: 'certificate', fields: certificateFields})
+    res.render('admin/admin/index.ejs', {dataType: 'certificate', fields: certificateFields})
 })
 router.route('/course').get((req, res) => {
-    res.render('admin/course/index.ejs', {dataType: 'course', fields: courseFields})
+    res.render('admin/admin/index.ejs', {dataType: 'course', fields: courseFields})
 })
 router.route('/dispatch').get((req, res) => {
-    res.render('admin/dispatch/index.ejs', {dataType: 'dispatch', fields: dispatchFields})
+    res.render('admin/admin/index.ejs', {dataType: 'dispatch', fields: dispatchFields})
 })
 router.route('/trainingSession').get((req, res) => {
-    res.render('admin/trainingSession/index.ejs', {dataType: 'training', fields: trainingFields})
+    res.render('admin/admin/index.ejs', {dataType: 'training', fields: trainingFields})
 })
 router.route('/user').get((req, res) => {
-    res.render('admin/user/index.ejs')
+    res.render('admin/admin/index.ejs', {dataType: 'user', fields: []})
 })
 router.route('/contractor').get((req, res) => {
-    res.render('admin/contractor/index.ejs', { dataType: 'contractor', fields: contractorFields})
+    res.render('admin/admin/index.ejs', { dataType: 'contractor', fields: contractorFields})
 })
 
 module.exports = router
