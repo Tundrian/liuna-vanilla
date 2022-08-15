@@ -60,7 +60,7 @@ const certificateFields = [
     },
     {
         label: 'Expiration Length',
-        id: 'expiration-length',
+        id: 'expirationLength',
         type: 'number',
         placeholder: 'Expiration Length' 
     }
@@ -92,13 +92,13 @@ const contractorFields = [
     },
     {
         label: 'Acquire Date',
-        id: 'acquire-date',
+        id: 'acquireDate',
         type: 'date',
         placeholder: 'Acquire Date' 
     },
     {
         label: 'Reminder Date',
-        id: 'reminder-date',
+        id: 'reminderDate',
         type: 'date',
         placeholder: 'Reminder Date' 
     }
@@ -106,43 +106,43 @@ const contractorFields = [
 const trainingFields = [
     {
         label: 'Course ID',
-        id: 'course-id',
+        id: 'courseId',
         type: 'text',
         placeholder: 'Course ID' 
     },
     {
         label: 'Start Date',
-        id: 'start-date',
+        id: 'startDate',
         type: 'date',
         placeholder: 'Start Date' 
     },
     {
         label: 'End Date',
-        id: 'end-date',
+        id: 'endDate',
         type: 'date',
         placeholder: 'End Date' 
     },
     {
         label: 'Scheduled Dates',
-        id: 'scheduled-dates',
+        id: 'scheduledDates',
         type: 'text',
         placeholder: 'Scheduled Dates' 
     },
     {
         label: 'Available Slots',
-        id: 'available-slots',
+        id: 'availableSlots',
         type: 'number',
         placeholder: 'Available Slots' 
     },
     {
         label: 'Open Slots',
-        id: 'open-slots',
+        id: 'openSlots',
         type: 'number',
         placeholder: 'Open Slots' 
     },
     {
         label: 'Filled Slots',
-        id: 'filled-slots',
+        id: 'filledSlots',
         type: 'number',
         placeholder: 'Filled Slots' 
     },
@@ -154,7 +154,7 @@ const trainingFields = [
     },
     {
         label: 'Certification Name',
-        id: 'certification-name',
+        id: 'certificationName',
         type: 'text',
         placeholder: 'Certification Name' 
     }
@@ -162,7 +162,7 @@ const trainingFields = [
 const dispatchFields = [
     {
         label: 'Contractor ID',
-        id: 'contractor-id',
+        id: 'contractorId',
         type: 'text',
         placeholder: 'Contractor ID' 
     },
@@ -192,13 +192,13 @@ const dispatchFields = [
     },
     {
         label: 'Start Date',
-        id: 'start-date',
+        id: 'startDate',
         type: 'date',
         placeholder: 'Start Date' 
     },
     {
         label: 'End Date',
-        id: 'end-date',
+        id: 'endDate',
         type: 'date',
         placeholder: 'End Date' 
     }
@@ -235,6 +235,14 @@ const courseFields = [
         placeholder: 'Length' 
     }
 ]
+const userFields = [
+    {
+        label: 'User ID',
+        id: 'userId',
+        type: 'text',
+        placeholder: 'Contractor ID' 
+    },
+]
 
 router.route('/').get((req,res) => {
     res.render('admin/dashboard.ejs')
@@ -257,7 +265,7 @@ router.route('/trainingSession').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'training', fields: trainingFields})
 })
 router.route('/user').get((req, res) => {
-    res.render('admin/admin/index.ejs', {dataType: 'user', fields: []})
+    res.render('admin/admin/index.ejs', {dataType: 'user', fields: userFields})
 })
 router.route('/contractor').get((req, res) => {
     res.render('admin/admin/index.ejs', { dataType: 'contractor', fields: contractorFields})
