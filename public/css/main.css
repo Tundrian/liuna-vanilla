@@ -4138,16 +4138,22 @@ form h2 {
 
 .home-page {
   background-color: #d4d4d4;
-  height: 100%;
-  margin: 0;
 }
 .home-page .container-splash {
-  height: 100%;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/onion-splash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .admin-page {
   padding-top: 10px;
   padding-bottom: 10px;
