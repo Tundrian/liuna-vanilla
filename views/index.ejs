@@ -3,12 +3,14 @@
 <%- include("partials/header.ejs") %>
 <body class="home-page">
     <%- include("partials/nav.ejs") %>
-
-    <h1 class="title-text">Home Page</h1>
+    <div class="container-splash">
+        <h1 class="title-text">Home Page</h1>
+    </div>
     
-    <form class="home-register" action="/register" METHOD="POST">
-        <%- include("./partials/messages") %>
-        <h2>Register</h2>
+    
+    <!-- <form class="home-register" action="/register" METHOD="POST"> -->
+        <!-- <%- include("./partials/messages") %> -->
+        <!-- <h2>Register</h2>
         <label>Username</label>
         <input type="text" name="name" value="<% typeof name != 'undefined' ? name : '' %>" />
         <label>Email</label>
@@ -18,16 +20,16 @@
         <label>Confirm Password</label>
         <input type="password" name="cpassword" id="" value="<%= typeof cpassword != 'undefined' ? cpassword : '' %>"/>
         <button type="submit" class="btn">Register</button>
-    </form>
-    <form action="/login" class="home-login" METHOD="POST">
-        <%- include("./partials/messages") %>
-        <h2>Login</h2>
+    </form> -->
+    <!-- <form action="/login" class="home-login" METHOD="POST"> -->
+        <!-- <%- include("./partials/messages") %> -->
+        <!-- <h2>Login</h2>
         <label>Email</label>
         <input type="email" name="email" value="<% typeof email != 'undefined' ? email : '' %>"/>
         <label>Password</label>
         <input type="password" name="password" id="" />
         <button type="submit" class="btn">Register</button>
-    </form>
+    </form> -->
 
     <!-- <script type="text/javascript" src="../js/auth.js"></script> -->
 </body>

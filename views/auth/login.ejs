@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/header.ejs") %>
+<body class="home-page">
+    <%- include("../partials/nav.ejs") %>
+    
+    <form action="/login" class="home-login" METHOD="POST">
+        <%- include("../partials/messages") %>
+        <h2>Login</h2>
+        <label>Email</label>
+        <input type="email" name="email" value="<% typeof email != 'undefined' ? email : '' %>"/>
+        <label>Password</label>
+        <input type="password" name="password" id="" />
+        <button type="submit" class="btn">Login</button>
+    </form>
+</body>
+</html>

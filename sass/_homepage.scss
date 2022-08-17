@@ -2,16 +2,8 @@
     padding-top: 10px;
     font-size: 5rem;
     text-align: center;
-    color: #202c2d;
-    text-shadow:
-        0 1px #808d93,
-        -1px 0 #cdd2d5,
-        -1px 2px #808d93,
-        -2px 1px #cdd2d5,
-        -2px 3px #808d93,
-        -3px 2px #cdd2d5,
-        -3px 4px #808d93,
-        -4px 3px #cdd2d5;
+    color: $primary;
+
     margin-bottom: 30px;
 }
 
@@ -60,4 +52,26 @@ form{
 
 .home-page {
     background-color:rgb(212, 212, 212);
+    height: 100%;
+    margin: 0;
+    .container-splash {
+        height: 100%;
+        // padding: 0;
+        // margin: 0;
+        // width: 100vw;
+        // height: 100vh;
+        // max-height: 100vh;
+        // background-color: linear-gradient( rgba(255, 0, 0, 0.45), 
+        // rgba(255, 0, 0, 0.45));
+        // background-image: url("/images/onion-splash.jpg");
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/onion-splash.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        * {
+
+        }
+        
+    }
 }
