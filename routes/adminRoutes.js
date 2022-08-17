@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const {ensureAuthenticated} = require('../config/auth')
 
 const memberFields = [
     {
@@ -244,30 +245,32 @@ const userFields = [
     },
 ]
 
-router.route('/').get((req,res) => {
-    res.render('admin/dashboard.ejs')
+router.route('/').get(ensureAuthenticated, (req,res) => {
+    res.render('admin/dashboard.ejs', {
+        name: req.user.name
+    })
 })
 
 /* Admin Routes */
-router.route('/member').get((req, res) => {
+router.route('/member').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'member', fields: memberFields})
 })
-router.route('/certificate').get((req, res) => {
+router.route('/certificate').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'certificate', fields: certificateFields})
 })
-router.route('/course').get((req, res) => {
+router.route('/course').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'course', fields: courseFields})
 })
-router.route('/dispatch').get((req, res) => {
+router.route('/dispatch').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'dispatch', fields: dispatchFields})
 })
-router.route('/trainingSession').get((req, res) => {
+router.route('/trainingSession').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'training', fields: trainingFields})
 })
-router.route('/user').get((req, res) => {
+router.route('/user').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'user', fields: userFields})
 })
-router.route('/contractor').get((req, res) => {
+router.route('/contractor').get(ensureAuthenticated, (req, res) => {
     res.render('admin/admin/index.ejs', { dataType: 'contractor', fields: contractorFields})
 })
 
