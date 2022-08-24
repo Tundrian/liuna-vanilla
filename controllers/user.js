@@ -3,7 +3,6 @@ const User = require('../models/User')
 const asyncHandler = require('express-async-handler')
 
 const getUsers = asyncHandler(async (req, res) => {
-    console.log('getUsers')
     try{
         const allUsers = await User.find()
         res.status(200).json(allUsers)

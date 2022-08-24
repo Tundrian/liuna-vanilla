@@ -2,44 +2,44 @@ const express = require('express')
 const router = express.Router()
 const {ensureAuthenticated} = require('../config/auth')
 
-const memberFields = [
-    {
-        label: 'Name',
-        id: 'name',
-        type: 'text',
-        placeholder: 'Full Name' 
-    },
-    {
-        label: 'First Name',
-        id: 'firstName',
-        type: 'text',
-        placeholder: 'First name' 
-    },
-    {
-        label: 'Last Name',
-        id: 'lastName',
-        type: 'text',
-        placeholder: 'Last name' 
-    },
-    {
-        label: 'Role',
-        id: 'role',
-        type: 'text',
-        placeholder: 'Role' 
-    },
-    {
-        label: 'Member Number',
-        id: 'memberNumber',
-        type: 'text',
-        placeholder: 'Member #' 
-    },
-    {
-        label: 'Status',
-        id: 'status',
-        type: 'text',
-        placeholder: 'Status' 
-    },
-]
+// const memberFields = [
+//     {
+//         label: 'Name',
+//         id: 'name',
+//         type: 'text',
+//         placeholder: 'Full Name' 
+//     },
+//     {
+//         label: 'First Name',
+//         id: 'firstName',
+//         type: 'text',
+//         placeholder: 'First name' 
+//     },
+//     {
+//         label: 'Last Name',
+//         id: 'lastName',
+//         type: 'text',
+//         placeholder: 'Last name' 
+//     },
+//     {
+//         label: 'Role',
+//         id: 'role',
+//         type: 'text',
+//         placeholder: 'Role' 
+//     },
+//     {
+//         label: 'Member Number',
+//         id: 'memberNumber',
+//         type: 'text',
+//         placeholder: 'Member #' 
+//     },
+//     {
+//         label: 'Status',
+//         id: 'status',
+//         type: 'text',
+//         placeholder: 'Status' 
+//     },
+// ]
 const certificateFields = [
     {
         label: 'Name',
@@ -236,38 +236,38 @@ const courseFields = [
         placeholder: 'Length' 
     }
 ]
-const userFields = [
-    {
-        label: 'Username',
-        id: 'name',
-        type: 'text',
-        placeholder: 'Username' 
-    },
-    {
-        label: 'Email',
-        id: 'email',
-        type: 'string',
-        placeholder: 'Email' 
-    },
-    {
-        label: 'Theme',
-        id: 'theme',
-        type: 'text',
-        placeholder: 'Theme' 
-    },
-    {
-        label: 'Member Number',
-        id: 'memberNumber',
-        type: 'text',
-        placeholder: 'Member Number' 
-    },
-    {
-        label: 'Created Date',
-        id: 'date',
-        type: 'date',
-        placeholder: 'Created Date' 
-    },
-]
+// const userFields = [
+//     {
+//         label: 'Username',
+//         id: 'name',
+//         type: 'text',
+//         placeholder: 'Username' 
+//     },
+//     {
+//         label: 'Email',
+//         id: 'email',
+//         type: 'string',
+//         placeholder: 'Email' 
+//     },
+//     {
+//         label: 'Theme',
+//         id: 'theme',
+//         type: 'text',
+//         placeholder: 'Theme' 
+//     },
+//     {
+//         label: 'Member Number',
+//         id: 'memberNumber',
+//         type: 'text',
+//         placeholder: 'Member Number' 
+//     },
+//     {
+//         label: 'Created Date',
+//         id: 'date',
+//         type: 'date',
+//         placeholder: 'Created Date' 
+//     },
+// ]
 
 router.route('/').get((req,res) => {
     res.render('admin/dashboard.ejs', {
@@ -281,7 +281,7 @@ router.route('/member2').get((req, res) => {
 
 /* Admin Routes */
 router.route('/member').get((req, res) => {
-    res.render('admin/admin/index.ejs', {dataType: 'member', fields: memberFields})
+    res.render('admin/member/index.ejs')
 })
 router.route('/certificate').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'certificate', fields: certificateFields})
@@ -296,7 +296,7 @@ router.route('/trainingSession').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'training', fields: trainingFields})
 })
 router.route('/user').get((req, res) => {
-    res.render('admin/admin/index.ejs', {dataType: 'user', fields: userFields})
+    res.render('admin/user/index.ejs')
 })
 router.route('/contractor').get((req, res) => {
     res.render('admin/admin/index.ejs', { dataType: 'contractor', fields: contractorFields})

@@ -4122,7 +4122,7 @@ form * {
   margin-bottom: 5px;
   margin-inline: 5px;
 }
-form input {
+form input, form option, form select {
   background-color: rgba(107, 107, 107, 0.774);
   color: white;
   border-radius: 20px;

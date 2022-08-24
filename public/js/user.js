@@ -1,22 +1,23 @@
 // Declaration of formFields and edited form field values
 let dataSelected = {
     name: '',
-    role: '',
-    userId: '',
-    firstName: '',
-    lastName: '',
-    status: '',
-    memberNumber: ''
+    email: '',
+    verified: '',
+    theme: '',
+    memberNumber: '',
+    date: '',
+    role: ''
 }
+
 let formFields = {
     container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
-    role: document.querySelector('#view-role'),
-    userId: document.querySelector('#view-userId'),
-    firstName: document.querySelector('#view-firstName'),
-    lastName: document.querySelector('#view-lastName'),
-    status: document.querySelector('#view-status'),
+    email: document.querySelector('#view-email'),
+    verified: document.querySelector('#view-verified'),
+    theme: document.querySelector('#view-theme'),
     memberNumber: document.querySelector('#view-memberNumber'),
+    date: document.querySelector('#view-date'),
+    role: document.querySelector('#view-role'),
 }
 
 // Functions
@@ -50,24 +51,13 @@ const openModal = async (e) => {
             formFields[key].value = formFields[key].value
         }
     })
-
-    let response = await fetch(`../api/user`)
-    let users = await response.json()
-    document.querySelector('#view-userId').innerHTML = ''
-
-    users.forEach(x => {
-        let op = document.createElement('option')
-        op.value = x.name
-        op.innerText = x.name
-        document.querySelector('#view-userId').appendChild(op)
-    })
     
     formFields.container.classList.remove('hide');
 }
 
 const getData = async (id) => {
 
-    const response = await fetch(`../api/member/${id}`)
+    const response = await fetch(`../api/user/${id}`)
     const data = await response.json()
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = data[key] || ''
@@ -84,7 +74,7 @@ const getDatas = async() => {
             el.remove()
         })
     } 
-    const response = await fetch(`../api/member`)
+    const response = await fetch(`../api/user`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
 
@@ -130,7 +120,7 @@ const addData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/member`, {
+    const response = await fetch(`../api/user`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -153,7 +143,7 @@ const deleteData = async(e) => {
 
     handleModal('delete')
 
-    const response = await fetch(`../api/member/${dataSelected.id}`, {
+    const response = await fetch(`../api/user/${dataSelected.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -194,7 +184,7 @@ const editData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/member/${dataSelected.id}`, {
+    const response = await fetch(`../api/user/${dataSelected.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
