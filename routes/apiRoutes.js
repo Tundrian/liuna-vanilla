@@ -43,6 +43,13 @@ const {
     updateTraining,
     deleteTraining
 } = require('../controllers/training')
+const {
+    getUsers,
+    setUser,
+    getUser,
+    updateUser,
+    deleteUser
+} = require('../controllers/user')
 
 router.route('/certificate/:id').get(getCertificate).delete(deleteCertificate).put(updateCertificate)
 router.route('/certificate').get(getCertificates).post(setCertificate)
@@ -67,5 +74,9 @@ router.route('/training/:training_id').get(getTraining)
 router.route('/member/:id').get(getMember).delete(deleteMember).put(updateMember)
 router.route('/member').get(getMembers).post(setMember)
 router.route('/member/:member_id').get(getMember)
+
+router.route('/user/:id').get(getUser).delete(deleteUser).put(updateUser)
+router.route('/user').get(getUsers).post(setUser)
+router.route('/user/:user_id').get(getUser)
 
 module.exports = router

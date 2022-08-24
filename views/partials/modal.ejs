@@ -9,6 +9,7 @@
                 <% fields.forEach(field => { %>
                     <label ><%=field.label%></label>
                     <input id="view-<%=field.id%>" type="<%=field.type%>" placeholder="<%field.placeholder%>" disabled>
+                    <% if(%>
                 <% }) %>
                     <button class="form-submit btn hide" type="submit">Submit New <%=title%></button>
                     <button class="btn edit-btn view-edit-button">Edit</button>

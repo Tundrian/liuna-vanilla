@@ -1,18 +1,24 @@
 // Declaration of formFields and edited form field values
 let dataSelected = {
-    id: ''
+    id: '',
+    name: '',
+    email: '',
+    verified: '',
+    theme: '',
+    memberNumber: '',
+    date: '',
+    role: ''
 }
 let formFields = {
     container: document.querySelector('.view-modal-container'),
-}
-
-// Populate formFields dynamically
-for(key in fields){
-    dataSelected[fields[key].id] = ''
-}
-
-for(key in fields){
-    formFields[fields[key].id] = document.querySelector(`#view-${fields[key].id}`)
+    id: document.querySelector('#view-id'),
+    name: document.querySelector('#view-name'),
+    email: document.querySelector('#view-email'),
+    verified: document.querySelector('#view-verified'),
+    theme: document.querySelector('#view-theme'),
+    memberNumber: document.querySelector('#view-memberNumber'),
+    date: document.querySelector('#view-date'),
+    role: document.querySelector('#view-role'),
 }
 
 // Functions
@@ -50,7 +56,7 @@ const openModal = async (e) => {
 
 const getData = async (id) => {
 
-    const response = await fetch(`../api/${dataType}/${id}`)
+    const response = await fetch(`../api/member/${id}`)
     const data = await response.json()
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = data[key] || ''
@@ -67,7 +73,7 @@ const getDatas = async() => {
             el.remove()
         })
     } 
-    const response = await fetch(`../api/${dataType}`)
+    const response = await fetch(`../api/member`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
 
@@ -136,7 +142,7 @@ const deleteData = async(e) => {
 
     handleModal('delete')
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`../api/member/${dataSelected.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -177,7 +183,7 @@ const editData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`../api/member/${dataSelected.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

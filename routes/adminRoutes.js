@@ -238,39 +238,67 @@ const courseFields = [
 ]
 const userFields = [
     {
-        label: 'User ID',
-        id: 'userId',
+        label: 'Username',
+        id: 'name',
         type: 'text',
-        placeholder: 'Contractor ID' 
+        placeholder: 'Username' 
+    },
+    {
+        label: 'Email',
+        id: 'email',
+        type: 'string',
+        placeholder: 'Email' 
+    },
+    {
+        label: 'Theme',
+        id: 'theme',
+        type: 'text',
+        placeholder: 'Theme' 
+    },
+    {
+        label: 'Member Number',
+        id: 'memberNumber',
+        type: 'text',
+        placeholder: 'Member Number' 
+    },
+    {
+        label: 'Created Date',
+        id: 'date',
+        type: 'date',
+        placeholder: 'Created Date' 
     },
 ]
 
-router.route('/').get(ensureAuthenticated, (req,res) => {
+router.route('/').get((req,res) => {
     res.render('admin/dashboard.ejs', {
-        name: req.user.name
+        // name: req.user.name
     })
 })
 
+router.route('/member2').get((req, res) => {
+    res.render('admin/member/index.ejs', {dataType: 'member', fields: memberFields})
+})
+
 /* Admin Routes */
-router.route('/member').get(ensureAuthenticated, (req, res) => {
+router.route('/member').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'member', fields: memberFields})
 })
-router.route('/certificate').get(ensureAuthenticated, (req, res) => {
+router.route('/certificate').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'certificate', fields: certificateFields})
 })
-router.route('/course').get(ensureAuthenticated, (req, res) => {
+router.route('/course').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'course', fields: courseFields})
 })
-router.route('/dispatch').get(ensureAuthenticated, (req, res) => {
+router.route('/dispatch').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'dispatch', fields: dispatchFields})
 })
-router.route('/trainingSession').get(ensureAuthenticated, (req, res) => {
+router.route('/trainingSession').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'training', fields: trainingFields})
 })
-router.route('/user').get(ensureAuthenticated, (req, res) => {
+router.route('/user').get((req, res) => {
     res.render('admin/admin/index.ejs', {dataType: 'user', fields: userFields})
 })
-router.route('/contractor').get(ensureAuthenticated, (req, res) => {
+router.route('/contractor').get((req, res) => {
     res.render('admin/admin/index.ejs', { dataType: 'contractor', fields: contractorFields})
 })
 

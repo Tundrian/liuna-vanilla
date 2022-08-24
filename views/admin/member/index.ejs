@@ -3,18 +3,110 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
-    <h1 class="title-text"><%=dataType%> Management</h1>
+    <!-- Title -->
+    <h1 class="title-text">Member Management</h1>
 
-    <%- include("../../partials/table.ejs", JSON.stringify(fields)) %>
-    
-    <%- include("../../partials/modal.ejs", {title: dataType}, JSON.stringify(fields)) %>
-        <script>
-            const fields = <%-JSON.stringify(fields)%>
-            const dataType = <%-JSON.stringify(dataType)%>
-        </script>
-    <script type="text/javascript" src="../js/admin.js"></script>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Email</li>
+                    <li>Verified</li>
+                    <li>Theme</li>
+                    <li>Member Number</li>
+                    <li>Date</li>
+                    <li>Role</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Name"></li>
+                    <li><input type="text" placeholder="Email"></li>
+                    <li><input type="text" placeholder="Verified"></li>
+                    <li><input type="text" placeholder="Theme"></li>
+                    <li><input type="text" placeholder="Member Number"></li>
+                    <li><input type="text" placeholder="Date"></li>
+                    <li><input type="text" placeholder="Role"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Add Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2><%= dataType %></h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name">
+                    <label for="email">Email</label>
+                    <input type="text" name="email">
+                    <label for="verified">Verified</label>
+                    <input type="checkbox" name="verified">
+                    <label for="theme">Theme</label>
+                    <input type="text" name="theme">
+                    <label for="memberNumber">Member Number</label>
+                    <input type="text" name="memberNumber">
+                    <label for="date">Date</label>
+                    <input type="text" name="date">
+                    <label for="role">Role</label>
+                    <input type="text" name="role">
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New <%=dataType%></button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2><%= dataType %></h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name">
+                    <label for="email">Email</label>
+                    <input type="text" name="email">
+                    <label for="verified">Verified</label>
+                    <input type="checkbox" name="verified">
+                    <label for="theme">Theme</label>
+                    <input type="text" name="theme">
+                    <label for="memberNumber">Member Number</label>
+                    <input type="text" name="memberNumber">
+                    <label for="date">Date</label>
+                    <input type="text" name="date">
+                    <label for="role">Role</label>
+                    <input type="text" name="role">
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New <%=dataType%></button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="../js/member.js"></script>
     
 </body>
 </html>

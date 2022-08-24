@@ -1,0 +1,48 @@
+Server -> Routes -> Controllers -> Models -> Controllers -> Views -> js file 	
+
+Main screen
+	- Login
+	- Blurbs about application
+
+Admin Dashboard
+	- Navbar
+	- Links to all dashboard views (routes)
+
+User View
+	- Navbar
+	- Table showing users
+		- user ID
+		- username
+		- role
+		- status
+    - Add Modal
+        - id (auto-generated)
+        - username {unique}
+        - email address {unique}
+        - password
+        - confirm password
+        - role [admin, member]
+	- Edit/Delete Modal
+		- id: disabled
+        - username {unique}
+        - email address {unique}
+        - role [admin, member]
+
+Member View
+    - Navbar
+    - Table showing members
+        - member #
+        - username
+        - role
+        - date added
+    - add Modal
+        - member # {unique}
+
+======================
+1. Use model to enter HTML view fields for table
+2. Use model to enter HTML form fields for add modal
+3. Use model to enter HTML form fields for edit modal
+4. Use model to enter JS properties for class
+5. Use model to enter JS function to handle rendering table
+6. Use model to enter JS function to handle rendering add modal
+7. Use model to enter JS function handle rendering edit modal

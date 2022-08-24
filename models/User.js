@@ -15,9 +15,21 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    verified: {
+        type: Boolean
+    },
+    theme: {
+        type: String
+    },
+    memberNumber: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now
+    },
+    role: {
+        type: String
     }
 })
 

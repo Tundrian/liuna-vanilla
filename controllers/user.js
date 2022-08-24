@@ -3,6 +3,7 @@ const User = require('../models/User')
 const asyncHandler = require('express-async-handler')
 
 const getUsers = asyncHandler(async (req, res) => {
+    console.log('getUsers')
     try{
         const allUsers = await User.find()
         res.status(200).json(allUsers)
@@ -15,7 +16,8 @@ const setUser = asyncHandler(async (req, res) => {
     try{
         const user = await User.create({
             name: req.body.name,
-            password: req.body.password
+            // password: req.body.password,
+
         })
         res.status(200).json(user)
     } catch(error){
