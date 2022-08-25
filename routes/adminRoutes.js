@@ -2,44 +2,6 @@ const express = require('express')
 const router = express.Router()
 const {ensureAuthenticated} = require('../config/auth')
 
-// const memberFields = [
-//     {
-//         label: 'Name',
-//         id: 'name',
-//         type: 'text',
-//         placeholder: 'Full Name' 
-//     },
-//     {
-//         label: 'First Name',
-//         id: 'firstName',
-//         type: 'text',
-//         placeholder: 'First name' 
-//     },
-//     {
-//         label: 'Last Name',
-//         id: 'lastName',
-//         type: 'text',
-//         placeholder: 'Last name' 
-//     },
-//     {
-//         label: 'Role',
-//         id: 'role',
-//         type: 'text',
-//         placeholder: 'Role' 
-//     },
-//     {
-//         label: 'Member Number',
-//         id: 'memberNumber',
-//         type: 'text',
-//         placeholder: 'Member #' 
-//     },
-//     {
-//         label: 'Status',
-//         id: 'status',
-//         type: 'text',
-//         placeholder: 'Status' 
-//     },
-// ]
 const certificateFields = [
     {
         label: 'Name',
@@ -236,38 +198,6 @@ const courseFields = [
         placeholder: 'Length' 
     }
 ]
-// const userFields = [
-//     {
-//         label: 'Username',
-//         id: 'name',
-//         type: 'text',
-//         placeholder: 'Username' 
-//     },
-//     {
-//         label: 'Email',
-//         id: 'email',
-//         type: 'string',
-//         placeholder: 'Email' 
-//     },
-//     {
-//         label: 'Theme',
-//         id: 'theme',
-//         type: 'text',
-//         placeholder: 'Theme' 
-//     },
-//     {
-//         label: 'Member Number',
-//         id: 'memberNumber',
-//         type: 'text',
-//         placeholder: 'Member Number' 
-//     },
-//     {
-//         label: 'Created Date',
-//         id: 'date',
-//         type: 'date',
-//         placeholder: 'Created Date' 
-//     },
-// ]
 
 router.route('/').get((req,res) => {
     res.render('admin/dashboard.ejs', {
