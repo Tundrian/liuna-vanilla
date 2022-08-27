@@ -43,30 +43,35 @@ form{
         padding-inline:15px;
     }
 
+    // custom container for checkbox
     .form-checkbox-container {
         display: block;
         position: relative;
         padding-left: 35px;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
         cursor: pointer;
-        // font-size: 22px;
+        font-size: 22px;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-    
 
+        // On mouse-over, add a grey background color
         &:hover input ~ .form-checkmark {
-            background-color: #0b82e3;
+            background-color: #ccc;
         }
+
+        // When the checkbox is checked, add a blue background
         input:checked ~ .form-checkmark {
             background-color: #2196F3;
         }
 
+        // Show the checkmark when clicked
         input:checked ~ .form-checkmark:after {
             display: block;
         }
 
+        // style the checkmark/indicator
         .form-checkmark:after {
             left: 9px;
             top: 5px;
@@ -79,6 +84,7 @@ form{
             transform: rotate(45deg);
         }
 
+        // hide the browser's default checkbox
         input {
             position: absolute;
             opacity: 0;
@@ -86,7 +92,8 @@ form{
             height: 0;
             width: 0;
         }
-    
+
+        // Create a custom checkbox
         .form-checkmark {
             position: absolute;
             top: 0;
@@ -94,7 +101,8 @@ form{
             height: 25px;
             width: 25px;
             background-color: #eee;
-
+            
+            // Create the checkmark/indicator (hidden when not checked)
             &:after {
                 content: "";
                 position: absolute;
@@ -102,14 +110,12 @@ form{
             }
         }
     }
-    
    
     h2{
         font-size: 1.8rem;
         text-align: center;
         font-weight: 400;
     }
-
 }
 
 .home-page {

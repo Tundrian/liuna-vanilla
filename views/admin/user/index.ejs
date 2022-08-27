@@ -32,11 +32,12 @@
                     <li><input type="text" placeholder="Verified"></li>
                     <li><input type="text" placeholder="Theme"></li>
                     <li><input type="text" placeholder="Member Number"></li>
-                    <li><input type="text" placeholder="Date"></li>
+                    <li><input type="date" placeholder="Date"></li>
                     <li><input type="text" placeholder="Role"></li>
                 </ul>
             </li>
     </ul>
+
     <!-- Add Modal -->
     <section class="view-modal-container hide"> 
         <div class="view-modal-inner">
@@ -50,10 +51,11 @@
                     <input type="text" name="name" id="view-name" disabled>
                     <label for="email">Email</label>
                     <input type="text" name="email" id="view-email" disabled>
-                    
+
                     <label for="view-verified">Verified</label>
+
                     <div class="form-checkbox-container">
-                        <input type="checkbox" name="verified" id="view-verified" checked="checked" disabled> 
+                        <input type="checkbox" name="verified" id="view-verified"> 
                         <span class="form-checkmark"></span>
                     </div>
 
@@ -65,7 +67,6 @@
                     <input type="text" name="date" id="view-date" disabled>
                     <label for="role">Role</label>
                     <input type="text" name="role" id="view-role" disabled>
-                    
                     <button class="form-submit btn hide" type="submit">Submit New User</button>
                     <button class="btn edit-btn view-edit-button">Edit</button>
                     <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>

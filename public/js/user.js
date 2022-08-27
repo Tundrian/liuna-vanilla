@@ -5,7 +5,7 @@ let dataSelected = {
     verified: '',
     theme: '',
     memberNumber: '',
-    date: '',
+    date: new Date(),
     role: ''
 }
 
@@ -216,7 +216,7 @@ const addClicked = async(e) => {
         formFields[key].value = ''
     })
 
-    document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
+    // document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 
 const handleModal = (type) => {

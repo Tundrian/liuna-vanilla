@@ -4134,15 +4134,16 @@ form .form-checkbox-container {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   cursor: pointer;
+  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 form .form-checkbox-container:hover input ~ .form-checkmark {
-  background-color: #0b82e3;
+  background-color: #ccc;
 }
 form .form-checkbox-container input:checked ~ .form-checkmark {
   background-color: #2196F3;

@@ -46,3 +46,14 @@ Member View
 5. Use model to enter JS function to handle rendering table
 6. Use model to enter JS function to handle rendering add modal
 7. Use model to enter JS function handle rendering edit modal
+
+==================================================================
+
+User
+    - Fix check mark for verified
+    - add temporary password for new users
+    - don't show passwords on the view or form screen though. Just send it with the form
+    - Fix date formatting on table
+    - change undefined values on table to just show empty string
+
+        - fix button not changing to add after closing modal
