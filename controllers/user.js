@@ -13,11 +13,8 @@ const getUsers = asyncHandler(async (req, res) => {
 
 const setUser = asyncHandler(async (req, res) => {
     try{
-        const user = await User.create({
-            name: req.body.name,
-            // password: req.body.password,
-
-        })
+        console.log(req.body)
+        const user = await User.create(req.body)
         res.status(200).json(user)
     } catch(error){
         throw new Error(error)

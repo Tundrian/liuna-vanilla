@@ -2,7 +2,7 @@
 let dataSelected = {
     name: '',
     email: '',
-    verified: '',
+    verified: false,
     theme: '',
     memberNumber: '',
     date: new Date(),
@@ -115,11 +115,12 @@ const getDatas = async() => {
 const addData = async(e) => {
 
     e.preventDefault()
-    
+
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
-
+      dataSelected['password'] = 'tempPassword'
+      dataSelected.verified = formFields.verified.checked
     const response = await fetch(`../api/user`, {
         method: 'POST',
         headers: {
