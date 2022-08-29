@@ -50,10 +50,34 @@ Member View
 ==================================================================
 
 User
-    - Fix check mark for verified
-    - add temporary password for new users
-    - don't show passwords on the view or form screen though. Just send it with the form
     - Fix date formatting on table
     - change undefined values on table to just show empty string
 
-        - fix button not changing to add after closing modal
+User is now added to the system
+Next step is to provide a set list of selectable roles (admin, member)
+Selectable list of themes (light, dark)
+Add date picker for date field
+Change name to username
+
+Ok, then users are added.
+Keep member number disabled. This should be created from the member form
+For members, update form for data validity
+
+Add form validation last
+
+Just allow admins to add users, add members. Then validate that members can log in
+    - this will be later using passport
+
+Finish setting up certificates with information from form
+
+Finish setting up courses
+Create courses form and validation
+Create a selectable list using the values from certificates
+
+Then finally, create sessions from courses
+
+Finally, create contractor records and assign dispatches (with date ranges) to themes
+
+Once all admin forms are created and validated, validate member views.
+
+For now, just show a view of all upcoming scheduled training sessions
