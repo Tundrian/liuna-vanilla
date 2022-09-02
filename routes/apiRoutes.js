@@ -48,7 +48,8 @@ const {
     setUser,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    updateUserMemberNumber
 } = require('../controllers/user')
 
 router.route('/certificate/:id').get(getCertificate).delete(deleteCertificate).put(updateCertificate)
@@ -78,5 +79,6 @@ router.route('/member/:member_id').get(getMember)
 router.route('/user/:id').get(getUser).delete(deleteUser).put(updateUser)
 router.route('/user').get(getUsers).post(setUser)
 router.route('/user/:user_id').get(getUser)
+router.route('/user/memberNumber/:id').put(updateUserMemberNumber)
 
 module.exports = router

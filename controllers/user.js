@@ -48,6 +48,20 @@ const updateUser = asyncHandler(async (req, res) => {
     res.status(200).json(updatedUser)
 })
 
+const updateUserMemberNumber = asyncHandler(async (req, res) => {
+    const user = await User.findOne({_id: req.params.id})
+    if(!user){
+        res.status(400)
+        throw new Error('User not found')
+    }
+
+    const updatedUser = await User.findOneAndUpdate({ _id: req.params.id}, {
+        memberNumber: req.body.memberNumber,
+    })
+
+    res.status(200).json(updatedUser)
+})
+
 const deleteUser = asyncHandler(async (req, res) => {
     const user = await User.findOne({_id: req.params.id})
     if(!user){
@@ -65,5 +79,6 @@ module.exports = {
     setUser,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    updateUserMemberNumber
 }

@@ -138,6 +138,20 @@ const addData = async(e) => {
         body: JSON.stringify(dataSelected)
     })
 
+    // Update User with new member Number
+    if(dataSelected[userId] != ''){
+        /*
+            perform an update call to the user Model to update the userID field.
+            get user
+            store locally
+            then post back the updated user with the memberID
+        */
+        const userResponse = await fetch(`../api/user`, {
+            method: 'POST'
+        })
+        
+    }
+
     addClicked()
     
     getDatas()
