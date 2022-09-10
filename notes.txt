@@ -57,3 +57,10 @@ User
     - change undefined values on table to just show empty string
 
         - fix button not changing to add after closing modal
+
+===================================================================
+
+added members
+added users
+
+now add contractors (generic)
