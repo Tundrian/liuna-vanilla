@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect("/admin/");
+    return res.redirect("/admin");
   }
   res.render("auth/login");
 };
@@ -37,7 +37,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/admin/");
+      res.redirect(req.session.returnTo || "/admin");
     });
   })(req, res, next);
 };
@@ -56,9 +56,9 @@ exports.logout = (req, res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect("/admin/");
+    return res.redirect("/admin");
   }
-  res.render("/auth/signup", {
+  res.render("auth/register", {
     title: "Create Account",
   });
 };
@@ -83,13 +83,13 @@ exports.postSignup = (req, res, next) => {
   });
 
   const user = new User({
-    userName: req.body.userName,
+    name: req.body.userName,
     email: req.body.email,
     password: req.body.password,
   });
-
+  
   User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+    { $or: [{ email: req.body.email }, { name: req.body.userName }] },
     (err, existingUser) => {
       if (err) {
         return next(err);

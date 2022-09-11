@@ -1,42 +1,65 @@
 // Packages
 const express = require('express')
-require('dotenv').config()
+const app = express()
 const colors = require('colors')
-const cors = require('cors')
+const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
-const mongoose = require('mongoose')
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const flash = require('express-flash')
 const logger = require('morgan')
-// Modules
+const cors = require('cors')
+
 const connectDB = require('./config/config')
 
-// Variables
-const PORT = process.env.PORT
-
-// Middleware
-const app = express()
-require('./config/passport')(passport)
-app.use(cors())
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
-
-// DB Connection
-connectDB()
-
-// Routes
 const mainRoutes = require('./routes/main')
 const apiRoutes = require('./routes/apiRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const memberRoutes = require('./routes/memberRoutes')
-// const authRoutes = require('./routes/authRoutes')
 
+require('dotenv').config()
+const PORT = process.env.PORT
+
+require('./config/passport')(passport)
+
+// DB Connection
+connectDB()
+
+app.set('view engine', 'ejs')
+
+app.use(express.static('public'))
+
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+//Logging
+app.use(logger("dev"))
+
+//Use forms for put / delete
+app.use(methodOverride("_method"))
+
+app.use(cors())
+
+// Setup Sessions - stored in MongoDB
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Use flash messages for errors, info, ect...
+app.use(flash());
+
+// Routes
 app.use('/', mainRoutes)
-// app.use('/auth', authRoutes)
 app.use('/api', apiRoutes)
 app.use('/admin', adminRoutes)
 app.use('/member', memberRoutes)
