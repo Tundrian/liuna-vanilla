@@ -3,25 +3,19 @@
 // Declaration of formFields and edited form field values
 let dataSelected = {
     name: '',
-    role: '',
-    userId: '',
-    firstName: '',
-    lastName: '',
-    status: '',
-    memberNumber: ''
+    description: '',
+    type: '',
+    expirationLength: '',
 }
 let formFields = {
     container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
-    role: document.querySelector('#view-role'),
-    userId: document.querySelector('#view-userId'),
-    firstName: document.querySelector('#view-firstName'),
-    lastName: document.querySelector('#view-lastName'),
-    status: document.querySelector('#view-status'),
-    memberNumber: document.querySelector('#view-memberNumber'),
+    description: document.querySelector('#view-description'),
+    type: document.querySelector('#view-type'),
+    expirationLength: document.querySelector('#view-expirationLength'),
 }
 
-const fetchUri = `../api/member`
+const fetchUri = `../api/certificate`
 
 const closeModal = () => {
     
@@ -55,15 +49,17 @@ const openModal = async (e) => {
         }
     })
 
-    let response = await fetch(`../api/user`)
-    let users = await response.json()
-    document.querySelector('#view-userId').innerHTML = ''
+    const types = [
+        {name: 'type 1'},
+        {name: 'type 2'},
+    ]
+    document.querySelector('#view-type').innerHTML = ''
 
-    users.forEach(x => {
+    types.forEach(x => {
         let op = document.createElement('option')
         op.value = x.name
         op.innerText = x.name
-        document.querySelector('#view-userId').appendChild(op)
+        document.querySelector('#view-type').appendChild(op)
     })
     
     formFields.container.classList.remove('hide');
@@ -98,12 +94,12 @@ const getDatas = async() => {
         const liViewBtn = document.createElement('button')
         const liView = document.createElement('li')
         let lis = []
+
         Object.keys(formFields).forEach((key, i) => {
-            // return document.createElement('li')
             lis.push(document.createElement('li'))
-            // console.log(key, data[key])
             lis[i].innerText = data[key]
         }) 
+        
         lis.shift()
         
         liViewBtn.innerText = 'VIEW'

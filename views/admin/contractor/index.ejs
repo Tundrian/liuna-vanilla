@@ -3,14 +3,72 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
+    <!-- Title -->
     <h1 class="title-text">Contractor Management</h1>
 
-    <%- include("../../partials/table.ejs") %>
-    
-    <%- include("../../partials/modal.ejs", {title: 'Contractor'}, JSON.stringify(fields)) %>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Description</li>
+                    <li>Category</li>
+                    <li>Type</li>
+                    <li>Acquired Date</li>
+                    <li>Reminder Date</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Name"></li>
+                    <li><input type="text" placeholder="Description"></li>
+                    <li><input type="text" placeholder="Category"></li>
+                    <li><input type="text" placeholder="Type"></li>
+                    <li><input type="text" placeholder="Acquired Date"></li>
+                    <li><input type="text" placeholder="Reminder Date"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2>Contractor</h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="view-name" disabled>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="view-description" disabled>
+                    <label for="view-category">Category</label>
+                    <select name="view-category" id="view-category" disabled></select> 
+                    <label for="type">Type</label>
+                    <input type="text" name="type" id="view-type" disabled>
+                    <label for="acquiredDate">Acquired Date</label>
+                    <input type="date" name="acquiredDate" id="view-acquiredDate" disabled>
+                    <label for="reminderDate">Reminder Date</label>
+                    <input type="date" name="reminderDate" id="view-reminderDate" disabled>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Contractor</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
 
-    <script type="text/javascript" src="../js/contractor.js"></script>
+    <script type="module" src="../js/contractor.js"></script>
+    
 </body>
 </html>

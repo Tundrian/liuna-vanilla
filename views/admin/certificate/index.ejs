@@ -3,18 +3,64 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
+    <!-- Title -->
     <h1 class="title-text">Certificate Management</h1>
 
-    <%- include("../../partials/table.ejs", JSON.stringify(fields)) %>
-    
-    <%- include("../../partials/modal.ejs", {title: 'Members'}, JSON.stringify(fields)) %>
-        <script>
-            const fields = <%-JSON.stringify(fields)%>
-            const dataType = <%-JSON.stringify(dataType)%>
-        </script>
-    <script type="text/javascript" src="../js/member.js"></script>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Description</li>
+                    <li>Type</li>
+                    <li>Expiration Length</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Name"></li>
+                    <li><input type="text" placeholder="Description"></li>
+                    <li><input type="text" placeholder="Type"></li>
+                    <li><input type="text" placeholder="Expiration length"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Add Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2>Certificate</h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="view-name" disabled>
+                    <label for="description">Description</label>
+                    <input type="text" name="role" id="view-description" disabled>
+                    <label for="view-type">Type</label>
+                    <select name="view-type" id="view-type" disabled></select> 
+                    <label for="expirationLength">Expiration length</label>
+                    <input type="text" name="expirationLength" id="view-expirationLength" disabled>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Certificate</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="../js/certificate.js"></script>
     
 </body>
 </html>

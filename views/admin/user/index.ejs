@@ -50,7 +50,7 @@
                     <label for="name">Name</label>
                     <input type="text" name="name" id="view-name" disabled>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="view-email" disabled>
+                    <input type="email" name="email" id="view-email" disabled>
 
                     <label for="view-verified">Verified</label>
 
@@ -60,13 +60,21 @@
                     </div>
 
                     <label for="theme">Theme</label>
-                    <input type="text" name="theme" id="view-theme" disabled>
+                    <select name="themSelect" id="view-theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                    <!-- <input type="text" name="theme" id="view-theme" disabled> -->
                     <label for="memberNumber">Member Number</label>
-                    <input type="text" name="memberNumber" id="view-memberNumber" disabled>
+                    <input type="number" name="memberNumber" id="view-memberNumber" disabled>
                     <label for="date">Date</label>
-                    <input type="text" name="date" id="view-date" disabled>
+                    <input type="date" name="date" id="view-date" disabled>
                     <label for="role">Role</label>
-                    <input type="text" name="role" id="view-role" disabled>
+                    <select name="roles" id="view-role">
+                        <option value="admin">Admin</option>
+                        <option value="member">Member</option>
+                    </select>
+                    <!-- <input type="text" name="role" id="view-role" disabled> -->
                     <button class="form-submit btn hide" type="submit">Submit New User</button>
                     <button class="btn edit-btn view-edit-button">Edit</button>
                     <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>

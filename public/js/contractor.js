@@ -1,21 +1,26 @@
 // Declaration of formFields and edited form field values
 let dataSelected = {
-    id: ''
+    name: '',
+    description: '',
+    category: '',
+    type: '',
+    acquiredDate: '',
+    reminderDate: '',
 }
 let formFields = {
     container: document.querySelector('.view-modal-container'),
+    name: document.querySelector('#view-name'),
+    description: document.querySelector('#view-description'),
+    category: document.querySelector('#view-category'),
+    type: document.querySelector('#view-type'),
+    acquiredDate: document.querySelector('#view-acquiredDate'),
+    reminderDate: document.querySelector('#view-reminderDate'),
 }
 
-// Populate formFields dynamically
-for(key in fields){
-    dataSelected[fields[key].id] = ''
-}
-
-for(key in fields){
-    formFields[fields[key].id] = document.querySelector(`#view-${fields[key].id}`)
-}
+const fetchUri = `../api/contractor`
 
 // Functions
+
 const closeModal = () => {
     
     formFields.container.classList.add('hide')
@@ -30,8 +35,8 @@ const closeModal = () => {
 }
 
 const openModal = async (e) => {
-    console.log(dataSelected, formFields)
     if(e !== 'add'){
+        handleModal('edit')
         await getData(e.target.getAttribute('data-id'))
     }
 
@@ -40,9 +45,21 @@ const openModal = async (e) => {
             formFields[key].value = dataSelected[key]
         } else if(dataSelected[key] === null){
             formFields[key].value = ''
-        } else {
+        } else if (formFields[key] === null){
+            formFields[key].value = ''
+        }else {
             formFields[key].value = formFields[key].value
         }
+    })
+
+    const categories = ['cat 1', 'cat 2']
+    document.querySelector('#view-category').innerHTML = ''
+
+    categories.forEach(x => {
+        let op = document.createElement('option')
+        op.value = x.name
+        op.innerText = x.name
+        document.querySelector('#view-category').appendChild(op)
     })
     
     formFields.container.classList.remove('hide');
@@ -50,7 +67,7 @@ const openModal = async (e) => {
 
 const getData = async (id) => {
 
-    const response = await fetch(`../api/${dataType}/${id}`)
+    const response = await fetch(`${fetchUri}/${id}`)
     const data = await response.json()
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = data[key] || ''
@@ -67,10 +84,10 @@ const getDatas = async() => {
             el.remove()
         })
     } 
-    const response = await fetch(`../api/${dataType}`)
+    const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
-    
+
     dataList.forEach(data => {
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
@@ -78,9 +95,7 @@ const getDatas = async() => {
         const liView = document.createElement('li')
         let lis = []
         Object.keys(formFields).forEach((key, i) => {
-            // return document.createElement('li')
             lis.push(document.createElement('li'))
-            console.log(key, data[key])
             lis[i].innerText = data[key]
         }) 
         lis.shift()
@@ -95,8 +110,8 @@ const getDatas = async() => {
         ul.classList.add('table-body')
 
         lis.forEach(li => ul.appendChild(li))
-
-        ul.appendChild(liViewBtn)
+        
+        ul.appendChild(liView)
         liContainer.appendChild(ul)
         list.appendChild(liContainer)
     })
@@ -113,7 +128,7 @@ const addData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/${dataType}`, {
+    const response = await fetch(`${fetchUri}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -136,7 +151,7 @@ const deleteData = async(e) => {
 
     handleModal('delete')
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`${fetchUri}/${dataSelected.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -177,7 +192,7 @@ const editData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/${dataType}/${dataSelected.id}`, {
+    const response = await fetch(`${fetchUri}/${dataSelected.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

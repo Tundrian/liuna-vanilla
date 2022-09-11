@@ -4,7 +4,7 @@ const CertificateSchema = mongoose.Schema({
     description: String,
     name: String,
     type: String,
-    expiration_length: Number
+    expirationLength: Number
 })
 
 module.exports = mongoose.model('Certificate', CertificateSchema)
