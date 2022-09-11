@@ -1,56 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const {
-    getMembers,
-    setMember,
-    getMember,
-    updateMember,
-    deleteMember
-} = require('../controllers/member')
-const {
-    getCertificates,
-    setCertificate,
-    getCertificate,
-    updateCertificate,
-    deleteCertificate
-} = require('../controllers/certificate')
-const {
-    getContractors,
-    setContractor,
-    getContractor,
-    updateContractor,
-    deleteContractor
-} = require('../controllers/contractor')
-const {
-    getCourses,
-    setCourse,
-    getCourse,
-    updateCourse,
-    deleteCourse
-} = require('../controllers/course')
-const {
-    getDispatches,
-    setDispatch,
-    getDispatch,
-    updateDispatch,
-    deleteDispatch
-} = require('../controllers/dispatch')
-const {
-    getTrainings,
-    setTraining,
-    getTraining,
-    updateTraining,
-    deleteTraining
-} = require('../controllers/training')
-const {
-    getUsers,
-    setUser,
-    getUser,
-    updateUser,
-    deleteUser,
-    updateUserMemberNumber
-} = require('../controllers/user')
+const { getMembers,      setMember,      getMember,      updateMember,      deleteMember }      = require('../controllers/member')
+const { getCertificates, setCertificate, getCertificate, updateCertificate, deleteCertificate } = require('../controllers/certificate')
+const { getContractors,  setContractor,  getContractor,  updateContractor,  deleteContractor }  = require('../controllers/contractor')
+const { getCourses,      setCourse,      getCourse,      updateCourse,      deleteCourse }      = require('../controllers/course')
+const { getDispatches,   setDispatch,    getDispatch,    updateDispatch,    deleteDispatch }    = require('../controllers/dispatch')
+const { getTrainings,    setTraining,    getTraining,    updateTraining,    deleteTraining }    = require('../controllers/training')
+const { getUsers,        setUser,        getUser,        updateUser,        deleteUser, 
+        updateUserMemberNumber}                                                                 = require('../controllers/user')
 
 router.route('/certificate/:id').get(getCertificate).delete(deleteCertificate).put(updateCertificate)
 router.route('/certificate').get(getCertificates).post(setCertificate)

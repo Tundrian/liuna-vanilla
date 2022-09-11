@@ -3,7 +3,13 @@ const express = require('express')
 require('dotenv').config()
 const colors = require('colors')
 const cors = require('cors')
-
+const passport = require('passport')
+const session = require('express-session')
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
+const methodOverride = require('method-override')
+const flash = require('express-flash')
+const logger = require('morgan')
 // Modules
 const connectDB = require('./config/config')
 
@@ -12,6 +18,7 @@ const PORT = process.env.PORT
 
 // Middleware
 const app = express()
+require('./config/passport')(passport)
 app.use(cors())
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
