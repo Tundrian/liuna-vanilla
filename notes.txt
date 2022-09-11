@@ -53,6 +53,7 @@ User
     - Fix date formatting on table
     - change undefined values on table to just show empty string
 
+<<<<<<< HEAD
 User is now added to the system
 Next step is to provide a set list of selectable roles (admin, member)
 Selectable list of themes (light, dark)
@@ -81,3 +82,13 @@ Finally, create contractor records and assign dispatches (with date ranges) to t
 Once all admin forms are created and validated, validate member views.
 
 For now, just show a view of all upcoming scheduled training sessions
+=======
+        - fix button not changing to add after closing modal
+
+===================================================================
+
+added members
+added users
+
+now add contractors (generic)
+>>>>>>> 8acf01038bfbb937fed4e43db6b2a46740f1f670
