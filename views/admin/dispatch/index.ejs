@@ -3,14 +3,76 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
+    <!-- Title -->
     <h1 class="title-text">Dispatch Management</h1>
 
-    <%- include("../../partials/table.ejs") %>
-    
-    <%- include("../../partials/modal.ejs", {title: 'Dispatch'}, JSON.stringify(fields)) %>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Contractor ID</li>
+                    <li>Name</li>
+                    <li>Description</li>
+                    <li>Type</li>
+                    <li>Length</li>
+                    <li>Start Date</li>
+                    <li>End Date</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Contractor ID"></li>
+                    <li><input type="text" placeholder="Name"></li>
+                    <li><input type="text" placeholder="Description"></li>
+                    <li><input type="text" placeholder="Type"></li>
+                    <li><input type="text" placeholder="Length"></li>
+                    <li><input type="text" placeholder="Start Date"></li>
+                    <li><input type="text" placeholder="End Date"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Add Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2>Dispatch</h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="view-contractorId">Contractor ID</label>
+                    <select name="view-contractorId" id="view-contractorId" disabled>Contractor ID</label>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="view-name" disabled>
+                    <label for="view-description">Description</label>
+                    <input type="text" name="view-description" id="view-description" disabled>
+                    <label for="type">Type</label>
+                    <select name="type" id="view-type" disabled></select>
+                    <label for="length">length</label>
+                    <input type="number" name="length" id="view-length" disabled>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="startDate" id="view-startDate" disabled>
+                    <label for="endDate">End Date</label>
+                    <input type="date" name="endDate" id="view-endDate" disabled>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Dispatch</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
 
-    <script type="text/javascript" src="../js/dispatch.js"></script>
+    <script type="module" src="../js/dispatch.js"></script>
+    
 </body>
 </html>

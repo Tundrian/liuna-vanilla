@@ -3,14 +3,68 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
+    <!-- Title -->
     <h1 class="title-text">Course Management</h1>
 
-    <%- include("../../partials/table.ejs") %>
-    
-    <%- include("../../partials/modal.ejs", {title: 'Course'}, JSON.stringify(fields)) %>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Name</li>
+                    <li>Description</li>
+                    <li>Cetegory</li>
+                    <li>Renewal Length</li>
+                    <li>length</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Name"></li>
+                    <li><input type="text" placeholder="Description"></li>
+                    <li><input type="text" placeholder="Category"></li>
+                    <li><input type="text" placeholder="Renewal length"></li>
+                    <li><input type="text" placeholder="Length"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Add Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2>Course</h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="view-name" disabled>
+                    <label for="view-description">Description</label>
+                    <input type="text" name="view-description" id="view-description" disabled>
+                    <label for="category">Category</label>
+                    <select name="category" id="view-category" disabled></select>
+                    <label for="renewalLength">Renewal Length</label>
+                    <input type="number" name="renewalLength" id="view-renewalLength" disabled>
+                    <label for="length">length</label>
+                    <input type="number" name="length" id="view-length" disabled>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Course</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
 
-    <script type="text/javascript" src="../js/course.js"></script>
+    <script type="module" src="../js/course.js"></script>
+    
 </body>
 </html>

@@ -3,14 +3,83 @@
     <%- include("../../partials/header.ejs") %>
 <body class="admin-page">
 
+    <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
+    <!-- Title -->
     <h1 class="title-text">Training Session Management</h1>
 
-    <%- include("../../partials/table.ejs") %>
-    
-    <%- include("../../partials/modal.ejs", {title: 'Training Session'}, JSON.stringify(fields)) %>
+    <!-- Table -->
+    <ul class="fetch-view-results table-container ">
+        <ul class="data-buttons table-options">
+            <li><button class="fetch-view-btn btn">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+        </ul>
+            <li class="table-header">
+                <ul>
+                    <li>Course ID</li>
+                    <li>Start Date</li>
+                    <li>End Date</li>
+                    <li>Scheduled Dates</li>
+                    <li>Available Slots</li>
+                    <li>Filled Slots</li>
+                    <li>Type</li>
+                    <li>Certification Name</li>
+                    <li>Edit</li>
+                </ul>
+                <ul class="table-filter">
+                    <li><input type="text" placeholder="Course ID"></li>
+                    <li><input type="text" placeholder="Start Date"></li>
+                    <li><input type="text" placeholder="End Date"></li>
+                    <li><input type="text" placeholder="Scheduled Dates"></li>
+                    <li><input type="text" placeholder="Available Slots"></li>
+                    <li><input type="text" placeholder="Open Slots"></li>
+                    <li><input type="text" placeholder="Filled Slots"></li>
+                    <li><input type="text" placeholder="Type"></li>
+                    <li><input type="text" placeholder="Certification Name"></li>
+                </ul>
+            </li>
+    </ul>
+    <!-- Add Modal -->
+    <section class="view-modal-container hide"> 
+        <div class="view-modal-inner">
+            <button class="btn view-modal-close-btn">X</button>
+            <div class="view-modal-header">
+                <h2>Training Session</h2>
+            </div>
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="view-courseId">Course ID</label>
+                    <select name="view-courseId" id="view-courseId" disabled>Contractor ID</label>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="name" id="view-startDate" disabled>
+                    <label for="view-endDate">End Date</label>
+                    <input type="date" name="view-endDate" id="view-endDate" disabled>
+                    <label for="scheduledDates">Scheduled Dates</label>
+                    <input name="scheduledDates" id="view-scheduledDates" type="text" disabled>
+                    <label for="availableSlots">Available Slots</label>
+                    <input type="number" name="availableSlots" id="view-availableSlots" disabled>
+                    <label for="openSlots">Open Slots</label>
+                    <input type="number" name="openSlots" id="view-openSlots" disabled>
+                    <label for="filledSlots">Filled Slots</label>
+                    <input type="number" name="filledSlots" id="view-filledSlots" disabled>
+                    <label for="type">Type</label>
+                    <input type="text" name="type" id="view-type" disabled>
+                    <label for="certificationName">Certification Name</label>
+                    <select name="view-certificationName" id="view-certificationName" disabled></select>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Training Session</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+            <div class="view-modal-footer">
+            </div>
+        </div>
+    </section>
 
-    <script type="text/javascript" src="../js/training.js"></script>
+    <script type="module" src="../js/session.js"></script>
+    
 </body>
 </html>

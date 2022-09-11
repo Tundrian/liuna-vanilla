@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const DispatchSchema = mongoose.Schema({
-    contractor_id: String,
+    contractorId: String,
     description: String,
     name: String,
     type: String,
