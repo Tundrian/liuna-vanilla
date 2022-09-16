@@ -19,9 +19,12 @@
                 <ul>
                     <li>Name</li>
                     <li>Description</li>
-                    <li>Cetegory</li>
+                    <li>Category</li>
                     <li>Renewal Length</li>
-                    <li>length</li>
+                    <li>Renewal Length Units</li>
+                    <li>Length</li>
+                    <li>Length Units</li>
+                    <li>Certificate</li>
                     <li>Edit</li>
                 </ul>
                 <ul class="table-filter">
@@ -29,7 +32,10 @@
                     <li><input type="text" placeholder="Description"></li>
                     <li><input type="text" placeholder="Category"></li>
                     <li><input type="text" placeholder="Renewal length"></li>
+                    <li><input type="text" placeholder="Renewal length Units"></li>
                     <li><input type="text" placeholder="Length"></li>
+                    <li><input type="text" placeholder="Length Units"></li>
+                    <li><input type="text" placeholder="Certificate"></li>
                 </ul>
             </li>
     </ul>
@@ -48,11 +54,32 @@
                     <input type="text" name="view-description" id="view-description" disabled>
                     <label for="category">Category</label>
                     <select name="category" id="view-category" disabled></select>
-                    <label for="renewalLength">Renewal Length</label>
-                    <input type="number" name="renewalLength" id="view-renewalLength" disabled>
-                    <label for="length">length</label>
-                    <input type="number" name="length" id="view-length" disabled>
-                    
+                    <label for="renewalLengthSection">Renewal Length</label>
+                    <div name="renewalLengthSection">
+                        <label for="renewalLengthUnits">Renewal Length Units</label>
+                        <select name="renewalLengthUnits" id="view-renewalLengthUnits">
+                            <option value="years" selected>Years</option>
+                            <option value="months">Months</option>
+                            <option value="days">Weeks</option>
+                            <option value="days">Days</option>
+                        </select>
+                        <label for="renewalLength">Renewal Length</label>
+                        <input type="number" name="renewalLength" id="view-renewalLength" disabled>
+                    </div>
+                    <label for="lengthSection">Course Length</label>
+                    <div name="lengthSection">
+                        <label for="lengthUnits">Length Units</label>
+                        <select name="lengthUnits" id="view-lengthUnits">
+                            <option value="days" selected>Days</option>
+                            <option value="days">Weeks</option>
+                            <option value="months">Months</option>
+                            <option value="years">Years</option>
+                        </select>
+                        <label for="length">Length</label>
+                        <input type="number" name="length" id="view-length" disabled>
+                    </div>
+                    <label for="certificate">Certificate</label>
+                    <select name="certificate" id="view-certificate"></select>
                     <button class="form-submit btn hide" type="submit">Submit New Course</button>
                     <button class="btn edit-btn view-edit-button">Edit</button>
                     <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>

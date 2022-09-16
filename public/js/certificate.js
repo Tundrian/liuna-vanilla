@@ -6,6 +6,7 @@ let dataSelected = {
     description: '',
     type: '',
     expirationLength: '',
+    expirationUnits: '',
 }
 let formFields = {
     container: document.querySelector('.view-modal-container'),
@@ -13,6 +14,7 @@ let formFields = {
     description: document.querySelector('#view-description'),
     type: document.querySelector('#view-type'),
     expirationLength: document.querySelector('#view-expirationLength'),
+    expirationUnits: document.querySelector('#view-expirationUnits'),
 }
 
 const fetchUri = `../api/certificate`

@@ -6,7 +6,10 @@ let dataSelected = {
     description: '',
     category: '',
     renewalLength: '',
+    renewalLengthUnits: '',
     length: '',
+    lengthUnits: '',
+    certificate: '',
 }
 let formFields = {
     container: document.querySelector('.view-modal-container'),
@@ -14,7 +17,10 @@ let formFields = {
     description: document.querySelector('#view-description'),
     category: document.querySelector('#view-category'),
     renewalLength: document.querySelector('#view-renewalLength'),
+    renewalLengthUnits: document.querySelector('#view-renewalLengthUnits'),
     length: document.querySelector('#view-length'),
+    lengthUnits: document.querySelector('#view-lengthUnits'),
+    certificate: document.querySelector('#view-certificate'),
 }
 
 const fetchUri = `../api/course`
@@ -40,7 +46,6 @@ const openModal = async (e) => {
     }   
 
     Object.keys(formFields).forEach(key => {
-        console.log('key: ', key)
         if(key in dataSelected && dataSelected[key] != null){
             formFields[key].value = dataSelected[key]
         } else if(dataSelected[key] === null){
@@ -65,6 +70,17 @@ const openModal = async (e) => {
         document.querySelector('#view-category').appendChild(op)
     })
     
+    let response = await fetch(`../api/certificate`)
+    let certificates = await response.json()
+    document.querySelector('#view-certificate').innerHTML = ''
+
+    certificates.forEach(x => {
+        let op = document.createElement('option')
+        op.value = x._id
+        op.innerText = x.name
+        document.querySelector('#view-certificate').appendChild(op)
+    })
+
     formFields.container.classList.remove('hide');
 }
 
@@ -90,8 +106,11 @@ const getDatas = async() => {
     const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
+    
+    const certRes = await fetch(`../api/certificate`)
+    const certList = await certRes.json()
 
-    dataList.forEach(data => {
+    await dataList.forEach(data => {
         const liContainer = document.createElement('li')
         const ul = document.createElement('ul')
         const liViewBtn = document.createElement('button')
@@ -100,7 +119,11 @@ const getDatas = async() => {
 
         Object.keys(formFields).forEach((key, i) => {
             lis.push(document.createElement('li'))
-            lis[i].innerText = data[key]
+            if(key === 'certificate'){
+                lis[i].innerText = certList.find(cert => cert._id === data[key]).name
+            }else{
+                lis[i].innerText = data[key]
+            }
         }) 
         
         lis.shift()

@@ -18,7 +18,10 @@ const setCourse = asyncHandler(async (req, res) => {
             description: req.body.description,
             category: req.body.category,
             renewalLength: req.body.renewalLength,
-            length: req.body.length
+            renewalLengthUnits: req.body.renewalLengthUnits,
+            length: req.body.length,
+            lengthUnits: req.body.lengthUnits,
+            certificate: req.body.certificate
         })
         res.status(200).json(course)
     } catch(error){
@@ -47,7 +50,10 @@ const updateCourse = asyncHandler(async (req, res) => {
         description: req.body.description,
         category: req.body.category,
         renewalLength: req.body.renewalLength,
-        length: req.body.length
+        renewalLengthUnits: req.body.renewalLengthUnits,
+        length: req.body.length,
+        lengthUnits: req.body.lengthUnits,
+        certificate: req.body.certificate
     })
 
     res.status(200).json(updatedCourse)

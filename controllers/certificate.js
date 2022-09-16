@@ -17,7 +17,8 @@ const setCertificate = asyncHandler(async (req, res) => {
             description: req.body.description,
             name: req.body.name,
             type: req.body.type,
-            expiration_length: req.body.expiration_length
+            expirationLength: req.body.expirationLength,
+            expirationUnits: req.body.expirationUnits
         })
         res.status(200).json(certificate)
     } catch(error){
@@ -45,7 +46,8 @@ const updateCertificate = asyncHandler(async (req, res) => {
         description: req.body.description,
         name: req.body.name,
         type: req.body.type,
-        expiration_length: req.body.expiration_length
+        expirationLength: req.body.expirationLength,
+        expirationUnits: req.body.expirationUnits
     })
 
     res.status(200).json(updatedCertificate)

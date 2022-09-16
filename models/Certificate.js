@@ -5,6 +5,7 @@ const CertificateSchema = mongoose.Schema({
     name: String,
     type: String,
     expirationLength: Number,
+    expirationUnits: String
     
 })
 
