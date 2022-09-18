@@ -1,15 +1,22 @@
 const mongoose = require('mongoose')
 
 const TrainingSchema = mongoose.Schema({
-    courseId: String,
+    courseId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course"
+    },
     startDate: Date,
     endDate: Date,
-    scheduledDates: String,
-    availableSlots: Number,
+    length: Number,
+    scheduledDates: [Date],
+    totalSlots: Number,
     openSlots: Number,
     filledSlots: Number,
     type: String,
-    certificationName: String
+    attendees: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Member"
+    },
 })
 
 module.exports = mongoose.model('Training', TrainingSchema)

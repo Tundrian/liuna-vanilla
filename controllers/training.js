@@ -17,12 +17,13 @@ const setTraining = asyncHandler(async (req, res) => {
             courseId: req.body.courseId,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
+            length: req.body.courseLength,
             scheduledDates: req.body.scheduledDates,
-            availableSlots: req.body.availableSlots,
+            totalSlots: req.body.availableSlots,
             openSlots: req.body.openSlots,
             filledSlots: req.body.filledSlots,
             type: req.body.type,
-            certificationName: req.body.certificationName
+            attendees: req.body.attendees
         })
         res.status(200).json(training)
     } catch(error){
@@ -50,12 +51,13 @@ const updateTraining = asyncHandler(async (req, res) => {
         courseId: req.body.courseId,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
+        length: req.body.courseLength,
         scheduledDates: req.body.scheduledDates,
-        availableSlots: req.body.availableSlots,
+        totalSlots: req.body.availableSlots,
         openSlots: req.body.openSlots,
         filledSlots: req.body.filledSlots,
         type: req.body.type,
-        certificationName: req.body.certificationName
+        attendees: req.body.attendees
     })
 
     res.status(200).json(updatedTraining)

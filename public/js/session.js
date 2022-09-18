@@ -1,29 +1,32 @@
-// import {closeModal, handleModal, addClicked, enableEdit} from './common.js'
-
 // Declaration of formFields and edited form field values
 let dataSelected = {
     courseId: '',
     startDate: '',
     endDate: '',
+    courseLength: '',
     scheduledDates: '',
-    availableSlots: '',
+    totalSlots: '',
     openSlots: '',
     filledSlots: '',
     type: '',
-    certificationName: ''
+    attendees: '',
 }
+
 let formFields = {
     container: document.querySelector('.view-modal-container'),
-    courseId: document.querySelector('#view-courseId'),
+    courseId: document.querySelector('#view-course'),
     startDate: document.querySelector('#view-startDate'),
     endDate: document.querySelector('#view-endDate'),
+    courseLength: document.querySelector('#view-courseLength'),
     scheduledDates: document.querySelector('#view-scheduledDates'),
-    availableSlots: document.querySelector('#view-availableSlots'),
+    totalSlots: document.querySelector('#view-totalSlots'),
     openSlots: document.querySelector('#view-openSlots'),
     filledSlots: document.querySelector('#view-filledSlots'),
     type: document.querySelector('#view-type'),
     certificationName: document.querySelector('#view-certificationName'),
 }
+
+const hiddenFromTable = ['container', 'scheduledDates', 'attendees']
 
 const fetchUri = `../api/training`
 
@@ -39,7 +42,6 @@ const closeModal = () => {
         dataSelected[key] = null
     })
 }
-
 
 const openModal = async (e) => {
     if(e !== 'add'){
@@ -73,14 +75,15 @@ const openModal = async (e) => {
 
     let resCourse = await fetch(`../api/course`)
     let courses = await resCourse.json()
-    document.querySelector('#view-courseId').innerHTML = ''
+    document.querySelector('#view-course').innerHTML = ''
 
     courses.forEach(x => {
         let op = document.createElement('option')
         op.value = x.name
         op.innerText = x.name
-        document.querySelector('#view-courseId').appendChild(op)
+        document.querySelector('#view-course').appendChild(op)
     })
+
     formFields.container.classList.remove('hide');
 }
 
@@ -106,6 +109,13 @@ const getDatas = async() => {
     const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
+    console.log(dataList)
+    const courseRes = await fetch(`../api/course/`)
+
+    let courses = await courseRes.json()
+    courses = courses.map(course => {
+        return {id: course._id, name: course.name}
+    })
 
     dataList.forEach(data => {
         const liContainer = document.createElement('li')
@@ -115,8 +125,16 @@ const getDatas = async() => {
         let lis = []
 
         Object.keys(formFields).forEach((key, i) => {
-            lis.push(document.createElement('li'))
-            lis[i].innerText = data[key]
+            if(!hiddenFromTable.includes(key)){
+                lis.push(document.createElement('li'))
+                console.log('key: ', key)
+                if(key === 'courseId'){
+                    console.log('courses: ', courses, data[key], key, courses.find(course => data[key] === course.id))
+                    lis[lis.length - 1].innerText = courses.find(course => data[key] === course.id)
+                }else{
+                    lis[lis.length - 1].innerText = data[key]
+                }
+            }
         }) 
         
         lis.shift()
@@ -260,6 +278,54 @@ const handleModal = (type) => {
     }
 }
 
+const updateScheduledDates = () => {
+
+   const courseLength = document.querySelector('#view-courseLength').value
+   const scheduleDates = document.querySelector('#view-scheduledDates')
+
+   const currentDates = document.querySelector('#view-scheduledDates')
+   currentDates.innerHTML = ''
+
+//    let timeOptions = document.createElement('datalist')
+//    timeOptions.id = 'timeSlots'
+//    timeOptions.list="timeOptionsList"
+
+//    timeOptions.appendChild(document.createElement('option').value(''))
+   
+//    <datalist id="browsers">
+//         <option value="Edge">
+//         <option value="Firefox">
+//         <option value="Chrome">
+//         <option value="Opera">
+//         <option value="Safari">
+//     </datalist>
+
+    for(let i = 0; i < courseLength; i++){
+       let label = document.createElement('label')
+       let timeLabel = document.createElement('label')
+
+       let input = document.createElement('input')
+       let timeInput = document.createElement('input')
+
+       label.innerText = `Class ${i+1} Date`
+       label.setAttribute('for', `class-${i+1}-date`)
+       input.type = "date"
+       input.name = `class-${i+1}-date`
+       input.id = `view-class${i+1}Date`
+
+       timeLabel.innerText = `Class ${i+1} Time`
+       timeLabel.setAttribute('for', `class-${i+1}-time`)
+       timeInput.type = "time"
+       timeInput.name = `class-${i+1}-time`
+       timeInput.id = `view-class${i+1}Time`
+
+       scheduleDates.appendChild(label)
+       scheduleDates.appendChild(input)
+       scheduleDates.appendChild(timeLabel)
+       scheduleDates.appendChild(timeInput)
+    }
+}
+
 // Event Listeners
 document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
@@ -268,4 +334,7 @@ document.querySelector('.view-modal-close-btn').addEventListener('click', closeM
 document.querySelector('.view-delete-button').addEventListener('click', deleteData)
 document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
+document.querySelector('#view-courseLength').addEventListener('change', updateScheduledDates)
+
 getDatas()
+

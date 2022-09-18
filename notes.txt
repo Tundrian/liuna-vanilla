@@ -83,3 +83,7 @@ Once all admin forms are created and validated, validate member views.
 For now, just show a view of all upcoming scheduled training sessions
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Course {
+    
+}

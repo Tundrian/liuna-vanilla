@@ -15,7 +15,7 @@ const CourseSchema = mongoose.Schema({
     certificate: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Certificate"
-    }
+    },
 })
 
 module.exports = mongoose.model('Course', CourseSchema)
