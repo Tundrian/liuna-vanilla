@@ -286,19 +286,20 @@ const updateScheduledDates = () => {
    const currentDates = document.querySelector('#view-scheduledDates')
    currentDates.innerHTML = ''
 
-//    let timeOptions = document.createElement('datalist')
+   let timeOptions = document.createElement('datalist')
 //    timeOptions.id = 'timeSlots'
-//    timeOptions.list="timeOptionsList"
-
-//    timeOptions.appendChild(document.createElement('option').value(''))
-   
-//    <datalist id="browsers">
-//         <option value="Edge">
-//         <option value="Firefox">
-//         <option value="Chrome">
-//         <option value="Opera">
-//         <option value="Safari">
-//     </datalist>
+   timeOptions.list="timeOptionsList"
+   timeOptions.appendChild(document.createElement('option').value(''))
+   /*
+    const to create and hold the datalaist
+   */
+   <datalist id="browsers">
+        <option value=" ">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+    </datalist>
 
     for(let i = 0; i < courseLength; i++){
        let label = document.createElement('label')
