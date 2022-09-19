@@ -9,7 +9,7 @@ let dataSelected = {
     openSlots: '',
     filledSlots: '',
     type: '',
-    attendees: '',
+    // attendees: [],
 }
 
 let formFields = {
@@ -26,7 +26,7 @@ let formFields = {
     certificationName: document.querySelector('#view-certificationName'),
 }
 
-const hiddenFromTable = ['container', 'scheduledDates', 'attendees']
+const hiddenFromTable = ['container', 'scheduledDates', 'attendees', 'courseLength']
 
 const fetchUri = `../api/training`
 
@@ -79,7 +79,7 @@ const openModal = async (e) => {
 
     courses.forEach(x => {
         let op = document.createElement('option')
-        op.value = x.name
+        op.value = x._id
         op.innerText = x.name
         document.querySelector('#view-course').appendChild(op)
     })
@@ -109,7 +109,6 @@ const getDatas = async() => {
     const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
-    console.log(dataList)
     const courseRes = await fetch(`../api/course/`)
 
     let courses = await courseRes.json()
@@ -127,17 +126,19 @@ const getDatas = async() => {
         Object.keys(formFields).forEach((key, i) => {
             if(!hiddenFromTable.includes(key)){
                 lis.push(document.createElement('li'))
-                console.log('key: ', key)
-                if(key === 'courseId'){
-                    console.log('courses: ', courses, data[key], key, courses.find(course => data[key] === course.id))
-                    lis[lis.length - 1].innerText = courses.find(course => data[key] === course.id)
+                console.log(key, (data[key]))
+                if(key === 'courseId' && courses.find(course => data[key] === course.id) !== undefined){
+                    console.log(courses.find(course => data[key] === course.id)['name'])
+                    lis[lis.length - 1].innerText = courses.find(course => data[key] === course.id)['name']
+                }if(key === 'startDate' || key === 'endDate'){
+                    lis[lis.length - 1].innerText = formatDate(data[key])
                 }else{
                     lis[lis.length - 1].innerText = data[key]
                 }
             }
         }) 
         
-        lis.shift()
+        // lis.shift()
         
         liViewBtn.innerText = 'VIEW'
         liViewBtn.classList.add('view-btn', 'btn')
@@ -155,6 +156,7 @@ const getDatas = async() => {
         list.appendChild(liContainer)
     })
 
+    const dates = document.querySelectorAll('input').filter(x => x.type === 'Date')
     // Add event listeners to all view buttons
     document.querySelectorAll('.view-btn').forEach(btn => btn.addEventListener('click', openModal))
 }
@@ -286,45 +288,28 @@ const updateScheduledDates = () => {
    const currentDates = document.querySelector('#view-scheduledDates')
    currentDates.innerHTML = ''
 
-   let timeOptions = document.createElement('datalist')
-//    timeOptions.id = 'timeSlots'
-   timeOptions.list="timeOptionsList"
-   timeOptions.appendChild(document.createElement('option').value(''))
-   /*
-    const to create and hold the datalaist
-   */
-   <datalist id="browsers">
-        <option value=" ">
-        <option value="Firefox">
-        <option value="Chrome">
-        <option value="Opera">
-        <option value="Safari">
-    </datalist>
 
     for(let i = 0; i < courseLength; i++){
        let label = document.createElement('label')
-       let timeLabel = document.createElement('label')
 
        let input = document.createElement('input')
-       let timeInput = document.createElement('input')
 
        label.innerText = `Class ${i+1} Date`
        label.setAttribute('for', `class-${i+1}-date`)
-       input.type = "date"
+       input.type = "datetime-local"
        input.name = `class-${i+1}-date`
        input.id = `view-class${i+1}Date`
 
-       timeLabel.innerText = `Class ${i+1} Time`
-       timeLabel.setAttribute('for', `class-${i+1}-time`)
-       timeInput.type = "time"
-       timeInput.name = `class-${i+1}-time`
-       timeInput.id = `view-class${i+1}Time`
-
        scheduleDates.appendChild(label)
        scheduleDates.appendChild(input)
-       scheduleDates.appendChild(timeLabel)
-       scheduleDates.appendChild(timeInput)
     }
+}
+
+const formatDate = (date) => {
+    let newDate = new Date(date)
+    const offset = newDate.getTimezoneOffset()
+    const yourDate = new Date(newDate.getTime() - (offset*60*1000))
+    return yourDate.toISOString().split('T')[0]
 }
 
 // Event Listeners

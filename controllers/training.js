@@ -23,7 +23,7 @@ const setTraining = asyncHandler(async (req, res) => {
             openSlots: req.body.openSlots,
             filledSlots: req.body.filledSlots,
             type: req.body.type,
-            attendees: req.body.attendees
+            // attendees: req.body.attendees
         })
         res.status(200).json(training)
     } catch(error){
@@ -57,7 +57,7 @@ const updateTraining = asyncHandler(async (req, res) => {
         openSlots: req.body.openSlots,
         filledSlots: req.body.filledSlots,
         type: req.body.type,
-        attendees: req.body.attendees
+        // attendees: req.body.attendees
     })
 
     res.status(200).json(updatedTraining)
