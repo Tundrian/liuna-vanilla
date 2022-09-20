@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js -e js,html,css,ejs,scss",
-    "tailwind:css": "postcss ./src/input.css -o public/css/style.css",
     "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
   },
   "keywords": [],
