@@ -3,7 +3,11 @@ module.exports = {
   content: ["./src/*.{html,js,css}",
   "./views/**/*.ejs",],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero': "url('/public/images/onion-splash.jpg')",
+      }
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
