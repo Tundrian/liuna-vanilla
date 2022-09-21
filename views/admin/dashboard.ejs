@@ -3,18 +3,108 @@
     <%- include("../partials/header.ejs") %>
 <body>
     <%- include("../partials/nav.ejs") %>
-    <h1 class="title-text">Admin Dashboard</h1>
+    <h1 class="title-text text-center text-5xl py-10">Admin Dashboard</h1>
     
-    <ul class="dashboard-container">
-        <li><a href="/admin/member">Member Management</a> </li>
-        <li><a href="/admin/certificate">Certificate Management</a> </li>
-        <li><a href="/admin/contractor">Contractor Management</a> </li>
-        <li><a href="/admin/course">Course Management</a> </li>
-        <li><a href="/admin/dispatch">Dispatch Management</a> </li>
-        <li><a href="/admin/trainingSession">Training Session Management</a> </li>
-        <li><a href="/admin/user">User Management</a> </li>
-        <li><a href="/">Payments</a></li>
-        <li><a href="/">Reports</a></li>
+    <ul class="dashboard-container grid grid-cols-4 gap-4 mx-5">
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/member.jpg" alt="members" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/member">Member Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/certification.jpg" alt="certificates" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/certificate">Certificate Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/contractor.jpg" alt="contractor" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/contractor">Contractor Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/course.jpg" alt="course" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/course">Course Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/dispatch.jpg" alt="dispatch" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/dispatch">Dispatch Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/training.jpg" alt="training session" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/trainingSession">Training Session Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/user.jpg" alt="users" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/admin/user">User Management</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/payment.jpg" alt="payments" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/">Payments</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <div class="card w-96 bg-base-100 bg-slate-900 shadow-xl">
+              <figure><img src="../images/reports.jpg" alt="reports" /></figure>
+              <div class="card-body">
+                <!-- <h2 class="card-title">Member Management</h2> -->
+                <div class="card-actions justify-center w-full">
+                  <button class="btn bg-blue-800 text-xl"><a href="/">Reports</a></button>
+                </div>
+              </div>
+            </div>
+        </li>
     </ul>
 </body>
 </html>

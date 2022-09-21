@@ -1884,6 +1884,13 @@ html {
   flex-grow: 1;
 }
 
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
 .card figure {
   display: flex;
   align-items: center;
@@ -2474,6 +2481,15 @@ html {
   line-height: 1.25rem;
 }
 
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
 .checkbox:focus-visible {
   outline: 2px solid hsl(var(--bc));
   outline-offset: 2px;
@@ -2972,10 +2988,18 @@ body[dir="rtl"] .checkbox:checked,
   line-height: 1.25rem;
 }
 
+.card-compact .card-title {
+  margin-bottom: 0.25rem;
+}
+
 .card-normal .card-body {
   padding: var(--padding-card, 2rem);
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.card-normal .card-title {
+  margin-bottom: 0.75rem;
 }
 
 .sr-only {
@@ -3066,6 +3090,10 @@ body[dir="rtl"] .checkbox:checked,
   width: 100%;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -3088,6 +3116,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .grid-flow-col {
   grid-auto-flow: column;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -3167,6 +3199,21 @@ body[dir="rtl"] .checkbox:checked,
   background-color: rgb(154 52 18 / var(--tw-bg-opacity));
 }
 
+.bg-base-100 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
+.bg-blue-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+}
+
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
@@ -3232,6 +3279,11 @@ body[dir="rtl"] .checkbox:checked,
   padding-bottom: 1.5rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -3279,13 +3331,13 @@ body[dir="rtl"] .checkbox:checked,
   line-height: 2rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
