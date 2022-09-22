@@ -92,15 +92,15 @@ const getDatas = async() => {
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
 
-    dataList.forEach(data => {
-        const liContainer = document.createElement('li')
-        const ul = document.createElement('ul')
+    dataList.forEach((data, i) => {
+        const liContainer = document.createElement('tr')
+        // const ul = document.createElement('th')
         const liViewBtn = document.createElement('button')
-        const liView = document.createElement('li')
+        const liView = document.createElement('td')
         let lis = []
         Object.keys(formFields).forEach((key, i) => {
             // return document.createElement('li')
-            lis.push(document.createElement('li'))
+            lis.push(document.createElement('td'))
             // console.log(key, data[key])
             lis[i].innerText = data[key]
         }) 
@@ -112,13 +112,15 @@ const getDatas = async() => {
         liViewBtn.setAttribute('data-id', data._id)
         
         liView.appendChild(liViewBtn)
+        if(i % 2 !== 0){
+            liContainer.classList.add('active')
+        }
+        // ul.classList.add('table-body')
 
-        ul.classList.add('table-body')
-
-        lis.forEach(li => ul.appendChild(li))
+        lis.forEach(li => liContainer.appendChild(li))
         
-        ul.appendChild(liView)
-        liContainer.appendChild(ul)
+        liContainer.appendChild(liView)
+        // liContainer.appendChild(ul)
         list.appendChild(liContainer)
     })
 

@@ -7,10 +7,46 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text">Member Management</h1>
+    <h1 class="title-text text-5xl text-center my-10">Member Management</h1>
+
+    <div class="overflow-x-auto mx-10 ">
+        <ul class="data-buttons table-options flex justify-start my-10">
+            <li><button class="fetch-view-btn btn btn-success text-md mr-10">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn text-md btn-secondary mr-10">Add</button></li>
+        </ul>
+        <table class="table w-full shadow-2xl border border-slate-900 border-2">
+          <!-- head -->
+          <thead>
+            <tr>
+              <!-- <th></th> -->
+              <th>Name</th>
+              <th>Role</th>
+              <th>User ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Status</th>
+              <th>Member Number</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody class="fetch-view-results">
+            <!-- row 1 -->
+            <tr>
+                <!-- <th>1</th> -->
+                <td><input type="text" placeholder="Name"></td>
+                <td><input type="text" placeholder="Role"></td>
+                <td><input type="text" placeholder="User ID"></td>
+                <td><input type="text" placeholder="First Name"></td>
+                <td><input type="text" placeholder="Last Name"></td>
+                <td><input type="text" placeholder="Status"></td>
+                <td><input type="text" placeholder="Member Number"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
     <!-- Table -->
-    <ul class="fetch-view-results table-container ">
+    <!-- <ul class="fetch-view-results table-container ">
         <ul class="data-buttons table-options">
             <li><button class="fetch-view-btn btn">Refresh</button></li>
             <li><button id="fetch-add-btn" class="btn">Add</button></li>
@@ -36,7 +72,7 @@
                     <li><input type="text" placeholder="Member Number"></li>
                 </ul>
             </li>
-    </ul>
+    </ul> -->
     <!-- Add Modal -->
     <section class="view-modal-container hide"> 
         <div class="view-modal-inner">
