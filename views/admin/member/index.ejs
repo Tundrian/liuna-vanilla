@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("../../partials/header.ejs") %>
-<body class="admin-page">
+<body class="admin-page bg-slate-600">
 
     <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
@@ -10,11 +10,11 @@
     <h1 class="title-text text-5xl text-center my-10">Member Management</h1>
 
     <div class="overflow-x-auto mx-10 ">
-        <ul class="data-buttons table-options flex justify-start my-10">
-            <li><button class="fetch-view-btn btn btn-success text-md mr-10">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn text-md btn-secondary mr-10">Add</button></li>
+        <ul class="data-buttons table-options flex justify-start my-1">
+            <li><button class="fetch-view-btn btn btn-success text-md mr-10 shadow-lg">Refresh</button></li>
+            <li><button id="fetch-add-btn" class="btn text-md btn-secondary mr-10 shadow-lg">Add</button></li>
         </ul>
-        <table class="table w-full shadow-2xl border border-slate-900 border-2">
+        <table class="table w-full shadow-2xl">
           <!-- head -->
           <thead>
             <tr>
@@ -40,6 +40,7 @@
                 <td><input type="text" placeholder="Last Name"></td>
                 <td><input type="text" placeholder="Status"></td>
                 <td><input type="text" placeholder="Member Number"></td>
+                <td></td>
             </tr>
           </tbody>
         </table>
