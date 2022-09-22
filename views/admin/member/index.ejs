@@ -108,6 +108,43 @@
         </div>
     </section>
 
+    <!-- The button to open modal -->
+    <label for="my-modal-3" class="btn modal-button">open modal</label>
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative">
+            <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Member</h3>
+            <p class="py-4">Update union member records</p>
+
+            <div class="view-modal-body">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="view-name" disabled>
+                    <label for="role">Role</label>
+                    <input type="text" name="role" id="view-role" disabled>
+                    <label for="view-userId">Select a User</label>
+                    <select name="view-userId" id="view-userId" disabled></select> 
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="view-firstName" disabled>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="view-lastName" disabled>
+                    <label for="status">Status</label>
+                    <input type="text" name="status" id="view-status" disabled>
+                    <label for="memberNumber">Member Number</label>
+                    <input type="text" name="memberNumber" id="view-memberNumber" disabled>
+                    
+                    <button class="form-submit btn hide" type="submit">Submit New Member</button>
+                    <button class="btn edit-btn view-edit-button">Edit</button>
+                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
+                    <button class="btn delete-btn view-delete-button">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="../js/member.js"></script>
     
 </body>
