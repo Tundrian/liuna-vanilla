@@ -238,6 +238,11 @@ const handleModal = (type) => {
         document.querySelector('.edit-btn').classList.remove('hidden')
         document.querySelector('.edit-confirm-btn').classList.add('hidden')
         document.querySelector('.delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').disabled = true
+        document.querySelector('.view-edit-button').disabled = false
     }
 }
 

@@ -7,17 +7,17 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 py-4">Member Management</h1>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 pt-28 pb-5">Member Management</h1>
 
-    <div class="overflow-x-auto m-10 h-screen overflow-y-auto">
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto ">
         <ul class="data-buttons table-options flex justify-start my-1">
             <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
             <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-        <table class="table w-full table-compact shadow-2xl">
+        <table class="table w-full table-compact shadow-xl ">
           <!-- head -->
           <thead>
-            <tr>
+            <tr class="">
               <!-- <th></th> -->
               <th>Name</th>
               <th>Role</th>
@@ -97,14 +97,14 @@
                     <div class="form-control mb-3">
                         <label class="input-group input-group-vertical">
                             <span>Status</span>
-                            <select class="select select-bordered" name="status" id="view-status" disabled></select>
+                            <input type="text" name="status" id="view-status" class="input input-bordered" disabled />
                         </label>
                     </div>
 
                     <div class="form-control mb-3 col-span-2">
                         <label class="input-group input-group-vertical">
                             <span>Member Number</span>
-                            <select class="select select-bordered" name="memberNumber" id="view-memberNumber" disabled></select>
+                            <input type="text" name="memberNumber" id="view-memberNumber" class="input input-bordered" disabled />
                         </label>
                     </div>
 
