@@ -6,18 +6,19 @@
     
     <%- include("../partials/nav.ejs") %>
     
-    <div class="w-screen h-screen bg-[url('/images/admin-background.jpg')] bg-gradient-to-b from-gray-900 to bg-gray-500">
+    <div class="w-screen h-fit bg-[url('/images/admin-background.jpg')] bg-gradient-to-b from-slate-600 to bg-slate-100 py-12">
       <!-- <img class="object-cover h-full w-full mix-blend-overlay" src="/images/admin-background.jpg" alt="" srcset=""> -->
-      <h1 class="title-text text-center text-5xl py-10">Admin Dashboard</h1>
+      <h1 class="title-text text-center text-5xl py-10 text-slate-100">Admin Dashboard</h1>
       
-      <ul class="dashboard-container grid grid-cols-5 gap-4 mx-24">
+      <ul class="dashboard-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-24 2xl:grid-cols-4">
           <li>
               <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl">
                 <figure><img src="../images/member.jpg" alt="members" /></figure>
                 <div class="card-body">
                   <!-- <h2 class="card-title">Member Management</h2> -->
+                  
                   <div class="card-actions justify-center w-full">
-                    <button class="btn bg-blue-800 text-md"><a href="/admin/member">Member Management</a></button>
+                    <button class="btn bg-blue-800 text-md w-full h-full"><a href="/admin/member">Member Management</a></button>
                   </div>
                 </div>
               </div>
@@ -112,5 +113,6 @@
           </li>
       </ul>
     </div>
+    <%- include("../partials/footer.ejs") %>
 </body>
 </html>

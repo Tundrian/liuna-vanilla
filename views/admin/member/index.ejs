@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("../../partials/header.ejs") %>
-<body class="admin-page bg-slate-600">
+<body class="bg-slate-600">
 
     <!-- Navbar -->
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text text-5xl text-center my-10">Member Management</h1>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 py-4">Member Management</h1>
 
-    <div class="overflow-x-auto mx-10 ">
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto">
         <ul class="data-buttons table-options flex justify-start my-1">
-            <li><button class="fetch-view-btn btn btn-success text-md mr-10 shadow-lg">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn text-md btn-secondary mr-10 shadow-lg">Add</button></li>
+            <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
+            <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-        <table class="table w-full shadow-2xl">
+        <table class="table w-full table-compact shadow-2xl">
           <!-- head -->
           <thead>
             <tr>
@@ -33,119 +33,91 @@
             <!-- row 1 -->
             <tr>
                 <!-- <th>1</th> -->
-                <td><input type="text" placeholder="Name"></td>
-                <td><input type="text" placeholder="Role"></td>
-                <td><input type="text" placeholder="User ID"></td>
-                <td><input type="text" placeholder="First Name"></td>
-                <td><input type="text" placeholder="Last Name"></td>
-                <td><input type="text" placeholder="Status"></td>
-                <td><input type="text" placeholder="Member Number"></td>
+                <td><input type="text" placeholder="Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Role" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="User ID" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="First Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Last Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Status" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Member Number" class="input w-full max-w-xs bg-slate-600"></td>
                 <td></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-    <!-- Table -->
-    <!-- <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
-        </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Name</li>
-                    <li>Role</li>
-                    <li>User ID</li>
-                    <li>First Name</li>
-                    <li>Last Name</li>
-                    <li>Status</li>
-                    <li>Member Number</li>
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Name"></li>
-                    <li><input type="text" placeholder="Role"></li>
-                    <li><input type="text" placeholder="User ID"></li>
-                    <li><input type="text" placeholder="First Name"></li>
-                    <li><input type="text" placeholder="Last Name"></li>
-                    <li><input type="text" placeholder="Status"></li>
-                    <li><input type="text" placeholder="Member Number"></li>
-                </ul>
-            </li>
-    </ul> -->
-    <!-- Add Modal -->
-    <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>Member</h2>
-            </div>
-            <div class="view-modal-body">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="role">Role</label>
-                    <input type="text" name="role" id="view-role" disabled>
-                    <label for="view-userId">Select a User</label>
-                    <select name="view-userId" id="view-userId" disabled></select> 
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="view-firstName" disabled>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="view-lastName" disabled>
-                    <label for="status">Status</label>
-                    <input type="text" name="status" id="view-status" disabled>
-                    <label for="memberNumber">Member Number</label>
-                    <input type="text" name="memberNumber" id="view-memberNumber" disabled>
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Member</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
-                </form>
-            </div>
-            <div class="view-modal-footer">
-            </div>
-        </div>
-    </section>
-
     <!-- The button to open modal -->
-    <label for="my-modal-3" class="btn modal-button">open modal</label>
 
     <!-- Put this part before </body> tag -->
-    <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+    <input type="checkbox" id="modal" class="modal-toggle" />
     <div class="modal">
-        <div class="modal-box relative">
-            <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <div class="modal-box relative bg-slate-600">
+            <label for="modal" id="view-modal-close-btn" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <h3 class="text-lg font-bold">Member</h3>
             <p class="py-4">Update union member records</p>
 
             <div class="view-modal-body">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="role">Role</label>
-                    <input type="text" name="role" id="view-role" disabled>
-                    <label for="view-userId">Select a User</label>
-                    <select name="view-userId" id="view-userId" disabled></select> 
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="view-firstName" disabled>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="view-lastName" disabled>
-                    <label for="status">Status</label>
-                    <input type="text" name="status" id="view-status" disabled>
-                    <label for="memberNumber">Member Number</label>
-                    <input type="text" name="memberNumber" id="view-memberNumber" disabled>
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Member</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
+                <form action="" class="grid grid-cols-2 gap-2">
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Name</span>
+                            <input type="text" name="name" id="view-name" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Role</span>
+                            <input type="text" name="role" id="view-role" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Select a User</span>
+                            <select class="select select-bordered" name="view-userId" id="view-userId" disabled>
+
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>First Name</span>
+                            <input type="text" name="firstName" id="view-firstName" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Last Name</span>
+                            <input type="text" name="lastName" id="view-lastName" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Status</span>
+                            <select class="select select-bordered" name="status" id="view-status" disabled></select>
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3 col-span-2">
+                        <label class="input-group input-group-vertical">
+                            <span>Member Number</span>
+                            <select class="select select-bordered" name="memberNumber" id="view-memberNumber" disabled></select>
+                        </label>
+                    </div>
+
+                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Member</button>
+                        <button class="btn edit-btn view-edit-button">Edit</button>
+                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
+                        <button class="btn delete-btn view-delete-button">Delete</button>
+                   
                 </form>
             </div>
         </div>
     </div>
-
+    <%- include("../../partials/footer.ejs") %>
     <script type="module" src="../js/member.js"></script>
     
 </body>

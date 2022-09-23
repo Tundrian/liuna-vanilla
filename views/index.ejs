@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include("partials/header.ejs") %>
-<body class="home-page">
+<body>
     <%- include("partials/nav.ejs") %>
-<!--     
-    <div class="container-splash">
-        <h1 class="title-text text-3xl">Home Page</h1>
-        <a class="btn btn-primary" href="/signup">Register</a>
-        <a class="btn btn-secondary" href="/login">Login</a>
-    </div> -->
-    <div class="hero min-h-screen bg-gradient-to-tr from-gray-700 to-gray-900 h-full relative">
+    <div class="hero min-h-screen bg-gradient-to-tr from-gray-700 to-gray-900 relative">
       <img class="object-cover h-full w-full mix-blend-overlay" src="/images/onion-splash2.jpg" alt="" srcset="">
-      <div class="hero-content text-center ">
+      <div class="hero-content text-center">
         <div class="max-w-md">
           <h1 class="text-5xl font-bold">Onion Membership Hub</h1>
           <p class="py-6 text-orange-400 font-bold text-2xl">One program to handle all things onions. Register, train, get certified, get assigned to dispatches, and more.</p>
-          <!-- <button class="btn bg-orange-600">Get Started</button> -->
           <a class="btn bg-green-800 border-transparent mx-5" href="/signup">Register</a>
           <button class="btn bg-orange-800 border-transparent mx-5"><a  href="/login">Login</a></button>
         </div>
