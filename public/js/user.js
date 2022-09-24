@@ -10,7 +10,7 @@ let dataSelected = {
 }
 
 let formFields = {
-    container: document.querySelector('.view-modal-container'),
+    // container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
     email: document.querySelector('#view-email'),
     verified: document.querySelector('#view-verified'),
@@ -20,10 +20,14 @@ let formFields = {
     role: document.querySelector('#view-role'),
 }
 
+const fetchUri = `../api/user`
+
 // Functions
 const closeModal = () => {
     
-    formFields.container.classList.add('hide')
+    document.querySelector('#fetch-add-btn').innerText = 'ADD'
+
+    // formFields.container.classList.add('hide')
 
     Object.keys(formFields).forEach(key => {
         formFields[key].value = ''
@@ -52,12 +56,12 @@ const openModal = async (e) => {
         }
     })
     
-    formFields.container.classList.remove('hide');
+    // formFields.container.classList.remove('hide');
 }
 
 const getData = async (id) => {
 
-    const response = await fetch(`../api/user/${id}`)
+    const response = await fetch(`${fetchUri}/${id}`)
     const data = await response.json()
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = data[key] || ''
@@ -74,38 +78,67 @@ const getDatas = async() => {
             el.remove()
         })
     } 
-    const response = await fetch(`../api/user`)
+    const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
 
-    dataList.forEach(data => {
-        const liContainer = document.createElement('li')
-        const ul = document.createElement('ul')
-        const liViewBtn = document.createElement('button')
-        const liView = document.createElement('li')
+    // dataList.forEach(data => {
+    //     const liContainer = document.createElement('li')
+    //     const ul = document.createElement('ul')
+    //     const liViewBtn = document.createElement('button')
+    //     const liView = document.createElement('li')
+    //     let lis = []
+    //     Object.keys(formFields).forEach((key, i) => {
+    //         // return document.createElement('li')
+    //         lis.push(document.createElement('li'))
+    //         // console.log(key, data[key])
+    //         lis[i].innerText = data[key]
+    //     }) 
+    //     lis.shift()
+        
+    //     liViewBtn.innerText = 'VIEW'
+    //     liViewBtn.classList.add('view-btn', 'btn')
+    //     liContainer.classList.add('view-results-list')
+    //     liViewBtn.setAttribute('data-id', data._id)
+        
+    //     liView.appendChild(liViewBtn)
+
+    //     ul.classList.add('table-body')
+
+    //     lis.forEach(li => ul.appendChild(li))
+        
+    //     ul.appendChild(liView)
+    //     liContainer.appendChild(ul)
+    //     list.appendChild(liContainer)
+    // })
+
+    dataList.forEach((data, i) => {
+        const tr = document.createElement('tr')
+        const liViewBtn = document.createElement('label')
+        const liView = document.createElement('td')
         let lis = []
         Object.keys(formFields).forEach((key, i) => {
-            // return document.createElement('li')
-            lis.push(document.createElement('li'))
-            // console.log(key, data[key])
+            lis.push(document.createElement('td'))
             lis[i].innerText = data[key]
         }) 
-        lis.shift()
-        
+
+        tr.classList.add('view-results-list')
+
         liViewBtn.innerText = 'VIEW'
-        liViewBtn.classList.add('view-btn', 'btn')
-        liContainer.classList.add('view-results-list')
+        liViewBtn.classList.add('view-btn', 'btn', 'modal-button', 'text-md')
         liViewBtn.setAttribute('data-id', data._id)
+        liViewBtn.setAttribute('for', 'modal')
         
         liView.appendChild(liViewBtn)
-
-        ul.classList.add('table-body')
-
-        lis.forEach(li => ul.appendChild(li))
         
-        ul.appendChild(liView)
-        liContainer.appendChild(ul)
-        list.appendChild(liContainer)
+        if(i % 2 !== 0){
+            tr.classList.add('active')
+        }
+
+        lis.forEach(li => tr.appendChild(li))
+        
+        tr.appendChild(liView)
+        list.appendChild(tr)
     })
 
     // Add event listeners to all view buttons
@@ -121,7 +154,7 @@ const addData = async(e) => {
       })
       dataSelected['password'] = 'tempPassword'
       dataSelected.verified = formFields.verified.checked
-    const response = await fetch(`../api/user`, {
+    const response = await fetch(`${fetchUri}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -129,11 +162,11 @@ const addData = async(e) => {
         body: JSON.stringify(dataSelected)
     })
 
-    addClicked()
+    // addClicked()
     
     getDatas()
 
-    closeModal()
+    closeModal(formFields, dataSelected)
     
     return response.json()
 }
@@ -153,7 +186,7 @@ const deleteData = async(e) => {
 
     getDatas()
     
-    closeModal()
+    closeModal(formFields)
     
     return
 }
@@ -168,8 +201,13 @@ const enableEdit = (e) => {
         formFields[key].disabled = false
     })
     
-    document.querySelector('.view-edit-button').classList.add('hide')
-    document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
+    // document.querySelector('.view-edit-button').classList.add('hide')
+    // document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
+    // document.querySelector('.view-edit-confirm-btn').disabled = false
+    // document.querySelector('.view-edit-button').disabled = true
+
+    document.querySelector('.view-edit-button').classList.add('hidden')
+    document.querySelector('.view-edit-confirm-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = false
     document.querySelector('.view-edit-button').disabled = true
 }
@@ -177,7 +215,11 @@ const enableEdit = (e) => {
 const editData = async(e) => {
     e.preventDefault()
 
-    if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
+    // if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
+    //     return
+    // }
+
+    if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
     }
 
@@ -185,7 +227,7 @@ const editData = async(e) => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
 
-    const response = await fetch(`../api/user/${dataSelected.id}`, {
+    const response = await fetch(`${fetchUri}/${dataSelected.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -195,14 +237,19 @@ const editData = async(e) => {
     
     getDatas()
     
-    closeModal()
+    closeModal(formFields)
 
     Object.keys(formFields).forEach(key => {
         formFields[key].disabled = true
       })
 
-    document.querySelector('.view-edit-button').classList.remove('hide')
-    document.querySelector('.view-edit-confirm-btn').classList.add('hide')
+    // document.querySelector('.view-edit-button').classList.remove('hide')
+    // document.querySelector('.view-edit-confirm-btn').classList.add('hide')
+    // document.querySelector('.view-edit-confirm-btn').disabled = true
+    // document.querySelector('.view-edit-button').disabled = false
+    
+    document.querySelector('.view-edit-button').classList.remove('hidden')
+    document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = true
     document.querySelector('.view-edit-button').disabled = false
     return response.json()
@@ -216,29 +263,55 @@ const addClicked = async(e) => {
         formFields[key].disabled = false
         formFields[key].value = ''
     })
+    document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 
     // document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 
 const handleModal = (type) => {
+    // if(type.toLowerCase() === 'add'){
+    //     document.querySelector('.form-submit').classList.remove('hide')
+    //     document.querySelector('.edit-btn').classList.add('hide')
+    //     document.querySelector('.edit-confirm-btn').classList.add('hide')
+    //     document.querySelector('.delete-btn').classList.add('hide')
+    // }else {
+    //     document.querySelector('.form-submit').classList.add('hide')
+    //     document.querySelector('.edit-btn').classList.remove('hide')
+    //     document.querySelector('.edit-confirm-btn').classList.add('hide')
+    //     document.querySelector('.delete-btn').classList.remove('hide')
+    // }
     if(type.toLowerCase() === 'add'){
-        document.querySelector('.form-submit').classList.remove('hide')
-        document.querySelector('.edit-btn').classList.add('hide')
-        document.querySelector('.edit-confirm-btn').classList.add('hide')
-        document.querySelector('.delete-btn').classList.add('hide')
+        document.querySelector('#form-submit').classList.remove('hidden')
+        document.querySelector('.edit-btn').classList.add('hidden')
+        document.querySelector('.edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.delete-btn').classList.add('hidden')
     }else {
-        document.querySelector('.form-submit').classList.add('hide')
-        document.querySelector('.edit-btn').classList.remove('hide')
-        document.querySelector('.edit-confirm-btn').classList.add('hide')
-        document.querySelector('.delete-btn').classList.remove('hide')
+        document.querySelector('#form-submit').classList.add('hidden')
+        document.querySelector('.edit-btn').classList.remove('hidden')
+        document.querySelector('.edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').disabled = true
+        document.querySelector('.view-edit-button').disabled = false
     }
 }
 
 // Event Listeners
+// document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
+// document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
+// document.querySelector('.form-submit').addEventListener('click', addData)
+// document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
+// document.querySelector('.view-delete-button').addEventListener('click', deleteData)
+// document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
+// document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
+// getDatas()
+
 document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
-document.querySelector('.form-submit').addEventListener('click', addData)
-document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
+document.querySelector('#form-submit').addEventListener('click', addData)
+document.querySelector('#view-modal-close-btn').addEventListener('click', closeModal)
 document.querySelector('.view-delete-button').addEventListener('click', deleteData)
 document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
