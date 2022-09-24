@@ -7,71 +7,116 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text">Dispatch Management</h1>
-
-    <!-- Table -->
-    <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 pt-28 pb-5">Dispatch Management</h1>
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto ">
+        <ul class="data-buttons table-options flex justify-start my-1">
+            <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
+            <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Contractor ID</li>
-                    <li>Name</li>
-                    <li>Description</li>
-                    <li>Type</li>
-                    <li>Length</li>
-                    <li>Start Date</li>
-                    <li>End Date</li>
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Contractor ID"></li>
-                    <li><input type="text" placeholder="Name"></li>
-                    <li><input type="text" placeholder="Description"></li>
-                    <li><input type="text" placeholder="Type"></li>
-                    <li><input type="text" placeholder="Length"></li>
-                    <li><input type="text" placeholder="Start Date"></li>
-                    <li><input type="text" placeholder="End Date"></li>
-                </ul>
-            </li>
-    </ul>
-    <!-- Add Modal -->
-    <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>Dispatch</h2>
-            </div>
+        <table class="table w-full table-compact shadow-xl ">
+          <!-- head -->
+          <thead>
+            <tr class="">
+              <!-- <th></th> -->
+              <th>Contractor ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Length</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody class="fetch-view-results">
+            <!-- row 1 -->
+            <tr>
+                <!-- <th>1</th> -->
+                <td><input type="text" placeholder="Contractor ID" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Description" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Type" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Length" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Start Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="End Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    <!-- The button to open modal -->
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative bg-slate-600">
+            <label for="modal" id="view-modal-close-btn" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Dispatch</h3>
+            <p class="py-4">Update Dispatch records</p>
+
             <div class="view-modal-body">
-                <form action="">
-                    <label for="view-contractorId">Contractor ID</label>
-                    <select name="view-contractorId" id="view-contractorId" disabled>Contractor ID</label>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="view-description">Description</label>
-                    <input type="text" name="view-description" id="view-description" disabled>
-                    <label for="type">Type</label>
-                    <select name="type" id="view-type" disabled></select>
-                    <label for="length">length</label>
-                    <input type="number" name="length" id="view-length" disabled>
-                    <label for="startDate">Start Date</label>
-                    <input type="date" name="startDate" id="view-startDate" disabled>
-                    <label for="endDate">End Date</label>
-                    <input type="date" name="endDate" id="view-endDate" disabled>
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Dispatch</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
+                <form action="" class="grid grid-cols-2 gap-2">
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Contractor ID</span>
+                            <select class="select select-bordered" name="view-contractorId" id="view-contractorId" disabled>
+
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Name</span>
+                            <input type="text" name="name" id="view-name" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Description</span>
+                            <input type="text" name="description" id="view-description" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Type</span>
+                            <select class="select select-bordered" name="view-type" id="view-type" disabled>
+
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Length</span>
+                            <input type="number" name="length" id="view-length" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Start Date</span>
+                            <input type="date" name="startDate" id="view-startDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>End Date</span>
+                            <input type="text" name="endDate" id="view-endDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Dispatch</button>
+                        <button class="btn edit-btn view-edit-button">Edit</button>
+                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
+                        <button class="btn delete-btn view-delete-button">Delete</button>
                 </form>
             </div>
-            <div class="view-modal-footer">
-            </div>
         </div>
-    </section>
-
+    </div>
+    <%- include("../../partials/footer.ejs") %>
     <script type="module" src="../js/dispatch.js"></script>
     
 </body>

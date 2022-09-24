@@ -6,10 +6,18 @@
     
     <%- include("../partials/nav.ejs") %>
     
-    <div class="w-screen h-fit  bg-slate-600 py-12">
-      <h1 class="title-text text-center text-5xl py-10 text-slate-100">Admin Dashboard</h1>
-      
-      <ul class="w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 2xl:grid-cols-4">
+    <div class="w-screen h-fit  bg-gray-700 py-12">
+      <!-- <h1 class="title-text text-center text-5xl py-10 text-gray-100">Admin Dashboard</h1> -->
+      <div class="stats shadow mx-auto flex justify-center align-center pt-10 pb-3 mb-10 bg-orange-800">
+  
+        <div class="stat w-fit ">
+          <!-- <div class="stat-title">Admin Dashboard</div> -->
+          <div class="stat-value">Admin Dashboard</div>
+          <!--<div class="stat-desc">21% more than last month</div> -->
+        </div>
+        
+      </div>
+      <ul class="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 2xl:grid-cols-4">
           <li class="flex items-center justify-center">
             <a href="/admin/member">
               <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
