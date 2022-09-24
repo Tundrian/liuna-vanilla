@@ -7,66 +7,105 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text">Contractor Management</h1>
-
-    <!-- Table -->
-    <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 pt-28 pb-5">Member Management</h1>
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto ">
+        <ul class="data-buttons table-options flex justify-start my-1">
+            <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
+            <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Name</li>
-                    <li>Description</li>
-                    <li>Category</li>
-                    <li>Type</li>
-                    <li>Acquired Date</li>
-                    <li>Reminder Date</li>
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Name"></li>
-                    <li><input type="text" placeholder="Description"></li>
-                    <li><input type="text" placeholder="Category"></li>
-                    <li><input type="text" placeholder="Type"></li>
-                    <li><input type="text" placeholder="Acquired Date"></li>
-                    <li><input type="text" placeholder="Reminder Date"></li>
-                </ul>
-            </li>
-    </ul>
-    <!-- Modal -->
-    <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>Contractor</h2>
-            </div>
+        <table class="table w-full table-compact shadow-xl ">
+          <!-- head -->
+          <thead>
+            <tr class="">
+              <!-- <th></th> -->
+              <th>Name</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Acquired Date</th>
+              <th>Reminder Date</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody class="fetch-view-results">
+            <!-- row 1 -->
+            <tr>
+                <!-- <th>1</th> -->
+                <td><input type="text" placeholder="Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Description" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Category" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Type" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Acquired Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Reminder Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    <!-- The button to open modal -->
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative bg-slate-600">
+            <label for="modal" id="view-modal-close-btn" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Contractor</h3>
+            <p class="py-4">Update contractor records</p>
+
             <div class="view-modal-body">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="view-description" disabled>
-                    <label for="view-category">Category</label>
-                    <select name="view-category" id="view-category" disabled></select> 
-                    <label for="type">Type</label>
-                    <input type="text" name="type" id="view-type" disabled>
-                    <label for="acquiredDate">Acquired Date</label>
-                    <input type="date" name="acquiredDate" id="view-acquiredDate" disabled>
-                    <label for="reminderDate">Reminder Date</label>
-                    <input type="date" name="reminderDate" id="view-reminderDate" disabled>
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Contractor</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
+                <form action="" class="grid grid-cols-2 gap-2">
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Name</span>
+                            <input type="text" name="name" id="view-name" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Description</span>
+                            <input type="text" name="description" id="view-description" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Category</span>
+                            <select class="select select-bordered" name="view-category" id="view-category" disabled>
+
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Type</span>
+                            <input type="text" name="type" id="view-type" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Acquired Date</span>
+                            <input type="date" name="acquiredDate" id="view-acquiredDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Reminder Date</span>
+                            <input type="date" name="reminderDate" id="view-reminderDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Member</button>
+                        <button class="btn edit-btn view-edit-button">Edit</button>
+                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
+                        <button class="btn delete-btn view-delete-button">Delete</button>
                 </form>
             </div>
-            <div class="view-modal-footer">
-            </div>
         </div>
-    </section>
+    </div>
+    <%- include("../../partials/footer.ejs") %>
+    
 
     <script type="module" src="../js/contractor.js"></script>
     
