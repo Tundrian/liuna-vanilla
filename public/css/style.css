@@ -1891,13 +1891,6 @@ html {
   flex-grow: 1;
 }
 
-.card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
 .card figure {
   display: flex;
   align-items: center;
@@ -2585,15 +2578,6 @@ html {
   line-height: 1.25rem;
 }
 
-.card-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 600;
-}
-
 .checkbox:focus-visible {
   outline: 2px solid hsl(var(--bc));
   outline-offset: 2px;
@@ -3205,18 +3189,10 @@ body[dir="rtl"] .checkbox:checked,
   line-height: 1.25rem;
 }
 
-.card-compact .card-title {
-  margin-bottom: 0.25rem;
-}
-
 .card-normal .card-body {
   padding: var(--padding-card, 2rem);
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.card-normal .card-title {
-  margin-bottom: 0.75rem;
 }
 
 .modal-bottom :where(.modal-box) {
@@ -3310,11 +3286,6 @@ body[dir="rtl"] .checkbox:checked,
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
-}
-
-.mx-24 {
-  margin-left: 6rem;
-  margin-right: 6rem;
 }
 
 .mx-auto {
@@ -3578,11 +3549,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-slate-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
-}
-
-.bg-blue-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
 }
 
 .bg-slate-700 {
