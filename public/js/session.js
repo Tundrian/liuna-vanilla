@@ -13,7 +13,7 @@ let dataSelected = {
 }
 
 let formFields = {
-    container: document.querySelector('.view-modal-container'),
+    // container: document.querySelector('.view-modal-container'),
     courseId: document.querySelector('#view-course'),
     startDate: document.querySelector('#view-startDate'),
     endDate: document.querySelector('#view-endDate'),
@@ -32,7 +32,7 @@ const fetchUri = `../api/training`
 
 const closeModal = () => {
     
-    formFields.container.classList.add('hide')
+    document.querySelector('#fetch-add-btn').innerText = 'ADD'
 
     Object.keys(formFields).forEach(key => {
         formFields[key].value = ''
@@ -50,7 +50,6 @@ const openModal = async (e) => {
     }   
 
     Object.keys(formFields).forEach(key => {
-        console.log('key: ', key)
         if(key in dataSelected && dataSelected[key] != null){
             formFields[key].value = dataSelected[key]
         } else if(dataSelected[key] === null){
@@ -84,7 +83,7 @@ const openModal = async (e) => {
         document.querySelector('#view-course').appendChild(op)
     })
 
-    formFields.container.classList.remove('hide');
+    // formFields.container.classList.remove('hide');
 }
 
 const getData = async (id) => {
@@ -116,19 +115,21 @@ const getDatas = async() => {
         return {id: course._id, name: course.name}
     })
 
-    dataList.forEach(data => {
-        const liContainer = document.createElement('li')
-        const ul = document.createElement('ul')
-        const liViewBtn = document.createElement('button')
-        const liView = document.createElement('li')
+    dataList.forEach((data, i) => {
+        // const liContainer = document.createElement('li')
+        // const ul = document.createElement('ul')
+        // const liViewBtn = document.createElement('button')
+        // const liView = document.createElement('li')
+        // let lis = []
+        const tr = document.createElement('tr')
+        const liViewBtn = document.createElement('label')
+        const liView = document.createElement('td')
         let lis = []
 
         Object.keys(formFields).forEach((key, i) => {
             if(!hiddenFromTable.includes(key)){
-                lis.push(document.createElement('li'))
-                console.log(key, (data[key]))
+                lis.push(document.createElement('td'))
                 if(key === 'courseId' && courses.find(course => data[key] === course.id) !== undefined){
-                    console.log(courses.find(course => data[key] === course.id)['name'])
                     lis[lis.length - 1].innerText = courses.find(course => data[key] === course.id)['name']
                 }if(key === 'startDate' || key === 'endDate'){
                     lis[lis.length - 1].innerText = formatDate(data[key])
@@ -137,26 +138,26 @@ const getDatas = async() => {
                 }
             }
         }) 
-        
-        // lis.shift()
-        
+       
+        tr.classList.add('view-results-list')
+
         liViewBtn.innerText = 'VIEW'
-        liViewBtn.classList.add('view-btn', 'btn')
-        liContainer.classList.add('view-results-list')
+        liViewBtn.classList.add('view-btn', 'btn', 'modal-button', 'text-md')
         liViewBtn.setAttribute('data-id', data._id)
+        liViewBtn.setAttribute('for', 'modal')
         
         liView.appendChild(liViewBtn)
-
-        ul.classList.add('table-body')
-
-        lis.forEach(li => ul.appendChild(li))
         
-        ul.appendChild(liView)
-        liContainer.appendChild(ul)
-        list.appendChild(liContainer)
+        if(i % 2 !== 0){
+            tr.classList.add('active')
+        }
+
+        lis.forEach(li => tr.appendChild(li))
+        
+        tr.appendChild(liView)
+        list.appendChild(tr)
     })
 
-    const dates = document.querySelectorAll('input').filter(x => x.type === 'Date')
     // Add event listeners to all view buttons
     document.querySelectorAll('.view-btn').forEach(btn => btn.addEventListener('click', openModal))
 }
@@ -214,8 +215,8 @@ const enableEdit = (e) => {
         formFields[key].disabled = false
     })
     
-    document.querySelector('.view-edit-button').classList.add('hide')
-    document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
+    document.querySelector('.view-edit-button').classList.add('hidden')
+    document.querySelector('.view-edit-confirm-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = false
     document.querySelector('.view-edit-button').disabled = true
 }
@@ -223,7 +224,7 @@ const enableEdit = (e) => {
 const editData = async(e) => {
     e.preventDefault()
 
-    if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
+    if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
     }
 
@@ -247,10 +248,10 @@ const editData = async(e) => {
         formFields[key].disabled = true
       })
 
-    document.querySelector('.view-edit-button').classList.remove('hide')
-    document.querySelector('.view-edit-confirm-btn').classList.add('hide')
-    document.querySelector('.view-edit-confirm-btn').disabled = true
-    document.querySelector('.view-edit-button').disabled = false
+      document.querySelector('.view-edit-button').classList.remove('hidden')
+      document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+      document.querySelector('.view-edit-confirm-btn').disabled = true
+      document.querySelector('.view-edit-button').disabled = false
     return response.json()
 }
 
@@ -268,15 +269,20 @@ const addClicked = async(e) => {
 
 const handleModal = (type) => {
     if(type.toLowerCase() === 'add'){
-        document.querySelector('.form-submit').classList.remove('hide')
-        document.querySelector('.edit-btn').classList.add('hide')
-        document.querySelector('.edit-confirm-btn').classList.add('hide')
-        document.querySelector('.delete-btn').classList.add('hide')
+        document.querySelector('#form-submit').classList.remove('hidden')
+        document.querySelector('.edit-btn').classList.add('hidden')
+        document.querySelector('.edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.delete-btn').classList.add('hidden')
     }else {
-        document.querySelector('.form-submit').classList.add('hide')
-        document.querySelector('.edit-btn').classList.remove('hide')
-        document.querySelector('.edit-confirm-btn').classList.add('hide')
-        document.querySelector('.delete-btn').classList.remove('hide')
+        document.querySelector('#form-submit').classList.add('hidden')
+        document.querySelector('.edit-btn').classList.remove('hidden')
+        document.querySelector('.edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').disabled = true
+        document.querySelector('.view-edit-button').disabled = false
     }
 }
 
@@ -299,7 +305,7 @@ const updateScheduledDates = () => {
        input.type = "datetime-local"
        input.name = `class-${i+1}-date`
        input.id = `view-class${i+1}Date`
-
+       input.classList.add('input', 'input-bordered')
        scheduleDates.appendChild(label)
        scheduleDates.appendChild(input)
     }
@@ -315,12 +321,11 @@ const formatDate = (date) => {
 // Event Listeners
 document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
-document.querySelector('.form-submit').addEventListener('click', addData)
-document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
+document.querySelector('#form-submit').addEventListener('click', addData)
+document.querySelector('#view-modal-close-btn').addEventListener('click', closeModal)
 document.querySelector('.view-delete-button').addEventListener('click', deleteData)
 document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
 document.querySelector('#view-courseLength').addEventListener('change', updateScheduledDates)
-
 getDatas()
 

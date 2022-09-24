@@ -7,93 +7,132 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text">Training Session Management</h1>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 pt-28 pb-5">Member Management</h1>
 
-    <!-- Table -->
-    <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto ">
+        <ul class="data-buttons table-options flex justify-start my-1">
+            <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
+            <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Course</li>
-                    <li>Start Date</li>
-                    <li>End Date</li>
-                    <!-- <li>Scheduled Dates</li> -->
-                    <li>Total Slots</li>
-                    <li>Open Slots</li>
-                    <li>Filled Slots</li>
-                    <li>Type</li>
-                    <li>Certification Name</li>
-                    <!-- <li>Attendees</li> -->
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Course"></li>
-                    <li><input type="text" placeholder="Start Date"></li>
-                    <li><input type="text" placeholder="End Date"></li>
-                    <!-- <li><input type="text" placeholder="Scheduled Dates"></li> -->
-                    <li><input type="text" placeholder="Total Slots"></li>
-                    <li><input type="text" placeholder="Open Slots"></li>
-                    <li><input type="text" placeholder="Filled Slots"></li>
-                    <li><input type="text" placeholder="Type"></li>
-                    <li><input type="text" placeholder="Certification Name"></li>
-                    <!-- <li><input type="text" placeholder="Attendees"></li> -->
-                </ul>
-            </li>
-    </ul>
+        <table class="table w-full table-compact shadow-xl ">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Total Slots</th>
+              <th>Open Slots</th>
+              <th>Filled Slots</th>
+              <th>Type</th>
+              <th>Certification Name</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody class="fetch-view-results">
+            <!-- row 1 -->
+            <tr>
+                <!-- <th>1</th> -->
+                <td><input type="text" placeholder="Course" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Start Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="End Date" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Total Slots" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Open Slots" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Filled Slots" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Type" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Certification Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+    <!-- The button to open modal -->
 
-    <!-- Add Modal -->
-    <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>Training Session</h2>
-            </div>
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative bg-slate-600">
+            <label for="modal" id="view-modal-close-btn" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Training Session</h3>
+            <p class="py-4">Update training session records</p>
+
             <div class="view-modal-body">
-                <form action="">
-                    <label for="view-course">Course</label>
-                    <select name="view-course" id="view-course" disabled></select>
+                <form action="" class="grid grid-cols-2 gap-2">
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Course</span>
+                            <select class="select select-bordered" name="view-course" id="view-course" disabled>
 
-                    <label for="startDate">Start Date</label>
-                    <input type="date" name="name" id="view-startDate" disabled>
-                    
-                    <label for="view-endDate">End Date</label>
-                    <input type="date" name="view-endDate" id="view-endDate" disabled>
-                    
-                    <label for="view-courseLength">Length</label>
-                    <input type="number" name="view-courseLength" id="view-courseLength" disabled>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Start Date</span>
+                            <input type="date" name="startDate" id="view-startDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>End Date</span>
+                            <input type="date" name="endDate" id="view-endDate" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Length</span>
+                            <input type="number" name="courseLength" id="view-courseLength" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Scheduled Dates</span>
+                        </label>
+                        <div id="view-scheduledDates"></div>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Total Slots</span>
+                            <input type="number" name="totalSlots" id="view-totalSlots" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Open Slots</span>
+                            <input type="number" name="openSlots" id="view-openSlots" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Filled Slots</span>
+                            <input type="number" name="filledSlots" id="view-filledSlots" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Type</span>
+                            <input type="text" name="type" id="view-type" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Certification Name</span>
+                            <select class="select select-bordered" name="view-certificationName" id="view-certificationName" disabled>
 
-                    <label for="scheduledDates">Scheduled Dates</label>
-                    <div id="view-scheduledDates"></div>
-                    
-                    <label for="totalSlots">Total Slots</label>
-                    <input type="number" name="totalSlots" id="view-totalSlots" disabled>
-                    
-                    <label for="openSlots">Open Slots</label>
-                    <input type="number" name="openSlots" id="view-openSlots" disabled>
-                    
-                    <label for="filledSlots">Filled Slots</label>
-                    <input type="number" name="filledSlots" id="view-filledSlots" disabled>
-                    
-                    <label for="type">Type</label>
-                    <input type="text" name="type" id="view-type" disabled>
-                    
-                    <label for="certificationName">Certification Name</label>
-                    <select name="certificationName" id="view-certificationName" disabled></select>
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Training Session</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
+                            </select>
+                        </label>
+                    </div>
+                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Member</button>
+                        <button class="btn edit-btn view-edit-button">Edit</button>
+                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
+                        <button class="btn delete-btn view-delete-button">Delete</button>
+                   
                 </form>
             </div>
-            <div class="view-modal-footer">
-            </div>
         </div>
-    </section>
+    </div>
+    <%- include("../../partials/footer.ejs") %>
 
     <script type="module" src="../js/session.js"></script>
     
