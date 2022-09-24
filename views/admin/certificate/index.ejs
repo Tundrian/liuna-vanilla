@@ -7,73 +7,98 @@
     <%- include("../../partials/nav.ejs") %>
     
     <!-- Title -->
-    <h1 class="title-text">Certificate Management</h1>
-
-    <!-- Table -->
-    <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
+    <h1 class="title-text text-5xl text-center text-slate-300 bg-slate-800 pt-28 pb-5">Member Management</h1>
+    <div class="overflow-x-auto m-10 h-screen overflow-y-auto ">
+        <ul class="data-buttons table-options flex justify-start my-1">
+            <li><button class="fetch-view-btn btn btn-primary mr-10 shadow-lg">Refresh</button></li>
+            <li><label for="modal" id="fetch-add-btn" class="btn btn-secondary mr-10 shadow-lg modal-button">Add</label></li>
         </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Name</li>
-                    <li>Description</li>
-                    <li>Type</li>
-                    <li>Expiration Length</li>
-                    <li>Exp Units</li>
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Name"></li>
-                    <li><input type="text" placeholder="Description"></li>
-                    <li><input type="text" placeholder="Type"></li>
-                    <li><input type="text" placeholder="Expiration length"></li>
-                    <li><input type="text" placeholder="Exp Units"></li>
-                </ul>
-            </li>
-    </ul>
-    <!-- Add Modal -->
-    <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>Certificate</h2>
-            </div>
+        <table class="table w-full table-compact shadow-xl ">
+          <!-- head -->
+          <thead>
+            <tr class="">
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Expiration Length</th>
+              <th>Exp Units</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody class="fetch-view-results">
+            <!-- row 1 -->
+            <tr>
+                <!-- <th>1</th> -->
+                <td><input type="text" placeholder="Name" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Description" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Type" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Expiration Length" class="input w-full max-w-xs bg-slate-600"></td>
+                <td><input type="text" placeholder="Expiration Units" class="input w-full max-w-xs bg-slate-600"></td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    
+    <input type="checkbox" id="modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative bg-slate-600">
+            <label for="modal" id="view-modal-close-btn" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Certificate</h3>
+            <p class="py-4">Update Certificates</p>
+
             <div class="view-modal-body">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="description">Description</label>
-                    <input type="text" name="role" id="view-description" disabled>
-                    <label for="view-type">Type</label>
-                    <select name="view-type" id="view-type" disabled></select> 
-                    <!-- Length selection area -->
-                    <label for="expirationLengthSection">Expiration length</label>
-                    <div name="expirationLengthSection">
-                        
-                        <label for="expirationUnits">Units</label>
-                        <select name="expirationUnits" id="view-expirationUnits">
-                            <option value="years" selected>Years</option>
-                            <option value="months">Months</option>
-                            <option value="days">Weeks</option>
-                            <option value="days">Days</option>
-                        </select>
-                        <label for="expirationLength">length</label>
-                        <input type="text" name="expirationLength" id="view-expirationLength" disabled>
+                <form action="" class="grid grid-cols-2 gap-2">
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Name</span>
+                            <input type="text" name="name" id="view-name" class="input input-bordered" disabled />
+                        </label>
                     </div>
-                    
-                    
-                    <button class="form-submit btn hide" type="submit">Submit New Certificate</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Description</span>
+                            <input type="text" name="description" id="view-description" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Type</span>
+                            <select class="select select-bordered" name="view-type" id="view-type" disabled>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Expiration Length</span>
+                            <input type="text" name="expirationLength" id="view-expirationLength" class="input input-bordered" disabled />
+                        </label>
+                    </div>
+
+                    <div class="form-control mb-3">
+                        <label class="input-group input-group-vertical">
+                            <span>Expiration Units</span>
+                            <select class="select select-bordered" name="view-expirationUnits" id="view-expirationUnits" disabled>
+                                <option value="years" selected>Years</option>
+                                <option value="months">Months</option>
+                                <option value="days">Weeks</option>
+                                <option value="days">Days</option>
+                            </select>
+                        </label>
+                    </div>
+                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Member</button>
+                        <button class="btn edit-btn view-edit-button">Edit</button>
+                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
+                        <button class="btn delete-btn view-delete-button">Delete</button>
+                   
                 </form>
             </div>
-            <div class="view-modal-footer">
-            </div>
         </div>
-    </section>
+    </div>
+    <%- include("../../partials/footer.ejs") %>
+
+
+   
 
     <script type="module" src="../js/certificate.js"></script>
     
