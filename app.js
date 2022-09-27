@@ -19,7 +19,7 @@ const adminRoutes = require('./routes/adminRoutes')
 const memberRoutes = require('./routes/memberRoutes')
 
 require('dotenv').config()
-const PORT = process.env.PORT
+// const PORT = process.env.PORT
 
 require('./config/passport')(passport)
 
@@ -64,6 +64,6 @@ app.use('/api', apiRoutes)
 app.use('/admin', adminRoutes)
 app.use('/member', memberRoutes)
 
-app.listen(PORT, () => {
-    console.log(`Server running at `.blue + `http://localhost:${PORT}`.underline.cyan)
+app.listen(process.env.PORT, () => {
+    console.log(`Server running at `.blue + `http://localhost:${process.env.PORT}`.underline.cyan)
 })
