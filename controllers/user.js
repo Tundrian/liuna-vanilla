@@ -38,7 +38,12 @@ const updateUser = asyncHandler(async (req, res) => {
 
     const updatedUser = await User.findOneAndUpdate({ _id: req.params.id}, {
         name: req.body.name,
-        password: req.body.password
+        password: req.body.password,
+        verified: req.body.verified,
+        theme: req.body.theme,
+        memberNumber: req.body.memberNumber,
+        data: req.body.date,
+        role: req.body.role
     })
 
     res.status(200).json(updatedUser)

@@ -1,89 +1,11 @@
-Server -> Routes -> Controllers -> Models -> Controllers -> Views -> js file 	
+Member view
+    - protect member routes with (is member)
+    - add member view for certificates
+    - add member view for courses
+    - add member view for dispatches
 
-Main screen
-	- Login
-	- Blurbs about application
-
-Admin Dashboard
-	- Navbar
-	- Links to all dashboard views (routes)
-
-User View
-	- Navbar
-	- Table showing users
-		- user ID
-		- username
-		- role
-		- status
-    - Add Modal
-        - id (auto-generated)
-        - username {unique}
-        - email address {unique}
-        - password
-        - confirm password
-        - role [admin, member]
-	- Edit/Delete Modal
-		- id: disabled
-        - username {unique}
-        - email address {unique}
-        - role [admin, member]
-
-Member View
-    - Navbar
-    - Table showing members
-        - member #
-        - username
-        - role
-        - date added
-    - add Modal
-        - member # {unique}
-
-======================
-1. Use model to enter HTML view fields for table
-2. Use model to enter HTML form fields for add modal
-3. Use model to enter HTML form fields for edit modal
-4. Use model to enter JS properties for class
-5. Use model to enter JS function to handle rendering table
-6. Use model to enter JS function to handle rendering add modal
-7. Use model to enter JS function handle rendering edit modal
-
-==================================================================
-
-User
-    - Fix date formatting on table
-    - change undefined values on table to just show empty string
-
-User is now added to the system
-Next step is to provide a set list of selectable roles (admin, member)
-Selectable list of themes (light, dark)
-Add date picker for date field
-Change name to username
-
-Ok, then users are added.
-Keep member number disabled. This should be created from the member form
-For members, update form for data validity
-
-Add form validation last
-
-Just allow admins to add users, add members. Then validate that members can log in
-    - this will be later using passport
-
-Finish setting up certificates with information from form
-
-Finish setting up courses
-Create courses form and validation
-Create a selectable list using the values from certificates
-
-Then finally, create sessions from courses
-
-Finally, create contractor records and assign dispatches (with date ranges) to themes
-
-Once all admin forms are created and validated, validate member views.
-
-For now, just show a view of all upcoming scheduled training sessions
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Course {
+    - once views are made
+        - create method to add member as attendee to course
+        - create admin process to assign certificate to member (in member view)
+        - create admin process to assign dispatch to member (in dispatch view)
     
-}

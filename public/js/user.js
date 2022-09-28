@@ -10,7 +10,6 @@ let dataSelected = {
 }
 
 let formFields = {
-    // container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
     email: document.querySelector('#view-email'),
     verified: document.querySelector('#view-verified'),
@@ -24,10 +23,7 @@ const fetchUri = `../api/user`
 
 // Functions
 const closeModal = () => {
-    
     document.querySelector('#fetch-add-btn').innerText = 'ADD'
-
-    // formFields.container.classList.add('hide')
 
     Object.keys(formFields).forEach(key => {
         formFields[key].value = ''
@@ -36,6 +32,7 @@ const closeModal = () => {
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = null
     })
+
 }
 
 const openModal = async (e) => {
@@ -54,9 +51,7 @@ const openModal = async (e) => {
         }else {
             formFields[key].value = formFields[key].value
         }
-    })
-    
-    // formFields.container.classList.remove('hide');
+    })   
 }
 
 const getData = async (id) => {
@@ -81,36 +76,6 @@ const getDatas = async() => {
     const response = await fetch(`${fetchUri}`)
     const dataList = await response.json()
     const list = document.querySelector('.fetch-view-results')
-
-    // dataList.forEach(data => {
-    //     const liContainer = document.createElement('li')
-    //     const ul = document.createElement('ul')
-    //     const liViewBtn = document.createElement('button')
-    //     const liView = document.createElement('li')
-    //     let lis = []
-    //     Object.keys(formFields).forEach((key, i) => {
-    //         // return document.createElement('li')
-    //         lis.push(document.createElement('li'))
-    //         // console.log(key, data[key])
-    //         lis[i].innerText = data[key]
-    //     }) 
-    //     lis.shift()
-        
-    //     liViewBtn.innerText = 'VIEW'
-    //     liViewBtn.classList.add('view-btn', 'btn')
-    //     liContainer.classList.add('view-results-list')
-    //     liViewBtn.setAttribute('data-id', data._id)
-        
-    //     liView.appendChild(liViewBtn)
-
-    //     ul.classList.add('table-body')
-
-    //     lis.forEach(li => ul.appendChild(li))
-        
-    //     ul.appendChild(liView)
-    //     liContainer.appendChild(ul)
-    //     list.appendChild(liContainer)
-    // })
 
     dataList.forEach((data, i) => {
         const tr = document.createElement('tr')
@@ -147,7 +112,7 @@ const getDatas = async() => {
 
 const addData = async(e) => {
 
-    e.preventDefault()
+    // e.preventDefault()
 
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
@@ -162,8 +127,6 @@ const addData = async(e) => {
         body: JSON.stringify(dataSelected)
     })
 
-    // addClicked()
-    
     getDatas()
 
     closeModal(formFields, dataSelected)
@@ -172,8 +135,6 @@ const addData = async(e) => {
 }
 
 const deleteData = async(e) => {
-    
-    e.preventDefault()
 
     handleModal('delete')
 
@@ -192,32 +153,25 @@ const deleteData = async(e) => {
 }
 
 const enableEdit = (e) => {
-
     e.preventDefault()
+    console.log(formFields['verified'])
 
     handleModal('edit')
     
     Object.keys(formFields).forEach(key => {
         formFields[key].disabled = false
     })
-    
-    // document.querySelector('.view-edit-button').classList.add('hide')
-    // document.querySelector('.view-edit-confirm-btn').classList.remove('hide')
-    // document.querySelector('.view-edit-confirm-btn').disabled = false
-    // document.querySelector('.view-edit-button').disabled = true
 
-    document.querySelector('.view-edit-button').classList.add('hidden')
+    document.querySelector('.view-edit-btn').classList.add('hidden')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = false
-    document.querySelector('.view-edit-button').disabled = true
+    document.querySelector('.view-edit-btn').disabled = true
 }
 
 const editData = async(e) => {
-    e.preventDefault()
+    // e.preventDefault()
+    console.log(formFields['verified'])
 
-    // if(document.querySelector('.view-edit-confirm-btn').classList.contains('hide')){
-    //     return
-    // }
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
@@ -226,6 +180,8 @@ const editData = async(e) => {
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
       })
+
+    dataSelected['verified'] =  formFields['verified'].checked
 
     const response = await fetch(`${fetchUri}/${dataSelected.id}`, {
         method: 'PUT',
@@ -242,16 +198,11 @@ const editData = async(e) => {
     Object.keys(formFields).forEach(key => {
         formFields[key].disabled = true
       })
-
-    // document.querySelector('.view-edit-button').classList.remove('hide')
-    // document.querySelector('.view-edit-confirm-btn').classList.add('hide')
-    // document.querySelector('.view-edit-confirm-btn').disabled = true
-    // document.querySelector('.view-edit-button').disabled = false
     
-    document.querySelector('.view-edit-button').classList.remove('hidden')
+    document.querySelector('.view-edit-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = true
-    document.querySelector('.view-edit-button').disabled = false
+    document.querySelector('.view-edit-btn').disabled = false
     return response.json()
 }
 
@@ -265,54 +216,32 @@ const addClicked = async(e) => {
     })
     document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 
-    // document.querySelector('#fetch-add-btn').innerText = document.querySelector('#fetch-add-btn').innerText.toLowerCase() === 'add' ? 'CLOSE' : 'ADD'
 }
 
 const handleModal = (type) => {
-    // if(type.toLowerCase() === 'add'){
-    //     document.querySelector('.form-submit').classList.remove('hide')
-    //     document.querySelector('.edit-btn').classList.add('hide')
-    //     document.querySelector('.edit-confirm-btn').classList.add('hide')
-    //     document.querySelector('.delete-btn').classList.add('hide')
-    // }else {
-    //     document.querySelector('.form-submit').classList.add('hide')
-    //     document.querySelector('.edit-btn').classList.remove('hide')
-    //     document.querySelector('.edit-confirm-btn').classList.add('hide')
-    //     document.querySelector('.delete-btn').classList.remove('hide')
-    // }
     if(type.toLowerCase() === 'add'){
         document.querySelector('#form-submit').classList.remove('hidden')
-        document.querySelector('.edit-btn').classList.add('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.add('hidden')
+        document.querySelector('.view-edit-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-delete-btn').classList.add('hidden')
     }else {
         document.querySelector('#form-submit').classList.add('hidden')
-        document.querySelector('.edit-btn').classList.remove('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.remove('hidden')
-
-        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
         document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.view-edit-confirm-btn').disabled = true
-        document.querySelector('.view-edit-button').disabled = false
+        document.querySelector('.view-delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        // document.querySelector('.view-edit-confirm-btn').disabled = true
+        document.querySelector('.view-edit-btn').disabled = false
     }
 }
-
-// Event Listeners
-// document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
-// document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
-// document.querySelector('.form-submit').addEventListener('click', addData)
-// document.querySelector('.view-modal-close-btn').addEventListener('click', closeModal)
-// document.querySelector('.view-delete-button').addEventListener('click', deleteData)
-// document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
-// document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
-// getDatas()
 
 document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('#form-submit').addEventListener('click', addData)
 document.querySelector('#view-modal-close-btn').addEventListener('click', closeModal)
-document.querySelector('.view-delete-button').addEventListener('click', deleteData)
-document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
+document.querySelector('.view-delete-btn').addEventListener('click', deleteData)
+document.querySelector('.view-edit-btn').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
 getDatas()

@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <%- include("../partials/header.ejs") %>
 <body>
-    <h1>Admin Dashboard</h1>
-    <ul>
-        <li><a href="/member/certificate">My Certificates</a> </li>
-        <li><a href="/member/dispatch">Available Dispatches</a> </li>
-        <li><a href="/member/trainingSessions">My Training Sessions</a> </li>
-        <li><a href="/member/upcomingTraining">Upcoming Available Training Sessions</a> </li>
-        
-        <li>Payments</li>
-        <li>Reports</li>
-    </ul>
-    <a href="/">Home</a>
-    <a href="/admin">Admin Dashboard</a>
+    <%- include("../partials/nav.ejs") %>
+
+    <div class="w-screen h-fit  bg-gray-700 py-12">
+        <!-- <h1 class="title-text text-center text-5xl py-10 text-gray-100">Admin Dashboard</h1> -->
+        <div class="stats shadow mx-auto flex justify-center align-center pt-10 pb-3 mb-10 bg-cyan-900">
+    
+          <div class="stat w-fit ">
+            <!-- <div class="stat-title">Admin Dashboard</div> -->
+            <div class="stat-value">Member Dashboard</div>
+            <!--<div class="stat-desc">21% more than last month</div> -->
+          </div>
+          
+        </div>
+    <ul class="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 2xl:grid-cols-4">
+        <li class="flex items-center justify-center">
+          <a href="/member/certificate">
+            <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
+              <figure><img src="../images/certification.jpg" alt="certificates" /></figure>
+              <div class="card-body p-0">
+                  <h2 class="text-center w-full py-4 text-lg">My Certificates</h2>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="flex items-center justify-center">
+          <a href="/member/dispatch">
+            <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
+              <figure><img src="../images/dispatch.jpg" alt="dispatches" /></figure>
+              <div class="card-body p-0">
+                  <h2 class="text-center w-full py-4 text-lg">Available Dispatches</h2>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="flex items-center justify-center">
+          <a href="/member/trainingSessions">
+            <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
+              <figure><img src="../images/training.jpg" alt="training" /></figure>
+              <div class="card-body p-0">
+                  <h2 class="text-center w-full py-4 text-lg">My Training Sessions</h2>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="flex items-center justify-center">
+          <a href="/member/upcomingTraining">
+            <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
+              <figure><img src="../images/course.jpg" alt="Training sessions" /></figure>
+              <div class="card-body p-0">
+                  <h2 class="text-center w-full py-4 text-lg">Upcoming Available Training Sessions</h2>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="flex items-center justify-center">
+          <a href="#">
+            <div class="card w-72 bg-base-100 bg-slate-900 shadow-xl hover:scale-110 hover:bg-lime-800  transition-all duration-500 ease-in-out">
+              <figure><img src="../images/payment.jpg" alt="Payments" /></figure>
+              <div class="card-body p-0">
+                  <h2 class="text-center w-full py-4 text-lg">Payments</h2>
+              </div>
+            </div>
+          </a>
+        </li>
+        </ul>
+    </div>
+    <%- include("../partials/footer.ejs") %>
 </body>
 </html>

@@ -45,35 +45,6 @@
         </table>
       </div>
 
-    <!-- Table -->
-    <!-- <ul class="fetch-view-results table-container ">
-        <ul class="data-buttons table-options">
-            <li><button class="fetch-view-btn btn">Refresh</button></li>
-            <li><button id="fetch-add-btn" class="btn">Add</button></li>
-        </ul>
-            <li class="table-header">
-                <ul>
-                    <li>Name</li>
-                    <li>Email</li>
-                    <li>Verified</li>
-                    <li>Theme</li>
-                    <li>Member Number</li>
-                    <li>Date</li>
-                    <li>Role</li>
-                    <li>Edit</li>
-                </ul>
-                <ul class="table-filter">
-                    <li><input type="text" placeholder="Name"></li>
-                    <li><input type="text" placeholder="Email"></li>
-                    <li><input type="text" placeholder="Verified"></li>
-                    <li><input type="text" placeholder="Theme"></li>
-                    <li><input type="text" placeholder="Member Number"></li>
-                    <li><input type="date" placeholder="Date"></li>
-                    <li><input type="text" placeholder="Role"></li>
-                </ul>
-            </li>
-    </ul> -->
-    <!-- Put this part before </body> tag -->
     <input type="checkbox" id="modal" class="modal-toggle" />
     <div class="modal">
         <div class="modal-box relative bg-slate-600">
@@ -96,9 +67,9 @@
                         </label>
                     </div>
                     <div class="form-control mb-3">
-                        <label class="input-group input-group-vertical">
+                        <label class="input-group input-group-vertical h-full">
                             <span>Verified</span>
-                            <input type="checkbox" name="verified" id="view-verified" class="checkbox" disabled />
+                            <input type="checkbox" name="verified" id="view-verified" class="checkbox w-full h-12" disabled />
                             <span></span>
                         </label>
                     </div>
@@ -137,65 +108,15 @@
                             </select>
                         </label>
                     </div>
-
-
-                        <button class="btn hidden col-span-2" id="form-submit" type="submit">Submit New Member</button>
-                        <button class="btn edit-btn view-edit-button">Edit</button>
-                        <button class="btn edit-confirm-btn view-edit-confirm-btn hidden" disabled>Confirm Edit</button>
-                        <button class="btn delete-btn view-delete-button">Delete</button>
-                   
+                        <label for="modal" class="btn hidden col-span-2" id="form-submit">Submit New User</label>
+                        <button class="btn view-edit-btn">Edit</button>
+                        <label for="modal" class="btn view-edit-confirm-btn hidden">Confirm Edit</label>
+                        <label for="modal" class="btn view-delete-btn">Delete</label>
                 </form>
             </div>
         </div>
     </div>
     <%- include("../../partials/footer.ejs") %>
-    
-    <!-- Add Modal -->
-    <!-- <section class="view-modal-container hide"> 
-        <div class="view-modal-inner">
-            <button class="btn view-modal-close-btn">X</button>
-            <div class="view-modal-header">
-                <h2>User</h2>
-            </div>
-            <div class="view-modal-body">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="view-name" disabled>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="view-email" disabled>
-
-                    <label for="view-verified">Verified</label>
-
-                    <div class="form-checkbox-container">
-                        <input type="checkbox" name="verified" id="view-verified" > 
-                        <span class="form-checkmark"></span>
-                    </div>
-
-                    <label for="theme">Theme</label>
-                    <select name="themSelect" id="view-theme">
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                    </select>
-                    <label for="memberNumber">Member Number</label>
-                    <input type="number" name="memberNumber" id="view-memberNumber" disabled>
-                    <label for="date">Date</label>
-                    <input type="date" name="date" id="view-date" disabled>
-                    <label for="role">Role</label>
-                    <select name="roles" id="view-role">
-                        <option value="admin">Admin</option>
-                        <option value="member">Member</option>
-                    </select>
-                    <button class="form-submit btn hide" type="submit">Submit New User</button>
-                    <button class="btn edit-btn view-edit-button">Edit</button>
-                    <button class="btn edit-confirm-btn view-edit-confirm-btn hide" disabled>Confirm Edit</button>
-                    <button class="btn delete-btn view-delete-button">Delete</button>
-                </form>
-            </div>
-            <div class="view-modal-footer">
-            </div>
-        </div>
-    </section> -->
-
     <script type="text/javascript" src="../js/user.js"></script>
     
 </body>

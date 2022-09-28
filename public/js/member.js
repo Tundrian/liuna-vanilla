@@ -126,7 +126,7 @@ const getDatas = async() => {
 
 const addData = async(e) => {
 
-    e.preventDefault()
+    // e.preventDefault()
     
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
@@ -149,7 +149,7 @@ const addData = async(e) => {
 
 const deleteData = async(e) => {
     
-    e.preventDefault()
+    // e.preventDefault()
 
     handleModal('delete')
 
@@ -184,7 +184,7 @@ const enableEdit = (e) => {
 }
 
 const editData = async(e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
