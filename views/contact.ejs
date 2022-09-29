@@ -3,32 +3,43 @@
 <%- include("partials/header.ejs") %>
 <body>
     <%- include("partials/nav.ejs") %>
+    
     <div class="hero min-h-screen bg-gradient-to-tr from-gray-700 to-gray-900 relative">
       <img class="object-cover h-full w-full mix-blend-overlay" src="/images/contact.jpg" alt="" srcset="">
+      
       <div class="hero-content text-center">
+       
         <div class="max-w-md">
+          <% if(msg){%>
+            <div class="alert alert-success shadow-lg">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Your email has been sent!</span>
+              </div>
+            </div>
+            <%}%>
           <h1 class="text-5xl font-bold">Contact us</h1>
           <p class="py-6 text-orange-400 font-bold text-2xl">Send us any feedback or questions you may have.</p>
-          <form action="mailto:antoniosansotta@gmail.com">
+          <form action="/contact" method="POST">
             <div class="form-control">
 
                 <label class="input-group input-group-vertical my-5">
                   <span>Email</span>
-                  <input type="text" placeholder="info@site.com" class="input input-bordered" />
+                  <input type="text" name="email" placeholder="info@site.com" class="input input-bordered" />
                 </label>
               </div>
               <div class="form-control">
 
                 <label class="input-group input-group-vertical my-5">
                   <span>Subject</span>
-                  <input type="text" class="input input-bordered" />
+                  <input type="text" name="subject" class="input input-bordered" />
                 </label>
               </div>
               <div class="form-control"">
 
                 <label class="input-group input-group-vertical my-5">
                   <span>Body</span>
-                  <textarea class="textarea textarea-bordered"></textarea>
+                  <textarea class="textarea textarea-bordered" name="text"></textarea>
                 </label>
               </div>
               <button class="btn w-full" type="submit">Submit</button>

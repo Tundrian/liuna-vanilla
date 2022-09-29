@@ -1,21 +1,22 @@
 const express = require('express')
 const router = express.Router()
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.route('/').get((req, res) => {
+router.route('/').get(ensureAuth, (req, res) => {
     res.render('member/dashboard.ejs')
 })
 
 /* Member Routes */
-router.route('/certificate').get((req, res) => {
+router.route('/certificate').get(ensureAuth, (req, res) => {
     res.render('member/certificate/index.ejs')
 })
-router.route('/dispatch').get((req, res) => {
+router.route('/dispatch').get(ensureAuth, (req, res) => {
     res.render('member/dispatches/index.ejs')
 })
-router.route('/trainingSessions').get((req, res) => {
+router.route('/trainingSessions').get(ensureAuth, (req, res) => {
     res.render('member/trainingSessions/index.ejs')
 })
-router.route('/upcomingTraining').get((req, res) => {
+router.route('/upcomingTraining').get(ensureAuth, (req, res) => {
     res.render('member/upcomingTraining/index.ejs')
 })
 
