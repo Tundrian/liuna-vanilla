@@ -42,12 +42,12 @@ router.post("/contact", (req,res) => {
     // })
 
     // transporter.sendMail({
-    //     from: `${req.body.email} antoniosansotta@gmail.com`,
-    //     to: "antoniosansotta@gmail.com",
+    //     from: `${req.body.email} `,
+    //     to: """,
     //     subject: req.body.subject,
     //     text: req.body.text,
     //     auth: {
-    //         user: "antoniosansotta@gmail.com",
+    //         user: "",
             
     //     }
     // })
