@@ -8,7 +8,7 @@ const ContractorSchema = mongoose.Schema({
     description: String,
     category: String,
     type: String,
-    acquireDate: Date,
+    acquiredDate: Date,
     reminderDate: Date
 })
 

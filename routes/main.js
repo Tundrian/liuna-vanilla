@@ -12,5 +12,7 @@ router.post("/login", authController.postLogin);
 router.get("/logout", ensureAuth, authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
-
+router.get("/contact", (req, res) =>{
+    res.render('contact.ejs')
+})
 module.exports = router

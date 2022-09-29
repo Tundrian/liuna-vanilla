@@ -138,7 +138,7 @@ const getDatas = async() => {
 
 const addData = async(e) => {
 
-    e.preventDefault()
+    // e.preventDefault()
     
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
@@ -189,14 +189,13 @@ const enableEdit = (e) => {
         formFields[key].disabled = false
     })
     
-    document.querySelector('.view-edit-button').classList.add('hidden')
+    document.querySelector('.view-edit-btn').classList.add('hidden')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = false
-    document.querySelector('.view-edit-button').disabled = true
+    document.querySelector('.view-edit-btn').disabled = true
 }
 
 const editData = async(e) => {
-    e.preventDefault()
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
@@ -222,10 +221,10 @@ const editData = async(e) => {
         formFields[key].disabled = true
       })
 
-      document.querySelector('.view-edit-button').classList.remove('hidden')
-      document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
-      document.querySelector('.view-edit-confirm-btn').disabled = true
-      document.querySelector('.view-edit-button').disabled = false
+    document.querySelector('.view-edit-btn').classList.remove('hidden')
+    document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+    document.querySelector('.view-edit-confirm-btn').disabled = true
+    document.querySelector('.view-edit-btn').disabled = false
     return response.json()
 }
 
@@ -244,19 +243,18 @@ const addClicked = async(e) => {
 const handleModal = (type) => {
     if(type.toLowerCase() === 'add'){
         document.querySelector('#form-submit').classList.remove('hidden')
-        document.querySelector('.edit-btn').classList.add('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.add('hidden')
+        document.querySelector('.view-edit-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-delete-btn').classList.add('hidden')
     }else {
         document.querySelector('#form-submit').classList.add('hidden')
-        document.querySelector('.edit-btn').classList.remove('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.remove('hidden')
-
-        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
         document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.view-edit-confirm-btn').disabled = true
-        document.querySelector('.view-edit-button').disabled = false
+        document.querySelector('.view-delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-edit-btn').disabled = false
     }
 }
 
@@ -265,7 +263,7 @@ document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('#form-submit').addEventListener('click', addData)
 document.querySelector('#view-modal-close-btn').addEventListener('click', closeModal)
-document.querySelector('.view-delete-button').addEventListener('click', deleteData)
-document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
+document.querySelector('.view-delete-btn').addEventListener('click', deleteData)
+document.querySelector('.view-edit-btn').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
 getDatas()

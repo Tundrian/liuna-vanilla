@@ -8,7 +8,6 @@ let dataSelected = {
     reminderDate: '',
 }
 let formFields = {
-    // container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
     description: document.querySelector('#view-description'),
     category: document.querySelector('#view-category'),
@@ -41,7 +40,7 @@ const openModal = async (e) => {
     }
 
     Object.keys(formFields).forEach(key => {
-        console.log(key)
+        // console.log(key)
         if(key in dataSelected && dataSelected[key] != null){
             formFields[key].value = dataSelected[key]
         } else if(dataSelected[key] === null){
@@ -58,12 +57,10 @@ const openModal = async (e) => {
 
     categories.forEach(x => {
         let op = document.createElement('option')
-        op.value = x.name
-        op.innerText = x.name
+        op.value = x
+        op.innerText = x
         document.querySelector('#view-category').appendChild(op)
     })
-    
-    // formFields.container.classList.remove('hide');
 }
 
 const getData = async (id) => {
@@ -96,7 +93,11 @@ const getDatas = async() => {
         let lis = []
         Object.keys(formFields).forEach((key, i) => {
             lis.push(document.createElement('td'))
-            lis[i].innerText = data[key]
+            if(key === 'acquiredDate' || key === 'reminderDate'){
+                lis[i].innerText = formatDate(data[key])
+            }else {
+                lis[i].innerText = data[key]
+            }
         }) 
 
         tr.classList.add('view-results-list')
@@ -124,7 +125,6 @@ const getDatas = async() => {
 
 const addData = async(e) => {
 
-    e.preventDefault()
     
     Object.keys(dataSelected).forEach(key => {
         dataSelected[key] = key in formFields ? formFields[key].value : dataSelected[key]
@@ -148,7 +148,6 @@ const addData = async(e) => {
 
 const deleteData = async(e) => {
     
-    e.preventDefault()
 
     handleModal('delete')
 
@@ -167,7 +166,6 @@ const deleteData = async(e) => {
 }
 
 const enableEdit = (e) => {
-
     e.preventDefault()
 
     handleModal('edit')
@@ -175,15 +173,14 @@ const enableEdit = (e) => {
     Object.keys(formFields).forEach(key => {
         formFields[key].disabled = false
     })
-    
-    document.querySelector('.view-edit-button').classList.add('hidden')
+   
+    document.querySelector('.view-edit-btn').classList.add('hidden')
     document.querySelector('.view-edit-confirm-btn').classList.remove('hidden')
     document.querySelector('.view-edit-confirm-btn').disabled = false
-    document.querySelector('.view-edit-button').disabled = true
+    document.querySelector('.view-edit-btn').disabled = true
 }
 
 const editData = async(e) => {
-    e.preventDefault()
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return
@@ -209,10 +206,10 @@ const editData = async(e) => {
         formFields[key].disabled = true
       })
 
-      document.querySelector('.view-edit-button').classList.remove('hidden')
+      document.querySelector('.view-edit-btn').classList.remove('hidden')
       document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
       document.querySelector('.view-edit-confirm-btn').disabled = true
-      document.querySelector('.view-edit-button').disabled = false
+      document.querySelector('.view-edit-btn').disabled = false
     return response.json()
 }
 
@@ -231,28 +228,35 @@ const addClicked = async(e) => {
 const handleModal = (type) => {
     if(type.toLowerCase() === 'add'){
         document.querySelector('#form-submit').classList.remove('hidden')
-        document.querySelector('.edit-btn').classList.add('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.add('hidden')
+        document.querySelector('.view-edit-btn').classList.add('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-delete-btn').classList.add('hidden')
     }else {
         document.querySelector('#form-submit').classList.add('hidden')
-        document.querySelector('.edit-btn').classList.remove('hidden')
-        document.querySelector('.edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.delete-btn').classList.remove('hidden')
-
-        document.querySelector('.view-edit-button').classList.remove('hidden')
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
         document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
-        document.querySelector('.view-edit-confirm-btn').disabled = true
-        document.querySelector('.view-edit-button').disabled = false
+        document.querySelector('.view-delete-btn').classList.remove('hidden')
+
+        document.querySelector('.view-edit-btn').classList.remove('hidden')
+        document.querySelector('.view-edit-confirm-btn').classList.add('hidden')
+        document.querySelector('.view-edit-btn').disabled = false
     }
 }
 
+const formatDate = (date) => {
+    let newDate = new Date(date)
+    const offset = newDate.getTimezoneOffset()
+    const yourDate = new Date(newDate.getTime() - (offset*60*1000))
+    return yourDate.toISOString().split('T')[0]
+}
+
 // Event Listeners
+
 document.querySelector('.fetch-view-btn').addEventListener('click', getDatas)
 document.querySelector('#fetch-add-btn').addEventListener('click', addClicked)
 document.querySelector('#form-submit').addEventListener('click', addData)
 document.querySelector('#view-modal-close-btn').addEventListener('click', closeModal)
-document.querySelector('.view-delete-button').addEventListener('click', deleteData)
-document.querySelector('.view-edit-button').addEventListener('click', enableEdit)
+document.querySelector('.view-delete-btn').addEventListener('click', deleteData)
+document.querySelector('.view-edit-btn').addEventListener('click', enableEdit)
 document.querySelector('.view-edit-confirm-btn').addEventListener('click', editData)
 getDatas()

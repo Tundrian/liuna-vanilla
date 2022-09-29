@@ -18,7 +18,7 @@ const setContractor = asyncHandler(async (req, res) => {
             description: req.body.description,
             category: req.body.category,
             type: req.body.type,
-            acquireDate: req.body.acquireDate,
+            acquiredDate: req.body.acquiredDate,
             reminderDate: req.body.reminderDate
         })
         res.status(200).json(contractor)
@@ -48,7 +48,7 @@ const updateContractor = asyncHandler(async (req, res) => {
         description: req.body.description,
         category: req.body.category,
         type: req.body.type,
-        acquireDate: req.body.acquireDate,
+        acquiresDate: req.body.acquiredDate,
         reminderDate: req.body.reminderDate
     })
 
