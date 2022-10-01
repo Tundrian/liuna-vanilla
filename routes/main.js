@@ -5,12 +5,18 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 // const nodemailer = require('nodemailer')
 
 router.get('/', (req, res) => {
-    res.render('index.ejs')
+    if(!req.user){
+        res.render('index.ejs')
+    }else if(req.user.role === 'member'){
+        res.redirect('/member')
+    }else if(req.user.role === 'admin'){
+        res.redirect('/admin')
+    }
 })
 
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
-router.get("/logout", ensureAuth, authController.logout);
+router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/contact", (req, res) =>{

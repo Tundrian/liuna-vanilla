@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include("../partials/header.ejs") %>
 <body class="home-page">
-    <%- include("../partials/nav.ejs") %>
+    <%- include("../partials/navNoUser.ejs") %>
     <main class="min-h-screen relative">
       <div class="absolute top-0 z-50 flex w-screen justify-center align-top flex-wrap ">
         <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>

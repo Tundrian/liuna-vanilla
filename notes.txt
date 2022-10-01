@@ -9,3 +9,5 @@ Member view
         - create admin process to assign certificate to member (in member view)
         - create admin process to assign dispatch to member (in dispatch view)
     
+
+On edit training session

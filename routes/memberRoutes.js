@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.route('/').get(ensureAuth, (req, res) => {
+router.route('/').get(ensureGuest, (req, res) => {
     res.render('member/dashboard.ejs')
 })
 
