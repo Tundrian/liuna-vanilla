@@ -8,10 +8,10 @@ let dataSelected = {
     firstName: '',
     lastName: '',
     status: '',
-    memberNumber: ''
+    memberNumber: '',
+    certificates: '',
 }
 let formFields = {
-    // container: document.querySelector('.view-modal-container'),
     name: document.querySelector('#view-name'),
     role: document.querySelector('#view-role'),
     userId: document.querySelector('#view-userId'),
@@ -19,6 +19,7 @@ let formFields = {
     lastName: document.querySelector('#view-lastName'),
     status: document.querySelector('#view-status'),
     memberNumber: document.querySelector('#view-memberNumber'),
+    certificates: document.querySelector('#view-certificates'),
 }
 
 const fetchUri = `../api/member`
@@ -64,8 +65,18 @@ const openModal = async (e) => {
         op.innerText = x.name
         document.querySelector('#view-userId').appendChild(op)
     })
+
+    let certResponse = await fetch(`../api/certificate`)
+    let certs = await certResponse.json()
+    document.querySelector('#view-certificates').innerHTML = ''
+
+    certs.forEach(x => {
+        let op = document.createElement('option')
+        op.value = x.name
+        op.innerText = x.name
+        document.querySelector('#view-certificates').appendChild(op)
+    })
     
-    // formFields.container.classList.remove('hide');
 }
 
 const getData = async (id) => {
@@ -92,6 +103,7 @@ const getDatas = async() => {
     const list = document.querySelector('.fetch-view-results')
 
     dataList.forEach((data, i) => {
+
         const tr = document.createElement('tr')
         const liViewBtn = document.createElement('label')
         const liView = document.createElement('td')
@@ -184,7 +196,6 @@ const enableEdit = (e) => {
 }
 
 const editData = async(e) => {
-    // e.preventDefault()
 
     if(document.querySelector('.view-edit-confirm-btn').classList.contains('hidden')){
         return

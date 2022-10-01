@@ -7,7 +7,13 @@ const MemberSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     status: String,
-    memberNumber: String
+    memberNumber: String,
+    certificates: [
+        {
+            type: [mongoose.Schema.Types.ObjectId],
+            ref: "Certificate"
+        }
+    ]
 })
 
 module.exports = mongoose.model('Member', MemberSchema)

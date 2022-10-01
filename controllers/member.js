@@ -20,7 +20,9 @@ const setMember = asyncHandler(async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             status: req.body.status,
-            memberNumber: req.body.memberNumber
+            memberNumber: req.body.memberNumber,
+            certificates: req.body.certificates
+
         })
         res.status(200).json(member)
     } catch(error){
@@ -51,7 +53,8 @@ const updateMember = asyncHandler(async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         status: req.body.status,
-        memberNumber: req.body.memberNumber
+        memberNumber: req.body.memberNumber,
+        certificates: req.body.certificates
     })
 
     res.status(200).json(updatedMember)
